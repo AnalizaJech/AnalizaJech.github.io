@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Jorge Enrique Caceres Hernandez</title>
+    <link rel="shortcut icon" href="portfolio.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <!-- Header -->
+    <header class="bg-gray-900 text-white py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <h1 class="text-3xl font-bold tracking-wider text-pink-500">Analiza Jech</h1>
+
+            <!-- Toggle button for small screens -->
+            <button id="nav-toggle" class="text-pink-500 sm:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Navbar for larger screens -->
+            <nav id="nav-menu" class="hidden sm:flex space-x-12 text-lg font-medium">
+                <ul class="flex space-x-8">
+                    <li><a href="#about" class="hover:text-pink-300 transition-all">Sobre Mí</a></li>
+                    <li><a href="#skills" class="hover:text-pink-300 transition-all">Habilidades</a></li>
+                    <li><a href="#projects" class="hover:text-pink-300 transition-all">Proyectos</a></li>
+                    <li><a href="#contact" class="hover:text-pink-300 transition-all">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Fullscreen Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 hidden bg-gray-900 z-50 flex flex-col justify-center items-center space-y-8 text-xl font-medium">
+            <!-- Close Button -->
+            <button id="close-menu" class="absolute top-5 right-5 focus:outline-none" onclick="toggleMenu()">
+                <svg class="w-8 h-8 text-pink-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <!-- Menu Links with White Color and Pink Hover -->
+            <a href="#about" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Sobre Mí</a>
+            <a href="#skills" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Habilidades</a>
+            <a href="#projects" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Proyectos</a>
+            <a href="#contact" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-96 sm:h-[50vh]" style="background-image: url('https://media.licdn.com/dms/image/D4D16AQGmhnwjtm3Elw/profile-displaybackgroundimage-shrink_200_800/0/1673374672316?e=2147483647&v=beta&t=vVTDHOM0lab8dDPlz12TTrTxmLwUa7phZl6LtoVs6as');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-6 relative text-center text-white py-24">
+            <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight mb-4 sm:mb-6 drop-shadow-lg">¡Hola! Soy Jorge Enrique Caceres Hernandez</h2>
+            <p class="text-base sm:text-xl mb-6 sm:mb-8">Desarrollador frontend, diseñador UX/UI, y creador de contenido con una pasión por la experiencia del usuario y la tecnología.</p>
+            <a href="#contact" class="bg-pink-600 py-2 px-6 sm:py-3 sm:px-8 rounded-lg text-lg sm:text-xl font-semibold hover:bg-pink-700 transition-all shadow-lg">Contáctame</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20" id="about">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-gradient mb-10">Sobre Mí</h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Hola, soy Jorge Enrique Caceres Hernandez, un apasionado desarrollador y diseñador UX/UI con experiencia en una variedad de disciplinas creativas. Además de mi trabajo como desarrollador web front-end y diseñador, administro un canal de YouTube donde comparto contenido sobre programación, diseño, producción musical, edición de video y más. Soy un firme creyente en la importancia de la experiencia del usuario y me esfuerzo por crear interfaces intuitivas y atractivas.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="bg-gray-800 py-20" id="skills">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-pink-600 mb-10">Habilidades</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="bg-gradient-to-r from-teal-500 to-cyan-600 p-8 rounded-xl shadow-lg hover:scale-105 transition-all">
+                    <h3 class="text-3xl font-semibold mb-4">Frontend Development</h3>
+                    <p>HTML, CSS, JavaScript, React, Tailwind CSS, Vue.js, Next.js, SASS.</p>
+                </div>
+                <div class="bg-gradient-to-r from-orange-500 to-red-600 p-8 rounded-xl shadow-lg hover:scale-105 transition-all">
+                    <h3 class="text-3xl font-semibold mb-4">Version Control</h3>
+                    <p>Git, GitHub, GitLab, Bitbucket.</p>
+                </div>
+                <div class="bg-gradient-to-r from-yellow-500 to-amber-600 p-8 rounded-xl shadow-lg hover:scale-105 transition-all">
+                    <h3 class="text-3xl font-semibold mb-4">Design Tools</h3>
+                    <p>Figma, Adobe XD, VS Code, Illustrator, Photoshop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-20" id="projects">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-pink-600 mb-12">Proyectos Destacados</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all transform hover:scale-105 hover:translate-y-2">
+                    <img src="https://storage.screenshotapi.net/analizajech_github_io_banco_crecer__82af3ae3bbd3.png" alt="Proyecto Banco Crecer" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity duration-300">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-4">
+                            <a href="https://analizajech.github.io/Banco-Crecer/" class="hover:text-pink-600 transition-colors duration-300">Banco Crecer</a>
+                        </h3>
+                        <p class="text-gray-400 mb-4">Creación de un sitio web moderno y responsivo utilizando Bootstrap 5.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all transform hover:scale-105 hover:translate-y-2">
+                    <img src="https://i.ytimg.com/vi/nGi3DS0QSzE/maxresdefault.jpg" alt="Proyecto Librería" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity duration-300">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-4">
+                            <a href="https://www.youtube.com/watch?v=nGi3DS0QSzE&t=96s&ab_channel=JORGEENRIQUECACERESHERNANDEZ" class="hover:text-pink-600 transition-colors duration-300">Librería</a>
+                        </h3>
+                        <p class="text-gray-400 mb-4">Desarrollo de una aplicación web para la gestión de usuarios utilizando Laravel.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all transform hover:scale-105 hover:translate-y-2">
+                    <img src="https://storage.screenshotapi.net/analizajech_github_io_tech_scan_f147dc4a7310.png" alt="Proyecto TechScan" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity duration-300">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-4">
+                            <a href="https://analizajech.github.io/Tech-Scan/" class="hover:text-pink-600 transition-colors duration-300">TechScan</a>
+                        </h3>
+                        <p class="text-gray-400 mb-4">Sistema de diagnóstico de hardware para computadoras, desarrollado con HTML, Tailwind y JS.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all transform hover:scale-105 hover:translate-y-2">
+                    <img src="https://storage.screenshotapi.net/analizajech_github_io_innovasoft__a4c7ccfbc717.png" alt="Proyecto InnovaSoft" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity duration-300">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-4">
+                            <a href="https://analizajech.github.io/InnovaSoft/" class="hover:text-pink-600 transition-colors duration-300">InnovaSoft</a>
+                        </h3>
+                        <p class="text-gray-400 mb-4">Desarrollo de una plataforma para la gestión de proyectos y tareas usando tecnologías modernas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Channel Section -->
+    <section class="py-20 bg-gray-800" id="youtube">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-pink-600 mb-10">Mi Canal de YouTube</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="https://www.youtube.com/watch?v=ZtC5TGLyKJs&list=PLpfoOjtLjnzv2uaMJ48nTA0fvcL26IKM0&ab_channel=AnalizaJech" class="group block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                    <img src="https://img.youtube.com/vi/ZtC5TGLyKJs/mqdefault.jpg" alt="Video 1" class="w-full group-hover:opacity-80 transition-opacity duration-300">
+                </a>
+                <a href="https://www.youtube.com/watch?v=v7PZQoyip9M&list=PLpfoOjtLjnzv2uaMJ48nTA0fvcL26IKM0&index=2&ab_channel=AnalizaJech" class="group block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                    <img src="https://img.youtube.com/vi/v7PZQoyip9M/mqdefault.jpg" alt="Video 2" class="w-full group-hover:opacity-80 transition-opacity duration-300">
+                </a>
+                <a href="https://www.youtube.com/watch?v=nyHikqNBsbQ&t=75s&ab_channel=AnalizaJech" class="group block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                    <img src="https://img.youtube.com/vi/nyHikqNBsbQ/mqdefault.jpg" alt="Video 3" class="w-full group-hover:opacity-80 transition-opacity duration-300">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20" id="contact">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-pink-600 mb-10">Contáctame</h2>
+            <div class="flex justify-center space-x-6">
+                <a href="https://www.linkedin.com/in/analizajech/" class="text-2xl text-pink-600 hover:text-pink-800 transition-all transform hover:scale-105">
+                    <img src="https://img.icons8.com/fluency/48/000000/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="mailto:jc3568248@gmail.com" class="text-2xl text-pink-600 hover:text-pink-800 transition-all transform hover:scale-105">
+                    <img src="https://img.icons8.com/fluency/48/000000/email-open.png" alt="Email">
+                </a>
+                <a href="https://www.tusitio.com" class="text-2xl text-pink-600 hover:text-pink-800 transition-all transform hover:scale-105">
+                    <img src="https://img.icons8.com/fluency/48/000000/domain.png" alt="Website">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 py-8 px-6">
+        <div class="text-center text-gray-500">
+            <p>&copy; 2024 Jorge Enrique Caceres Hernandez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('nav-toggle').onclick = toggleMenu;
+    </script>
+
+</body>
+</html>
