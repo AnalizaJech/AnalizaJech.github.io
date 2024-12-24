@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +7,23 @@
     <link rel="shortcut icon" href="portfolio_office.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="bg-gray-900 text-white font-sans pt-16">
 
-    <!-- Header -->
-    <header class="bg-gray-900 text-white py-6">
+    <!-- Header con posicion fija -->
+    <header class="bg-gray-900 text-white py-6 fixed top-0 w-full z-50">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <h1 class="text-3xl font-bold tracking-wider text-pink-500">Analiza Jech</h1>
+            
+            <!-- Al hacer clic aquí, se dirige al Hero Section -->
+            <a href="#hero" class="text-3xl font-bold tracking-wider text-pink-500">
+                Analiza Jech
+            </a>
 
             <!-- Toggle button for small screens -->
             <button id="nav-toggle" class="text-pink-500 sm:hidden focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" 
+                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" 
+                          stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
 
@@ -33,260 +39,409 @@
         </div>
 
         <!-- Fullscreen Mobile Menu -->
-        <div id="mobile-menu" class="fixed inset-0 hidden bg-gray-900 z-50 flex flex-col justify-center items-center space-y-8 text-xl font-medium">
+        <div id="mobile-menu" class="fixed inset-0 hidden bg-gray-900 z-50 
+                                    flex flex-col justify-center items-center 
+                                    space-y-8 text-xl font-medium">
             <!-- Close Button -->
-            <button id="close-menu" class="absolute top-5 right-5 focus:outline-none" onclick="toggleMenu()">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" class="text-pink-500"/>
+            <button id="close-menu" class="absolute top-5 right-5 focus:outline-none" 
+                    onclick="toggleMenu()">
+                <svg class="w-8 h-8" fill="currentColor" 
+                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" 
+                          stroke-width="2" class="text-pink-500"/>
                 </svg>
             </button>
             
             <!-- Menu Links with White Color and Pink Hover -->
-            <a href="#about" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Sobre Mí</a>
-            <a href="#skills" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Habilidades</a>
-            <a href="#projects" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Proyectos</a>
-            <a href="#contact" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Contacto</a>
+            <a href="#about" class="text-white hover:text-pink-500 transition-colors duration-300"
+               onclick="toggleMenu()">Sobre Mí</a>
+            <a href="#skills" class="text-white hover:text-pink-500 transition-colors duration-300"
+               onclick="toggleMenu()">Habilidades</a>
+            <a href="#projects" class="text-white hover:text-pink-500 transition-colors duration-300"
+               onclick="toggleMenu()">Proyectos</a>
+            <a href="#contact" class="text-white hover:text-pink-500 transition-colors duration-300"
+               onclick="toggleMenu()">Contacto</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-<section class="relative min-h-[50vh] sm:min-h-[55vh] lg:min-h-[55vh] bg-gradient-to-r from-blue-900 via-gray-900 to-purple-900 overflow-hidden">
-    <div class="absolute inset-0 bg-black opacity-50"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative text-center text-white py-16 sm:py-18 lg:py-16">
-        
-        <!-- Imagen circular encima del texto -->
-        <div class="flex justify-center mb-6">
-            <img src="jech.png" alt="Jorge Enrique Caceres Hernandez" class="w-32 h-32 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full border-4 border-pink-500 shadow-lg">
+    <!-- Hero Section AHORA con scroll-mt-16 -->
+    <section id="hero" class="scroll-mt-16 py-16  relative min-h-[45vh] sm:min-h-[50vh] lg:min-h-[50vh] 
+                   bg-gradient-to-r from-blue-900 via-gray-900 to-purple-900 
+                   overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative text-center text-white 
+                    py-16 sm:py-18 lg:py-16">
+            
+            <!-- Imagen circular encima del texto -->
+            <div class="flex justify-center mb-6">
+                <img src="jech.png" alt="Jorge Enrique Caceres Hernandez" 
+                     class="w-32 h-32 sm:w-48 sm:h-48 lg:w-56 lg:h-56 
+                            rounded-full border-4 border-pink-500 shadow-lg">
+            </div>
+
+            <!-- Texto de presentación -->
+            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight 
+                       mb-4 sm:mb-6 drop-shadow-lg">
+                ¡Hola! Soy Jorge Enrique Caceres Hernandez
+            </h2>
+            <p class="text-base sm:text-xl lg:text-2xl mb-6 sm:mb-8">
+                Desarrollador frontend, diseñador UX/UI, y creador de contenido con 
+                una pasión por la experiencia del usuario y la tecnología.
+            </p>
+            
+            <!-- Botones en Hero Section -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
+                <a href="#contact" 
+                   class="bg-pink-600 py-2 px-6 rounded-lg text-lg font-semibold 
+                          hover:bg-pink-700 transition-all shadow-lg 
+                          w-full sm:w-auto">
+                    Contáctame
+                </a>
+                <a href="#"
+                   onclick="showDownloadAnimationProgress('JECH CV.pdf','Jorge_Caceres_CV.pdf')"
+                   class="bg-green-600 py-2 px-6 rounded-lg text-lg font-semibold 
+                          hover:bg-green-700 transition-all shadow-lg 
+                          w-full sm:w-auto">
+                    Descargar CV
+                </a>
+            </div>
         </div>
+    </section>
 
-        <!-- Texto de presentación -->
-        <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 sm:mb-6 drop-shadow-lg">¡Hola! Soy Jorge Enrique Caceres Hernandez</h2>
-        <p class="text-base sm:text-xl lg:text-2xl mb-6 sm:mb-8">Desarrollador frontend, diseñador UX/UI, y creador de contenido con una pasión por la experiencia del usuario y la tecnología.</p>
-        
-        <!-- Botones en Hero Section -->
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
-            <a href="#contact" class="bg-pink-600 py-2 px-6 rounded-lg text-lg font-semibold hover:bg-pink-700 transition-all shadow-lg w-full sm:w-auto">
-                Contáctame
-            </a>
-            <a href="JECH CV.pdf" download="Jorge_Caceres_CV.pdf" class="bg-green-600 py-2 px-6 rounded-lg text-lg font-semibold hover:bg-green-700 transition-all shadow-lg w-full sm:w-auto">
-                Descargar CV
-            </a>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-    <!-- About Section -->
-    <section class="py-20" id="about">
+    <!-- About Section con scroll-mt-16 -->
+    <section id="about" class="scroll-mt-16 py-16">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-extrabold text-gradient mb-10">Sobre Mí</h2>
             <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                Hola, soy Jorge Enrique Caceres Hernandez, un apasionado desarrollador y diseñador UX/UI con experiencia en una variedad de disciplinas creativas. Además de mi trabajo como desarrollador web front-end y diseñador, administro un canal de YouTube donde comparto contenido sobre programación, diseño, producción musical, edición de video y más. Soy un firme creyente en la importancia de la experiencia del usuario y me esfuerzo por crear interfaces intuitivas y atractivas.
+                Hola, soy Jorge Enrique Caceres Hernandez, un apasionado desarrollador 
+                y diseñador UX/UI con experiencia en una variedad de disciplinas 
+                creativas. Además de mi trabajo como desarrollador web front-end y 
+                diseñador, administro un canal de YouTube donde comparto contenido 
+                sobre programación, diseño, producción musical, edición de video y 
+                más. Soy un firme creyente en la importancia de la experiencia del 
+                usuario y me esfuerzo por crear interfaces intuitivas y atractivas.
             </p>
         </div>
     </section>
 
-    <!-- Skills Section -->
-<section class="bg-gradient-to-b from-gray-900 to-purple-900 py-20" id="skills">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-extrabold text-pink-600 mb-10">Habilidades</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-                        
-            <div class="bg-gradient-to-r from-cyan-700 to-teal-500 p-8 rounded-2xl shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl">
-                <div class="flex items-center justify-center mb-6">
-                    <img src="https://img.icons8.com/fluency/48/000000/code.png" alt="Frontend Development Icon" class="w-12 h-12">
+    <!-- Skills Section con scroll-mt-16 -->
+    <section id="skills" class="scroll-mt-16 bg-gradient-to-b from-gray-900 to-purple-900 py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-pink-600 mb-10">Habilidades</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                            
+                <div class="bg-gradient-to-r from-cyan-700 to-teal-500 p-8 
+                            rounded-2xl shadow-xl transform transition-all 
+                            hover:scale-105 hover:shadow-2xl">
+                    <div class="flex items-center justify-center mb-6">
+                        <img src="https://img.icons8.com/fluency/48/000000/code.png" 
+                             alt="Frontend Development Icon" class="w-12 h-12">
+                    </div>
+                    <h3 class="text-3xl font-semibold mb-4 text-white">
+                        Frontend Development
+                    </h3>
+                    <p class="text-gray-100">HTML, CSS, JavaScript, Tailwind CSS.</p>
                 </div>
-                <h3 class="text-3xl font-semibold mb-4 text-white">Frontend Development</h3>
-                <p class="text-gray-100">HTML, CSS, JavaScript, Tailwind CSS.</p>
-            </div>
-            
-            <div class="bg-gradient-to-r from-orange-400 to-yellow-300 p-8 rounded-2xl shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl">
-                <div class="flex items-center justify-center mb-6">
-                    <img src="https://img.icons8.com/color/48/000000/git.png" alt="Version Control Icon" class="w-12 h-12">
+                
+                <div class="bg-gradient-to-r from-orange-400 to-yellow-300 p-8 
+                            rounded-2xl shadow-xl transform transition-all 
+                            hover:scale-105 hover:shadow-2xl">
+                    <div class="flex items-center justify-center mb-6">
+                        <img src="https://img.icons8.com/color/48/000000/git.png" 
+                             alt="Version Control Icon" class="w-12 h-12">
+                    </div>
+                    <h3 class="text-3xl font-semibold mb-4 text-white">Version Control</h3>
+                    <p class="text-gray-100">Git, GitHub.</p>
                 </div>
-                <h3 class="text-3xl font-semibold mb-4 text-white">Version Control</h3>
-                <p class="text-gray-100">Git, GitHub.</p>
-            </div>
-            
-            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-8 rounded-2xl shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl">
-                <div class="flex items-center justify-center mb-6">
-                    <img src="https://img.icons8.com/fluency/48/000000/figma.png" alt="Design Tools Icon" class="w-12 h-12">
+                
+                <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-8 
+                            rounded-2xl shadow-xl transform transition-all 
+                            hover:scale-105 hover:shadow-2xl">
+                    <div class="flex items-center justify-center mb-6">
+                        <img src="https://img.icons8.com/fluency/48/000000/figma.png" 
+                             alt="Design Tools Icon" class="w-12 h-12">
+                    </div>
+                    <h3 class="text-3xl font-semibold mb-4 text-white">Work Tools</h3>
+                    <p class="text-gray-100">Figma, Jira, Slack, Visual Studio Code.</p>
                 </div>
-                <h3 class="text-3xl font-semibold mb-4 text-white">Work Tools</h3>
-                <p class="text-gray-100">Figma, Jira, Slack, Visual Studio Code.</p>
-            </div>
-            <!-- Color interesante
-             
-            <div class="bg-gradient-to-r from-blue-900 to-blue-500 p-8 rounded-2xl shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl">
-                <div class="flex items-center justify-center mb-6">
-                    <img src="https://img.icons8.com/color/48/000000/database.png" alt="Database Icon" class="w-12 h-12">
+              
+                <div class="bg-gradient-to-r from-aqua-500 to-lavender-400 p-8 
+                            rounded-2xl shadow-xl transform transition-all 
+                            hover:scale-105 hover:shadow-2xl">
+                    <div class="flex items-center justify-center mb-6">
+                        <img src="https://img.icons8.com/color/48/000000/database.png" 
+                             alt="Database Icon" class="w-12 h-12">
+                    </div>
+                    <h3 class="text-3xl font-semibold mb-4 text-white">
+                        Database Technologies
+                    </h3>
+                    <p class="text-gray-100">MySQL, SQL Server, Oracle DB.</p>
                 </div>
-                <h3 class="text-3xl font-semibold mb-4 text-white">Database Technologies</h3>
-                <p class="text-gray-100">MySQL, SQL Server, Oracle DB.</p>
+
             </div>
-            
-            
-            -->     
-            
-            
-            
-            <div class="bg-gradient-to-r from-aqua-500 to-lavender-400 p-8 rounded-2xl shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl">
-                <div class="flex items-center justify-center mb-6">
-                    <img src="https://img.icons8.com/color/48/000000/database.png" alt="Database Icon" class="w-12 h-12">
-                </div>
-                <h3 class="text-3xl font-semibold mb-4 text-white">Database Technologies</h3>
-                <p class="text-gray-100">MySQL, SQL Server, Oracle DB.</p>
-            </div>
-            
-            
         </div>
-    </div>
-</section>
+    </section>
 
-
-
-
-
-
-    <!-- Projects Section -->
-<section class="py-20" id="projects">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-extrabold text-pink-600 mb-12">Proyectos Destacados</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-            
-            <a href="https://analizajech.github.io/Banco-Crecer/" class="block bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all transform hover:scale-105 hover:translate-y-2" target="_blank">
-                <img src="https://storage.screenshotapi.net/analizajech_github_io_banco_crecer__82af3ae3bbd3.png" alt="Proyecto Banco Crecer" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity duration-300">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold text-white mb-4 group-hover:text-pink-500 transition-colors duration-300">Banco Crecer</h3>
-                    <p class="text-gray-400 group-hover:text-gray-200 transition-colors duration-300">Creación de un sitio web moderno y responsivo utilizando Bootstrap 5.</p>
-                </div>
-            </a>
-            
-            <a href="https://www.youtube.com/watch?v=nGi3DS0QSzE&t=96s&ab_channel=JORGEENRIQUECACERESHERNANDEZ" class="block bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all transform hover:scale-105 hover:translate-y-2" target="_blank">
-                <img src="https://i.ytimg.com/vi/nGi3DS0QSzE/maxresdefault.jpg" alt="Proyecto Librería" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity duration-300">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold text-white mb-4 group-hover:text-pink-500 transition-colors duration-300">Librería</h3>
-                    <p class="text-gray-400 group-hover:text-gray-200 transition-colors duration-300">Desarrollo de una aplicación web para la gestión de usuarios utilizando Laravel.</p>
-                </div>
-            </a>
-            
-            <a href="https://analizajech.github.io/Tech-Scan/" class="block bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all transform hover:scale-105 hover:translate-y-2" target="_blank">
-                <img src="https://storage.screenshotapi.net/analizajech_github_io_tech_scan_f147dc4a7310.png" alt="Proyecto TechScan" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity duration-300">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold text-white mb-4 group-hover:text-pink-500 transition-colors duration-300">TechScan</h3>
-                    <p class="text-gray-400 group-hover:text-gray-200 transition-colors duration-300">Sistema de diagnóstico de hardware para computadoras, desarrollado con HTML, Tailwind y JS.</p>
-                </div>
-            </a>
-            
-            <a href="https://analizajech.github.io/InnovaSoft/" class="block bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all transform hover:scale-105 hover:translate-y-2" target="_blank">
-                <img src="https://storage.screenshotapi.net/analizajech_github_io_innovasoft__a4c7ccfbc717.png" alt="Proyecto InnovaSoft" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity duration-300">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold text-white mb-4 group-hover:text-pink-500 transition-colors duration-300">InnovaSoft</h3>
-                    <p class="text-gray-400 group-hover:text-gray-200 transition-colors duration-300">Desarrollo de una plataforma para la gestión de proyectos y tareas usando tecnologías modernas.</p>
-                </div>
-            </a>
-            
+    <!-- Projects Section con scroll-mt-16 -->
+    <section id="projects" class="scroll-mt-16 py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-pink-600 mb-12">Proyectos Destacados</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                
+                <a href="https://analizajech.github.io/Banco-Crecer/" 
+                   class="block bg-gray-800 rounded-xl shadow-lg overflow-hidden group 
+                          hover:shadow-2xl transition-all transform hover:scale-105 
+                          hover:translate-y-2" 
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://storage.screenshotapi.net/analizajech_github_io_banco_crecer__82af3ae3bbd3.png" 
+                         alt="Proyecto Banco Crecer" 
+                         class="w-full h-48 object-cover group-hover:opacity-80 
+                                transition-opacity duration-300">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-4 
+                                   group-hover:text-pink-500 transition-colors duration-300">
+                            Banco Crecer
+                        </h3>
+                        <p class="text-gray-400 group-hover:text-gray-200 
+                                  transition-colors duration-300">
+                            Creación de un sitio web moderno y responsivo 
+                            utilizando Bootstrap 5.
+                        </p>
+                    </div>
+                </a>
+                
+                <a href="https://www.youtube.com/watch?v=nGi3DS0QSzE&t=96s&ab_channel=JORGEENRIQUECACERESHERNANDEZ" 
+                   class="block bg-gray-800 rounded-xl shadow-lg overflow-hidden group 
+                          hover:shadow-2xl transition-all transform hover:scale-105 
+                          hover:translate-y-2" 
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://i.ytimg.com/vi/nGi3DS0QSzE/maxresdefault.jpg" 
+                         alt="Proyecto Librería" 
+                         class="w-full h-48 object-cover group-hover:opacity-80 
+                                transition-opacity duration-300">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-4 
+                                   group-hover:text-pink-500 transition-colors duration-300">
+                            Librería
+                        </h3>
+                        <p class="text-gray-400 group-hover:text-gray-200 
+                                  transition-colors duration-300">
+                            Desarrollo de una aplicación web para la gestión de 
+                            usuarios utilizando Laravel.
+                        </p>
+                    </div>
+                </a>
+                
+                <a href="https://analizajech.github.io/Tech-Scan/" 
+                   class="block bg-gray-800 rounded-xl shadow-lg overflow-hidden group 
+                          hover:shadow-2xl transition-all transform hover:scale-105 
+                          hover:translate-y-2" 
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://storage.screenshotapi.net/analizajech_github_io_tech_scan_f147dc4a7310.png" 
+                         alt="Proyecto TechScan" 
+                         class="w-full h-48 object-cover group-hover:opacity-80 
+                                transition-opacity duration-300">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-4 
+                                   group-hover:text-pink-500 transition-colors duration-300">
+                            TechScan
+                        </h3>
+                        <p class="text-gray-400 group-hover:text-gray-200 
+                                  transition-colors duration-300">
+                            Sistema de diagnóstico de hardware para computadoras, 
+                            desarrollado con HTML, Tailwind y JS.
+                        </p>
+                    </div>
+                </a>
+                
+                <a href="https://analizajech.github.io/InnovaSoft/" 
+                   class="block bg-gray-800 rounded-xl shadow-lg overflow-hidden group 
+                          hover:shadow-2xl transition-all transform hover:scale-105 
+                          hover:translate-y-2" 
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://storage.screenshotapi.net/analizajech_github_io_innovasoft__a4c7ccfbc717.png" 
+                         alt="Proyecto InnovaSoft" 
+                         class="w-full h-48 object-cover group-hover:opacity-80 
+                                transition-opacity duration-300">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-4 
+                                   group-hover:text-pink-500 transition-colors duration-300">
+                            InnovaSoft
+                        </h3>
+                        <p class="text-gray-400 group-hover:text-gray-200 
+                                  transition-colors duration-300">
+                            Desarrollo de una plataforma para la gestión de proyectos 
+                            y tareas usando tecnologías modernas.
+                        </p>
+                    </div>
+                </a>
+                
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-
-
-
-
-
-    <!-- YouTube Channel Section -->
-<section class="py-20 bg-gray-800" id="youtube">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-extrabold text-pink-600 mb-12">Mi Canal de YouTube</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-            <!-- Video 1 -->
-            <a href="https://www.youtube.com/watch?v=ZtC5TGLyKJs&list=PLpfoOjtLjnzv2uaMJ48nTA0fvcL26IKM0&ab_channel=AnalizaJech" class="group block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                <img src="https://img.youtube.com/vi/ZtC5TGLyKJs/mqdefault.jpg" alt="Video 1" class="w-full group-hover:opacity-80 transition-opacity duration-300">
-            </a>
-            <!-- Video 2 -->
-            <a href="https://www.youtube.com/watch?v=v7PZQoyip9M&list=PLpfoOjtLjnzv2uaMJ48nTA0fvcL26IKM0&index=2&ab_channel=AnalizaJech" class="group block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                <img src="https://img.youtube.com/vi/v7PZQoyip9M/mqdefault.jpg" alt="Video 2" class="w-full group-hover:opacity-80 transition-opacity duration-300">
-            </a>
-            <!-- Video 3 -->
-            <a href="https://www.youtube.com/watch?v=nyHikqNBsbQ&t=75s&ab_channel=AnalizaJech" class="group block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                <img src="https://img.youtube.com/vi/nyHikqNBsbQ/mqdefault.jpg" alt="Video 3" class="w-full group-hover:opacity-80 transition-opacity duration-300">
-            </a>
-            <!-- Video 4 -->
-            <a href="https://www.youtube.com/watch?v=zemeeYJsGfY&t=6886s" class="group block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                <img src="https://img.youtube.com/vi/zemeeYJsGfY/mqdefault.jpg" alt="Video 4" class="w-full group-hover:opacity-80 transition-opacity duration-300">
-            </a>
-            <!-- Video 5 -->
-            <a href="https://www.youtube.com/watch?v=iPPCYmTR9kE" class="group block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                <img src="https://img.youtube.com/vi/iPPCYmTR9kE/mqdefault.jpg" alt="Video 5" class="w-full group-hover:opacity-80 transition-opacity duration-300">
-            </a>
-            <!-- Video 6 -->
-            <a href="https://www.youtube.com/watch?v=-HyAx_SLAKM" class="group block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                <img src="https://img.youtube.com/vi/-HyAx_SLAKM/mqdefault.jpg" alt="Video 6" class="w-full group-hover:opacity-80 transition-opacity duration-300">
-            </a>
+    <!-- YouTube Channel Section con scroll-mt-16 -->
+    <section id="youtube" class="scroll-mt-16 py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-pink-600 mb-12">
+                Mi Canal de YouTube
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Video 1 -->
+                <a href="https://www.youtube.com/watch?v=ZtC5TGLyKJs&list=PLpfoOjtLjnzv2uaMJ48nTA0fvcL26IKM0&ab_channel=AnalizaJech" 
+                   class="group block overflow-hidden rounded-lg shadow-lg 
+                          transform hover:scale-105 hover:shadow-2xl 
+                          transition-all duration-300"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.youtube.com/vi/ZtC5TGLyKJs/mqdefault.jpg" 
+                         alt="Video 1" 
+                         class="w-full group-hover:opacity-80 transition-opacity duration-300">
+                </a>
+                <!-- Video 2 -->
+                <a href="https://www.youtube.com/watch?v=v7PZQoyip9M&list=PLpfoOjtLjnzv2uaMJ48nTA0fvcL26IKM0&index=2&ab_channel=AnalizaJech" 
+                   class="group block overflow-hidden rounded-lg shadow-lg 
+                          transform hover:scale-105 hover:shadow-2xl 
+                          transition-all duration-300"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.youtube.com/vi/v7PZQoyip9M/mqdefault.jpg" 
+                         alt="Video 2" 
+                         class="w-full group-hover:opacity-80 
+                                transition-opacity duration-300">
+                </a>
+                <!-- Video 3 -->
+                <a href="https://www.youtube.com/watch?v=nyHikqNBsbQ&t=75s&ab_channel=AnalizaJech" 
+                   class="group block overflow-hidden rounded-lg shadow-lg 
+                          transform hover:scale-105 hover:shadow-2xl 
+                          transition-all duration-300"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.youtube.com/vi/nyHikqNBsbQ/mqdefault.jpg" 
+                         alt="Video 3" 
+                         class="w-full group-hover:opacity-80 
+                                transition-opacity duration-300">
+                </a>
+                <!-- Video 4 -->
+                <a href="https://www.youtube.com/watch?v=zemeeYJsGfY&t=6886s"
+                   class="group block overflow-hidden rounded-lg shadow-lg 
+                          transform hover:scale-105 hover:shadow-2xl 
+                          transition-all duration-300"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.youtube.com/vi/zemeeYJsGfY/mqdefault.jpg" 
+                         alt="Video 4" 
+                         class="w-full group-hover:opacity-80 
+                                transition-opacity duration-300">
+                </a>
+                <!-- Video 5 -->
+                <a href="https://www.youtube.com/watch?v=iPPCYmTR9kE"
+                   class="group block overflow-hidden rounded-lg shadow-lg 
+                          transform hover:scale-105 hover:shadow-2xl 
+                          transition-all duration-300"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.youtube.com/vi/iPPCYmTR9kE/mqdefault.jpg" 
+                         alt="Video 5" 
+                         class="w-full group-hover:opacity-80 
+                                transition-opacity duration-300">
+                </a>
+                <!-- Video 6 -->
+                <a href="https://www.youtube.com/watch?v=-HyAx_SLAKM"
+                   class="group block overflow-hidden rounded-lg shadow-lg 
+                          transform hover:scale-105 hover:shadow-2xl 
+                          transition-all duration-300"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.youtube.com/vi/-HyAx_SLAKM/mqdefault.jpg" 
+                         alt="Video 6" 
+                         class="w-full group-hover:opacity-80 
+                                transition-opacity duration-300">
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-
-   <!-- Contact Section -->
-<section class="py-20" id="contact">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-extrabold text-pink-600 mb-10">Contáctame</h2>
-        <div class="grid grid-cols-3 sm:grid-cols-5 lg:flex lg:justify-center gap-6 lg:gap-16 place-items-center">
-            <a href="https://www.linkedin.com/in/analizajech/" class="text-pink-600 hover:text-pink-800 transition-all transform hover:scale-105">
-                <img src="https://img.icons8.com/fluency/48/000000/linkedin.png" alt="LinkedIn" class="w-12 h-12 lg:w-16 lg:h-16">
-            </a>
-            <a href="mailto:jc3568248@gmail.com" class="text-pink-600 hover:text-pink-800 transition-all transform hover:scale-105">
-                <img src="https://img.icons8.com/fluency/48/000000/email-open.png" alt="Email" class="w-12 h-12 lg:w-16 lg:h-16">
-            </a>
-            
-            <!-- No Tengo URL propia aun 
-             
-            <a href="https://www.tusitio.com" class="text-pink-600 hover:text-pink-800 transition-all transform hover:scale-105">
-                <img src="https://img.icons8.com/fluency/48/000000/domain.png" alt="Website" class="w-12 h-12 lg:w-16 lg:h-16">
-            </a>
-            
-            -->
-            
-            <a href="https://www.tiktok.com/@analizajech" class="text-pink-600 hover:text-pink-800 transition-all transform hover:scale-105">
-                <img src="https://img.icons8.com/fluency/48/000000/tiktok.png" alt="TikTok" class="w-12 h-12 lg:w-16 lg:h-16">
-            </a>
-            <a href="https://www.youtube.com/@analizajech" class="text-pink-600 hover:text-pink-800 transition-all transform hover:scale-105">
-                <img src="https://img.icons8.com/fluency/48/000000/youtube-play.png" alt="YouTube" class="w-12 h-12 lg:w-16 lg:h-16">
-            </a>
-            <a href="https://www.instagram.com/analizajech/" class="text-pink-600 hover:text-pink-800 transition-all transform hover:scale-105">
-                <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram" class="w-12 h-12 lg:w-16 lg:h-16">
-            </a>
-            <a href="https://github.com/AnalizaJech" class="text-pink-600 hover:text-pink-800 transition-all transform hover:scale-105">
-                <img src="https://img.icons8.com/fluency/48/000000/github.png" alt="GitHub" class="w-12 h-12 lg:w-16 lg:h-16">
-            </a>
+    <!-- Contact Section con scroll-mt-16 -->
+    <section id="contact" class="scroll-mt-16 py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-pink-600 mb-10">Contáctame</h2>
+            <div class="grid grid-cols-3 sm:grid-cols-5 lg:flex lg:justify-center 
+                        gap-6 lg:gap-16 place-items-center">
+                <a href="https://www.linkedin.com/in/analizajech/" 
+                   class="text-pink-600 hover:text-pink-800 transition-all 
+                          transform hover:scale-105"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluency/48/000000/linkedin.png" 
+                         alt="LinkedIn" 
+                         class="w-12 h-12 lg:w-16 lg:h-16">
+                </a>
+                <a href="mailto:jc3568248@gmail.com" 
+                   class="text-pink-600 hover:text-pink-800 transition-all 
+                          transform hover:scale-105"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluency/48/000000/email-open.png" 
+                         alt="Email" 
+                         class="w-12 h-12 lg:w-16 lg:h-16">
+                </a>
+                <a href="https://www.tiktok.com/@analizajech" 
+                   class="text-pink-600 hover:text-pink-800 transition-all 
+                          transform hover:scale-105"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluency/48/000000/tiktok.png" 
+                         alt="TikTok" 
+                         class="w-12 h-12 lg:w-16 lg:h-16">
+                </a>
+                <a href="https://www.youtube.com/@analizajech" 
+                   class="text-pink-600 hover:text-pink-800 transition-all 
+                          transform hover:scale-105"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluency/48/000000/youtube-play.png" 
+                         alt="YouTube" 
+                         class="w-12 h-12 lg:w-16 lg:h-16">
+                </a>
+                <a href="https://www.instagram.com/analizajech/" 
+                   class="text-pink-600 hover:text-pink-800 transition-all 
+                          transform hover:scale-105"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" 
+                         alt="Instagram" 
+                         class="w-12 h-12 lg:w-16 lg:h-16">
+                </a>
+                <a href="https://github.com/AnalizaJech" 
+                   class="text-pink-600 hover:text-pink-800 transition-all 
+                          transform hover:scale-105"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluency/48/000000/github.png" 
+                         alt="GitHub" 
+                         class="w-12 h-12 lg:w-16 lg:h-16">
+                </a>
+            </div>
         </div>
+    </section>
+
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 
+                   py-8 px-6 border-t border-gray-700 shadow-t-lg">
+        <div class="text-center text-gray-400">
+            <p>&copy; 2024 Jorge Enrique Caceres Hernandez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DE DESCARGA: oculto por defecto -->
+    <div 
+      id="downloadModal" 
+      class="hidden fixed inset-0 flex items-center justify-center 
+             bg-black bg-opacity-80 z-50 p-4"
+    >
+      <div class="flex flex-col items-center justify-center">
+        <!-- Party Popper con animate-pulse -->
+        <img src="https://img.icons8.com/emoji/96/000000/party-popper.png" 
+             alt="Party Popper" 
+             class="w-16 h-16 animate-pulse mb-6">
+        <!-- Barra de progreso -->
+        <div class="w-64 bg-gray-200 rounded-full mb-4">
+          <div id="downloadProgressBar" 
+               class="h-2 bg-green-500 rounded-full" 
+               style="width: 0%">
+          </div>
+        </div>
+        <p class="text-white font-bold text-xl">Descargando CV...</p>
+      </div>
     </div>
-</section>
-
-
-
-
-
-
-
-<footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 py-8 px-6 border-t border-gray-700 shadow-t-lg">
-    <div class="text-center text-gray-400">
-        <p>&copy; 2024 Jorge Enrique Caceres Hernandez. Todos los derechos reservados.</p>
-    </div>
-</footer>
-
 
     <script>
         function toggleMenu() {
@@ -294,6 +449,75 @@
             menu.classList.toggle('hidden');
         }
         document.getElementById('nav-toggle').onclick = toggleMenu;
+
+        /**
+         * Descarga un archivo con XHR y reporta progreso. 
+         * @param {string} url - URL del archivo a descargar.
+         * @param {function} onProgress - Callback para actualizar la barra de progreso.
+         * @returns {Promise<Blob>}
+         */
+        function fetchWithProgress(url, onProgress) {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url);
+                xhr.responseType = 'blob';
+
+                xhr.onprogress = (event) => {
+                    if (event.lengthComputable) {
+                        const percent = (event.loaded / event.total) * 100;
+                        onProgress(percent);
+                    }
+                };
+
+                xhr.onload = () => {
+                    if (xhr.status === 200) {
+                        resolve(xhr.response);
+                    } else {
+                        reject(new Error('Error ' + xhr.status));
+                    }
+                };
+
+                xhr.onerror = () => {
+                    reject(new Error('Error de red al descargar el archivo.'));
+                };
+
+                xhr.send();
+            });
+        }
+
+        /**
+         * Muestra el modal, descarga el PDF con progreso real y cierra el modal al terminar.
+         */
+        function showDownloadAnimationProgress(url, fileName) {
+            const modal = document.getElementById('downloadModal');
+            const progressBar = document.getElementById('downloadProgressBar');
+            modal.classList.remove('hidden');
+            progressBar.style.width = '0%';
+
+            // Descargar con progreso
+            fetchWithProgress(url, (percent) => {
+                progressBar.style.width = percent + '%';
+            })
+            .then((blob) => {
+                // Crear un Blob local, forzar la descarga
+                const blobUrl = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                URL.revokeObjectURL(blobUrl);
+
+                // Ocultar modal
+                modal.classList.add('hidden');
+            })
+            .catch((error) => {
+                console.error(error);
+                alert('Ocurrió un error al descargar el archivo.');
+                modal.classList.add('hidden');
+            });
+        }
     </script>
 
 </body>
