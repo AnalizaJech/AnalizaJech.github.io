@@ -340,43 +340,59 @@
 
 
 <!-- Modal de descarga (oculto por defecto) -->
-<!-- MODAL DE DESCARGA -->
-<div id="downloadModal"
-     class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm z-50">
-  <div class="text-center relative w-full max-w-sm">
+<!-- Modal de descarga -->
+<div
+  id="downloadModal"
+  class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm z-50">
 
+  <div class="text-center relative w-full max-w-sm">
     <!-- Texto de éxito -->
-    <div id="successText" class="text-white text-xl font-bold mb-4 opacity-0 transition-opacity duration-700">
+    <div
+      id="successText"
+      class="text-white text-xl font-bold mb-4 opacity-0 transition-opacity duration-700"
+    >
       Descarga completada
     </div>
 
-    <div class="relative w-[160px] h-[80px] mx-auto overflow-hidden">
-      <!-- Tapa del sobre (alto 30px) -->
+    <!-- Contenedor total del sobre: w-48 x h-32 (192px x 128px) -->
+    <div class="relative w-48 h-32 mx-auto overflow-hidden">
+      
+      <!-- Tapa del sobre: altura 14 (56px) -->
       <div
         id="envelopeFlap"
-        class="absolute top-0 left-0 w-full h-[30px] 
+        class="absolute top-0 left-0 w-full h-14 
                bg-gradient-to-br from-purple-700 to-fuchsia-600 z-10"
-        style="clip-path: polygon(0% 0%, 100% 0%, 50% 100%)">
+        style="
+          /* Triángulo que cubre la parte de arriba */
+          clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+        "
+      >
       </div>
-    
-      <!-- Cuerpo del sobre (alto 50px, parte inferior redondeada) -->
+
+      <!-- Cuerpo del sobre: altura 18 (72px). 14 + 18 = 32 => sin hueco -->
       <div
-        class="absolute bottom-0 left-0 w-full h-[50px]
+        class="absolute bottom-0 left-0 w-full h-18
                bg-gradient-to-br from-purple-700 to-fuchsia-600 
-               rounded-b-lg z-0">
+               rounded-b-xl z-0"
+        
+      >
       </div>
-    
-      <!-- Papel centrado: inicia 80px por arriba -->
+
+      <!-- Papel que cae (centrado). 
+           Arranca 80px por arriba: top-[-80px], 
+           left-1/2 -translate-x-1/2 => cae justo en medio
+      -->
       <div
         id="fileBlock"
-        class="absolute top-[-80px] left-1/2 -translate-x-1/2 
+        class="absolute top-[-80px] left-1/2 -translate-x-1/2
                w-24 h-32 bg-white shadow-md rounded z-20
-               transition-transform duration-[2000ms] ease-in-out">
+               transition-transform duration-[2000ms] ease-in-out"
+      >
       </div>
     </div>
-    
   </div>
 </div>
+
 
 
 
@@ -404,14 +420,14 @@
   }
   100% {
     transform: translateY(20px);
-    opacity: 0; /* desaparece dentro del sobre */
+    opacity: 0;
   }
 }
 .animate-slide-into-envelope {
   animation: slideIntoEnvelope 2s ease forwards;
 }
 
-/* Tapa abriendo-cerrando 90° */
+/* Tapa abriendo/cerrando a 90° */
 @keyframes flapClose {
   0%   { transform: rotateX(0deg); }
   40%  { transform: rotateX(90deg); }
@@ -421,6 +437,7 @@
   animation: flapClose 2s ease forwards;
   transform-origin: top center;
 }
+
 
 </style>
 
@@ -489,11 +506,11 @@
       // Reiniciar animación del papel
       fileBlock.classList.remove('animate-slide-into-envelope');
       fileBlock.style.opacity = '0';
-      fileBlock.style.transform = 'translateY(-80px)';  /* más cerca y centrado */
-      void fileBlock.offsetWidth; // Forzar reflow
+      fileBlock.style.transform = 'translateY(-80px)'; // <- Comienza 80px arriba
+      void fileBlock.offsetWidth; // reflow
 
-      // Activar las animaciones
       fileBlock.classList.add('animate-slide-into-envelope');
+
       if (envelopeFlap) {
         envelopeFlap.classList.add('animate-flap-close');
       }
