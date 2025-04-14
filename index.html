@@ -340,7 +340,7 @@
 
 
 <!-- Modal de descarga (oculto por defecto) -->
-<!-- MODAL -->
+<!-- MODAL COMPLETO -->
 <div 
 id="downloadModal"
 class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm z-50">
@@ -354,10 +354,10 @@ class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity
     Descarga completada
   </div>
 
-  <!-- Contenedor del sobre: (width=160px, height=80px) -->
+  <!-- CONTENEDOR DEL SOBRE: ancho 160px, alto 80px -->
   <div class="relative w-[160px] h-[80px] mx-auto overflow-hidden">
 
-    <!-- Tapa: 30px de alto, triángulo apuntando hacia abajo -->
+    <!-- TAPA: 30px de alto (0 a 30). Clip-path = triángulo -->
     <div
       id="envelopeFlap"
       class="absolute top-0 left-0 w-full h-[30px]
@@ -365,14 +365,14 @@ class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity
       style="clip-path: polygon(0% 0%, 100% 0%, 50% 100%);">
     </div>
 
-    <!-- Cuerpo: 50px de alto. 30 + 50 = 80 => sin hueco -->
+    <!-- CUERPO: 50px de alto (30 a 80). 30+50=80 => pegados sin hueco -->
     <div
       class="absolute bottom-0 left-0 w-full h-[50px]
-             bg-gradient-to-br from-purple-700 to-fuchsia-600 
+             bg-gradient-to-br from-purple-700 to-fuchsia-600
              rounded-b-xl z-0">
     </div>
 
-    <!-- Papel: centrado, inicia a -80px -->
+    <!-- PAPEL: top -80, centrado con left-1/2 -translate-x-1/2 -->
     <div
       id="fileBlock"
       class="absolute top-[-80px] left-1/2 -translate-x-1/2
@@ -475,41 +475,42 @@ class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity
      * 2) Función de animación de descarga
      ****************************************/
      window.showDownloadAnimationProgress = function (url, fileName) {
+      // IDs de los elementos involucrados
       const modal = document.getElementById('downloadModal');
       const fileBlock = document.getElementById('fileBlock');
       const envelopeFlap = document.getElementById('envelopeFlap');
       const successText = document.getElementById('successText');
 
-      // Asegurarnos de que existan
+      // Validar existencia
       if (!modal || !fileBlock) return;
 
       // Mostrar el modal
       modal.classList.remove('hidden');
 
-      // Reseteo de la tapa
+      // Reseteamos la tapa
       if (envelopeFlap) {
         envelopeFlap.classList.remove('animate-flap-close');
         envelopeFlap.style.transform = 'rotateX(0)';
       }
 
-      // Ocultar texto de "Descarga completada"
+      // Ocultar el texto de “Descarga completada”
       if (successText) {
         successText.classList.add('opacity-0');
       }
 
-      // Reiniciar animación del papel
+      // Reiniciar la animación del papel
       fileBlock.classList.remove('animate-slide-into-envelope');
       fileBlock.style.opacity = '0';
-      fileBlock.style.transform = 'translateY(-80px)'; // <- Comienza 80px arriba
-      void fileBlock.offsetWidth; // reflow
+      fileBlock.style.transform = 'translateY(-80px)'; 
+      void fileBlock.offsetWidth; // Forzar reflow
 
+      // Activar animaciones
       fileBlock.classList.add('animate-slide-into-envelope');
-
       if (envelopeFlap) {
         envelopeFlap.classList.add('animate-flap-close');
       }
 
-      // Descargar el archivo
+      // Descargar el archivo con fetch
       fetch(url)
         .then(res => {
           if (!res.ok) throw new Error('Descarga fallida');
