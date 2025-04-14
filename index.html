@@ -390,7 +390,7 @@
 
 
 <style>
-  @keyframes slide-in-down {
+  @keyframes slide-in-fade-out {
     0% {
       transform: translateY(-200px);
       opacity: 0;
@@ -401,22 +401,15 @@
     }
     100% {
       transform: translateY(0);
+      opacity: 0;
     }
   }
 
-  .animate-slide-in-down {
-    animation: slide-in-down 0.9s ease-out forwards;
-  }
-
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
+  .animate-slide-in-fade-out {
+    animation: slide-in-fade-out 1.2s ease-out forwards;
   }
 </style>
+
 
   
   
@@ -496,7 +489,7 @@
           downloadEffect.classList.remove('hidden');
 
           void fileBlock.offsetWidth;
-          fileBlock.classList.add('animate-slide-in-down');
+          fileBlock.classList.add('animate-slide-in-fade-out');
 
           // Glow al sobre
           envelope.classList.add('ring-4', 'ring-pink-500');
