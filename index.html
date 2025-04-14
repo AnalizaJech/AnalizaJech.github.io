@@ -401,13 +401,14 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     // ✅ Toggle para navbar móvil
-    function toggleMenu() {
+    window.toggleMenu = function() {
       const menu = document.getElementById('mobile-menu');
       if (menu) menu.classList.toggle('hidden');
-    }
+    };
 
     const toggleBtn = document.getElementById('nav-toggle');
-    if (toggleBtn) toggleBtn.onclick = toggleMenu;
+    toggleBtn?.addEventListener('click', toggleMenu);
+
 
     // ✅ Dots animados
     let intervalId;
