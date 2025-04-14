@@ -351,26 +351,26 @@
     </div>
 
     <!-- Contenedor del sobre (48 w x 32 h) -->
-    <div class="relative w-48 h-32 mx-auto overflow-hidden">
-
+    <div class="relative w-48 h-32 mx-auto overflow-hidden border border-pink-500">
+      
       <!-- Tapa del sobre (10 px de alto) -->
-      <div id="envelopeFlap"
-           class="absolute top-0 left-0 w-full h-10 bg-gradient-to-br from-purple-700 to-fuchsia-600 z-10"
-           style="clip-path: polygon(0% 0%, 100% 0%, 50% 100%);">
-      </div>
+      <div
+          id="envelopeFlap"
+          class="absolute top-0 left-0 w-full h-12 bg-gradient-to-br from-purple-700 to-fuchsia-600 z-10 border border-red-500"
+          style="clip-path: polygon(0% 0%, 100% 0%, 50% 100%);">
+        </div>
 
       <!-- Cuerpo del sobre (22 px de alto, parte inferior redondeada) -->
       <div
-        class="absolute bottom-0 left-0 w-full h-22
-               bg-gradient-to-br from-purple-700 to-fuchsia-600 rounded-b-xl z-0">
-      </div>
+      class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-br from-purple-700 to-fuchsia-600 rounded-b-xl z-0 border border-blue-500">
+    </div>
 
-      <!-- Papel centrado: top-[-80px], left-1/2, -translate-x-1/2 -->
-      <div id="fileBlock"
-           class="absolute top-[-80px] left-1/2 -translate-x-1/2
-                  w-24 h-32 bg-white shadow-md rounded
-                  transition-transform duration-[2000ms] ease-in-out z-20">
-      </div>
+      <!-- Papel centrado -->
+      <div
+      id="fileBlock"
+      class="absolute top-[-80px] left-1/2 -translate-x-1/2 w-24 h-32 bg-white shadow-md rounded
+             transition-transform duration-[2000ms] ease-in-out z-20 border border-black">
+    </div>
     </div>
   </div>
 </div>
@@ -385,44 +385,44 @@
 
 
 <style>
- @keyframes slideIntoEnvelope {
-  0% {
-    transform: translateY(-80px);
-    opacity: 0;
+  /**************************************************
+   * Animación: papel cayendo recto, sin rotaciones
+   **************************************************/
+  @keyframes slideIntoEnvelope {
+    0% {
+      transform: translateY(-80px);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    60% {
+      transform: translateY(-20px);
+    }
+    80% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(30px);
+      opacity: 0; /* Desaparece dentro del sobre */
+    }
   }
-  20% {
-    opacity: 1;
+  .animate-slide-into-envelope {
+    animation: slideIntoEnvelope 2s ease forwards;
   }
-  40% {
-    transform: translateY(-40px);
-  }
-  60% {
-    transform: translateY(-10px);
-  }
-  80% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-}
 
-.animate-slide-into-envelope {
-  animation: slideIntoEnvelope 2s ease forwards;
-}
-
-/* Tapa abriendo-cerrando 90° */
-@keyframes flapClose {
-  0%   { transform: rotateX(0deg);   }
-  40%  { transform: rotateX(90deg); }
-  100% { transform: rotateX(0deg);  }
-}
-.animate-flap-close {
-  animation: flapClose 2s ease forwards;
-  transform-origin: top center;
-}
-
+  /**************************************************
+   * Animación: tapa abriendo/cerrando 90°
+   **************************************************/
+  @keyframes flapClose {
+    0%   { transform: rotateX(0deg); }
+    40%  { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+  }
+  .animate-flap-close {
+    animation: flapClose 2s ease forwards;
+    transform-origin: top center;
+  }
 </style>
 
 
@@ -464,24 +464,25 @@
     /****************************************
      * 2) Función de animación de descarga
      ****************************************/
-    window.showDownloadAnimationProgress = function (url, fileName) {
+     window.showDownloadAnimationProgress = function (url, fileName) {
       const modal = document.getElementById('downloadModal');
       const fileBlock = document.getElementById('fileBlock');
       const envelopeFlap = document.getElementById('envelopeFlap');
       const successText = document.getElementById('successText');
 
+      // Asegurarnos de que existan
       if (!modal || !fileBlock) return;
 
-      // Mostrar modal
+      // Mostrar el modal
       modal.classList.remove('hidden');
 
-      // Resetear flap (si existe)
+      // Reseteo de la tapa
       if (envelopeFlap) {
         envelopeFlap.classList.remove('animate-flap-close');
         envelopeFlap.style.transform = 'rotateX(0)';
       }
 
-      // Ocultar temporalmente el texto
+      // Ocultar texto de "Descarga completada"
       if (successText) {
         successText.classList.add('opacity-0');
       }
@@ -489,10 +490,10 @@
       // Reiniciar animación del papel
       fileBlock.classList.remove('animate-slide-into-envelope');
       fileBlock.style.opacity = '0';
-      fileBlock.style.transform = 'translateY(-150px)';
+      fileBlock.style.transform = 'translateY(-80px)';  /* más cerca y centrado */
       void fileBlock.offsetWidth; // Forzar reflow
 
-      // Activar animaciones
+      // Activar las animaciones
       fileBlock.classList.add('animate-slide-into-envelope');
       if (envelopeFlap) {
         envelopeFlap.classList.add('animate-flap-close');
@@ -527,7 +528,7 @@
         }
       }, 2000);
 
-      // Ocultar modal a los 3.5s
+      // Ocultar el modal a los 3.5s
       setTimeout(() => {
         modal.classList.add('hidden');
       }, 3500);
