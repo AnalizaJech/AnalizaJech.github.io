@@ -339,51 +339,32 @@
 
 
 <!-- MODAL DE DESCARGA -->
-<div 
-  id="downloadModal" 
-  class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 backdrop-blur-sm"
->
-  <div class="flex flex-col items-center gap-6 p-8 rounded-xl text-center">
+<!-- MODAL -->
+<div id="downloadModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-80">
+  <div class="flex flex-col items-center gap-6 animate-fade-in">
 
-    <!-- Puntos animados -->
-    <div id="dotsContainer" class="flex space-x-4">
-      <span class="dot w-6 h-6 bg-pink-500 rounded-full inline-block opacity-50"></span>
-      <span class="dot w-6 h-6 bg-pink-500 rounded-full inline-block opacity-50"></span>
-      <span class="dot w-6 h-6 bg-pink-500 rounded-full inline-block opacity-50"></span>
-    </div>
+    <!-- Texto superior -->
+    <p class="text-white text-xl font-bold tracking-wide mb-2">Descarga completada</p>
 
-    <!-- Texto de progreso -->
-    <p id="downloadStatusText" class="text-white text-lg font-semibold tracking-wide">
-      Preparando descarga...
-    </p>
+    <!-- SOBRE -->
+    <div class="relative w-32 h-20 bg-gradient-to-br from-purple-700 to-fuchsia-600 
+                rounded-b-xl shadow-lg flex items-end justify-center overflow-hidden">
 
-    <!-- ANIMACIÓN DE DESCARGA -->
-    <div id="downloadEffect" class="hidden flex flex-col items-center gap-6 mt-20 animate-fade-in">
+      <!-- Lengüeta -->
+      <div class="absolute -top-3 left-7 w-16 h-4 bg-purple-500 rounded-t-md shadow-md"></div>
 
-      <!-- Texto de descarga -->
-      <p class="text-white text-xl font-bold tracking-wide mb-4">Descarga completada</p>
-
-      <!-- Contenedor del sobre -->
-      <div class="relative w-32 h-20 bg-gradient-to-br from-purple-700 to-fuchsia-600 
-      rounded-b-xl shadow-lg flex items-end justify-center overflow-hidden">
-
-        <!-- Lengüeta -->
-        <div class="absolute -top-3 left-7 w-18 h-4 bg-purple-500 rounded-t-md shadow-md"></div>
-
-        <!-- Papel -->
-        <div id="fileBlock"
-        class="absolute w-8 h-12 bg-white rounded shadow-md z-10 -top-32 opacity-0">
-        </div>
+      <!-- PAPEL -->
+      <div id="fileBlock"
+           class="absolute w-8 h-12 bg-white rounded shadow-md z-10 opacity-0"
+           style="top: -130px;">
       </div>
-
-
-      <!-- Texto inferior -->
-      <p class="text-white font-semibold text-base">¡Archivo descargado!</p>
     </div>
 
-
+    <!-- Texto inferior -->
+    <p class="text-white font-semibold text-base">¡Archivo descargado!</p>
   </div>
 </div>
+
 
 
 
@@ -406,7 +387,17 @@
   .animate-slide-into-envelope {
     animation: slide-into-envelope 1.2s ease-out forwards;
   }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
 </style>
+
 
 
 
@@ -454,68 +445,37 @@
   // ✅ Mostrar animación de descarga
   function showDownloadAnimationProgress(url, fileName) {
     const modal = document.getElementById('downloadModal');
-    const dotsContainer = document.getElementById('dotsContainer');
-    const statusText = document.getElementById('downloadStatusText');
-    const downloadEffect = document.getElementById('downloadEffect');
     const fileBlock = document.getElementById('fileBlock');
 
-    if (!modal || !dotsContainer || !statusText || !downloadEffect || !fileBlock) {
-      console.error("Faltan elementos en el DOM para animación");
-      return;
-    }
-
-    // 🔄 Reset visual inicial
+    // Mostrar modal
     modal.classList.remove('hidden');
-    dotsContainer.classList.remove('hidden');
-    downloadEffect.classList.add('hidden');
-    statusText.textContent = 'Preparando descarga...';
 
-    // 🔄 Reiniciar animación del papel
+    // Reiniciar animación
     fileBlock.classList.remove('animate-slide-into-envelope');
-    fileBlock.style.transform = 'translateY(-200px)';
     fileBlock.style.opacity = '0';
-    void fileBlock.offsetWidth; // reinicio forzado
+    fileBlock.style.transform = 'translateY(-200px)';
+    void fileBlock.offsetWidth;
+
+    // Activar animación
     fileBlock.classList.add('animate-slide-into-envelope');
 
+    // Descargar archivo real
+    fetch(url)
+      .then(res => res.blob())
+      .then(blob => {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(link.href);
+      });
 
-
-    animateDots();
-
-    // ⏱ Simular carga y descargar el archivo
+    // Ocultar modal tras animación
     setTimeout(() => {
-      fetchWithProgress(url, () => {})
-        .then((blob) => {
-          // Crear link y descargar
-          const blobUrl = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = blobUrl;
-          link.download = fileName;
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
-          URL.revokeObjectURL(blobUrl);
-
-          // ✅ Mostrar animación final
-          stopDotsAnimation();
-          dotsContainer.classList.add('hidden');
-          statusText.textContent = '';
-          downloadEffect.classList.remove('hidden');
-
-          // 📄 Activar animación del papel
-          void fileBlock.offsetWidth;
-          fileBlock.classList.add('animate-slide-into-envelope');
-
-          // ⏳ Ocultar modal luego de animación
-          setTimeout(() => {
-            modal.classList.add('hidden');
-          }, 3000);
-        })
-        .catch((error) => {
-          console.error(error);
-          alert('Error al descargar el archivo.');
-          modal.classList.add('hidden');
-        });
-    }, 1200);
+      modal.classList.add('hidden');
+    }, 3000);
   }
 
   // ✅ Descargar archivo vía XHR
