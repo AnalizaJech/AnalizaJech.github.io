@@ -355,51 +355,62 @@
     </p>
 
     <!-- ANIMACIÓN DE DESCARGA -->
-<div id="downloadEffect" class="hidden flex flex-col items-center gap-6 animate-fade-in">
+    <div id="downloadEffect" class="hidden flex flex-col items-center gap-6 animate-fade-in">
 
-  <!-- ✅ Texto único, en negrita y arriba -->
-  <p class="text-white text-xl font-bold tracking-wide">Descarga completada</p>
+      <!-- Texto superior -->
+      <p class="text-white text-xl font-bold tracking-wide">Descarga completada</p>
 
-  <!-- Carpeta visual -->
-  <div class="relative w-24 h-20 bg-gradient-to-br from-purple-700 to-fuchsia-600 rounded-b-xl shadow-lg flex items-end justify-center">
-    
-    <!-- Lengüeta de carpeta -->
-    <div class="absolute -top-3 left-5 w-14 h-4 bg-purple-500 rounded-t-md shadow-md"></div>
-    
-    <!-- Archivo animado que cae -->
-    <div id="fileBlock"
-         class="absolute -top-16 w-10 h-14 bg-white rounded-md shadow-md animate-slide-in-down">
+      <!-- Carpeta visual (sobre) -->
+      <div class="relative w-28 h-20 bg-gradient-to-br from-purple-700 to-fuchsia-600 
+                  rounded-b-xl shadow-lg flex items-end justify-center overflow-hidden">
+        
+        <!-- Lengüeta del sobre -->
+        <div class="absolute -top-3 left-6 w-16 h-4 bg-purple-500 rounded-t-md shadow-md"></div>
+        
+        <!-- Papel que cae -->
+        <div id="fileBlock"
+            class="absolute -top-16 w-10 h-14 bg-white rounded-md shadow-md z-10">
+        </div>
+      </div>
+
+      <!-- Texto final -->
+      <p class="text-white font-semibold text-base">¡Archivo descargado!</p>
     </div>
+
   </div>
 
-  <!-- Texto final -->
-  <p class="text-white font-semibold text-base">¡Archivo descargado!</p>
-</div>
 
 
 
-
-
-<style>
-  @keyframes slide-in-down {
-    0% { transform: translateY(-120px); opacity: 0; }
-    70% { transform: translateY(10px); opacity: 1; }
-    100% { transform: translateY(0); }
-  }
-
-  .animate-slide-in-down {
-    animation: slide-in-down 0.8s ease-out forwards;
-  }
-
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
-  }
-</style>
+  <style>
+    @keyframes slide-in-down {
+      0% {
+        transform: translateY(-120px);
+        opacity: 0;
+      }
+      70% {
+        transform: translateY(10px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  
+    .animate-slide-in-down {
+      animation: slide-in-down 0.8s ease-out forwards;
+    }
+  
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  
+    .animate-fade-in {
+      animation: fade-in 0.6s ease-out forwards;
+    }
+  </style>
+  
   
 
 
@@ -479,10 +490,11 @@ function showDownloadAnimationProgress(url, fileName) {
         // Mostrar animación de descarga completada
         stopDotsAnimation();
         dotsContainer.classList.add('hidden');
-        statusText.textContent = ''; // ❌ Evitar texto duplicado
-        downloadCompleteText.textContent = 'Descarga completada';
+        statusText.textContent = '';
         downloadEffect.classList.remove('hidden');
+        void fileBlock.offsetWidth; // Forzar reflow
         fileBlock.classList.add('animate-slide-in-down');
+
 
         setTimeout(() => {
           modal.classList.add('hidden');
