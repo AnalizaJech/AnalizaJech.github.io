@@ -340,47 +340,47 @@
 
 
 <!-- Modal de descarga (oculto por defecto) -->
-<!-- Modal de descarga -->
-<div
-  id="downloadModal"
-  class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm z-50">
+<!-- MODAL -->
+<div 
+id="downloadModal"
+class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm z-50">
 
-  <div class="text-center relative w-full max-w-sm">
-    <!-- Texto de éxito -->
-    <div
-      id="successText"
-      class="text-white text-xl font-bold mb-4 opacity-0 transition-opacity duration-700"
-    >
-      Descarga completada
-    </div>
+<div class="text-center relative w-full max-w-sm">
 
-    <!-- Contenedor total: 128px de altura (w-48 h-32) -->
-    <div class="relative w-48 h-32 mx-auto overflow-hidden">
-      <!-- Tapa (56px) -->
-      <div
-        id="envelopeFlap"
-        class="absolute top-0 left-0 w-full h-[56px]
-              bg-gradient-to-br from-purple-700 to-fuchsia-600 z-10"
-        style="clip-path: polygon(0% 0%, 100% 0%, 50% 100%);">
-      </div>
-
-      <!-- Cuerpo (72px). 56 + 72 = 128, coincide con h-32 -->
-      <div
-        class="absolute bottom-0 left-0 w-full h-[72px]
-              bg-gradient-to-br from-purple-700 to-fuchsia-600
-              rounded-b-xl z-0">
-      </div>
-
-      <!-- Papel (80px arriba) -->
-      <div
-        id="fileBlock"
-        class="absolute top-[-80px] left-1/2 -translate-x-1/2
-              w-24 h-32 bg-white shadow-md rounded z-20
-              transition-transform duration-[2000ms] ease-in-out">
-      </div>
-    </div>
-
+  <!-- Texto de éxito -->
+  <div 
+    id="successText"
+    class="text-white text-xl font-bold mb-4 opacity-0 transition-opacity duration-700">
+    Descarga completada
   </div>
+
+  <!-- Contenedor del sobre: (width=160px, height=80px) -->
+  <div class="relative w-[160px] h-[80px] mx-auto overflow-hidden">
+
+    <!-- Tapa: 30px de alto, triángulo apuntando hacia abajo -->
+    <div
+      id="envelopeFlap"
+      class="absolute top-0 left-0 w-full h-[30px]
+             bg-gradient-to-br from-purple-700 to-fuchsia-600 z-10"
+      style="clip-path: polygon(0% 0%, 100% 0%, 50% 100%);">
+    </div>
+
+    <!-- Cuerpo: 50px de alto. 30 + 50 = 80 => sin hueco -->
+    <div
+      class="absolute bottom-0 left-0 w-full h-[50px]
+             bg-gradient-to-br from-purple-700 to-fuchsia-600 
+             rounded-b-xl z-0">
+    </div>
+
+    <!-- Papel: centrado, inicia a -80px -->
+    <div
+      id="fileBlock"
+      class="absolute top-[-80px] left-1/2 -translate-x-1/2
+             w-20 h-28 bg-white shadow-md rounded z-20
+             transition-transform duration-[2000ms] ease-in-out">
+    </div>
+  </div>
+</div>
 </div>
 
 
@@ -393,40 +393,46 @@
 
 
 
+
 <style>
+  /************************************************************
+   * 1) Keyframes del papel cayendo en línea recta (solo Y)
+   ************************************************************/
   @keyframes slideIntoEnvelope {
-  0% {
-    transform: translateY(-80px);
-    opacity: 0;
+    0% {
+      transform: translateY(-80px);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    60% {
+      transform: translateY(-40px);
+    }
+    80% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
   }
-  30% {
-    opacity: 1;
+  .animate-slide-into-envelope {
+    animation: slideIntoEnvelope 2s ease forwards;
   }
-  60% {
-    transform: translateY(-40px);
+
+  /************************************************************
+   * 2) Keyframes de la tapa abriéndose y cerrándose (90°)
+   ************************************************************/
+  @keyframes flapClose {
+    0%   { transform: rotateX(0deg); }
+    40%  { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
   }
-  100% {
-    transform: translateY(30px);
-    opacity: 0;
+  .animate-flap-close {
+    animation: flapClose 2s ease forwards;
+    transform-origin: top center;
   }
-}
-
-.animate-slide-into-envelope {
-  animation: slideIntoEnvelope 2s ease forwards;
-}
-
-/* Tapa abriendo/cerrando a 90° */
-@keyframes flapClose {
-  0%   { transform: rotateX(0deg); }
-  40%  { transform: rotateX(90deg); }
-  100% { transform: rotateX(0deg); }
-}
-.animate-flap-close {
-  animation: flapClose 2s ease forwards;
-  transform-origin: top center;
-}
-
-
 </style>
 
 
