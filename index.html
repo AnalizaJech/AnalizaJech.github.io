@@ -479,8 +479,11 @@ class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity
 
       modal.classList.remove('hidden');
 
-      envelopeFlap?.classList.remove('animate-flap-close');
-      envelopeFlap?.style.transform = 'rotateX(0)';
+      if (envelopeFlap) {
+        envelopeFlap.classList.remove('animate-flap-close');
+        envelopeFlap.style.transform = 'rotateX(0)';
+      }
+
       successText.classList.add('opacity-0');
 
       fileBlock.classList.remove('animate-slide-into-envelope');
