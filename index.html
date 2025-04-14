@@ -449,23 +449,26 @@ class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity
     /****************************************
      * 1) Menú Responsive
      ****************************************/
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu?.classList.toggle('hidden');
-    }
 
-    // Botón hamburguesa
-    const toggleBtn = document.getElementById('nav-toggle');
-    toggleBtn?.addEventListener('click', toggleMenu);
+    // La función que abre/cierra el menú
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+  }
 
-    // Botón de cerrar
-    const closeBtn = document.getElementById('close-menu');
-    closeBtn?.addEventListener('click', toggleMenu);
+  // Botón hamburguesa
+  const toggleBtn = document.getElementById('nav-toggle');
+  toggleBtn?.addEventListener('click', toggleMenu);
 
-    // Cerrar el menú al hacer clic en sus enlaces
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', toggleMenu);
-    });
+  // Botón de cerrar
+  const closeBtn = document.getElementById('close-menu');
+  closeBtn?.addEventListener('click', toggleMenu);
+
+  // Cerrar el menú al hacer clic en sus enlaces
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', toggleMenu);
+  });
+
 
     /****************************************
      * 2) Función de animación de descarga
