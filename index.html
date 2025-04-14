@@ -354,42 +354,32 @@
       Descarga completada
     </div>
 
-    <!-- Contenedor total del sobre: w-48 x h-32 (192px x 128px) -->
+    <!-- Contenedor total: 128px de altura (w-48 h-32) -->
     <div class="relative w-48 h-32 mx-auto overflow-hidden">
-      
-      <!-- Tapa del sobre: altura 14 (56px) -->
+      <!-- Tapa (56px) -->
       <div
         id="envelopeFlap"
-        class="absolute top-0 left-0 w-full h-14 
-               bg-gradient-to-br from-purple-700 to-fuchsia-600 z-10"
-        style="
-          /* Triángulo que cubre la parte de arriba */
-          clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-        "
-      >
+        class="absolute top-0 left-0 w-full h-[56px]
+              bg-gradient-to-br from-purple-700 to-fuchsia-600 z-10"
+        style="clip-path: polygon(0% 0%, 100% 0%, 50% 100%);">
       </div>
 
-      <!-- Cuerpo del sobre: altura 18 (72px). 14 + 18 = 32 => sin hueco -->
+      <!-- Cuerpo (72px). 56 + 72 = 128, coincide con h-32 -->
       <div
-        class="absolute bottom-0 left-0 w-full h-18
-               bg-gradient-to-br from-purple-700 to-fuchsia-600 
-               rounded-b-xl z-0"
-        
-      >
+        class="absolute bottom-0 left-0 w-full h-[72px]
+              bg-gradient-to-br from-purple-700 to-fuchsia-600
+              rounded-b-xl z-0">
       </div>
 
-      <!-- Papel que cae (centrado). 
-           Arranca 80px por arriba: top-[-80px], 
-           left-1/2 -translate-x-1/2 => cae justo en medio
-      -->
+      <!-- Papel (80px arriba) -->
       <div
         id="fileBlock"
         class="absolute top-[-80px] left-1/2 -translate-x-1/2
-               w-24 h-32 bg-white shadow-md rounded z-20
-               transition-transform duration-[2000ms] ease-in-out"
-      >
+              w-24 h-32 bg-white shadow-md rounded z-20
+              transition-transform duration-[2000ms] ease-in-out">
       </div>
     </div>
+
   </div>
 </div>
 
@@ -415,14 +405,12 @@
   60% {
     transform: translateY(-40px);
   }
-  80% {
-    transform: translateY(-10px);
-  }
   100% {
-    transform: translateY(20px);
+    transform: translateY(30px);
     opacity: 0;
   }
 }
+
 .animate-slide-into-envelope {
   animation: slideIntoEnvelope 2s ease forwards;
 }
