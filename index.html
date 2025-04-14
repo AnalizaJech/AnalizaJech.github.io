@@ -358,31 +358,31 @@
     </p>
 
     <!-- ANIMACIÓN DE DESCARGA -->
-<div id="downloadEffect" class="hidden flex flex-col items-center gap-6 mt-16 animate-fade-in">
+    <div id="downloadEffect" class="hidden flex flex-col items-center gap-6 mt-20 animate-fade-in">
 
-  <!-- Texto arriba -->
-  <p class="text-white text-xl font-bold tracking-wide mb-2">Descarga completada</p>
+      <!-- Texto de descarga -->
+      <p class="text-white text-xl font-bold tracking-wide mb-4">Descarga completada</p>
 
-  <!-- Contenedor del sobre -->
-  <div class="relative w-28 h-20 bg-gradient-to-br from-purple-700 to-fuchsia-600 
-              rounded-b-xl shadow-lg flex items-end justify-center overflow-hidden">
+      <!-- Contenedor del sobre -->
+      <div class="relative w-32 h-20 bg-gradient-to-br from-purple-700 to-fuchsia-600 
+                  rounded-b-xl shadow-lg flex items-end justify-center overflow-hidden">
 
-    <!-- Lengüeta superior del sobre -->
-    <div class="absolute -top-3 left-6 w-16 h-4 bg-purple-500 rounded-t-md shadow-md"></div>
+        <!-- Lengüeta -->
+        <div class="absolute -top-3 left-7 w-18 h-4 bg-purple-500 rounded-t-md shadow-md"></div>
 
-    <!-- Papel que cae y se esconde dentro -->
-    <div id="fileBlock"
-         class="absolute w-10 h-14 bg-white rounded-md shadow-md z-10 animate-slide-into-envelope">
+        <!-- Papel (empieza arriba y se esconde dentro) -->
+        <div id="fileBlock"
+            class="absolute w-8 h-12 bg-white rounded shadow-md z-10 -top-32 opacity-0">
+        </div>
+      </div>
+
+      <!-- Texto inferior -->
+      <p class="text-white font-semibold text-base">¡Archivo descargado!</p>
     </div>
-  </div>
 
-  <!-- Texto final -->
-  <p class="text-white font-semibold text-base">¡Archivo descargado!</p>
-</div>
 
   </div>
 </div>
-
 
 
 
@@ -390,19 +390,14 @@
 <style>
   @keyframes slide-into-envelope {
     0% {
-      transform: translateY(-200px);
+      transform: translateY(-150px);
       opacity: 0;
     }
-    50% {
-      transform: translateY(-60px);
-      opacity: 1;
-    }
-    80% {
-      transform: translateY(0px);
+    40% {
       opacity: 1;
     }
     100% {
-      transform: translateY(0px);
+      transform: translateY(70px); /* entra al sobre */
       opacity: 0;
     }
   }
@@ -420,6 +415,7 @@
     animation: fade-in 0.6s ease-out forwards;
   }
 </style>
+
 
 
 
@@ -483,7 +479,11 @@
 
     // 🔄 Reiniciar animación del papel
     fileBlock.classList.remove('animate-slide-into-envelope');
+    fileBlock.style.opacity = '0';
+    fileBlock.style.top = '-8rem'; // aseguramos reinicio arriba
     void fileBlock.offsetWidth;
+    fileBlock.classList.add('animate-slide-into-envelope');
+
 
     animateDots();
 
