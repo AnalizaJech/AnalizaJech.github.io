@@ -43,19 +43,20 @@
                                 flex flex-col justify-center items-center 
                                 space-y-8 text-xl font-medium">
       <!-- Botón de cerrar -->
-      <button id="close-menu" class="absolute top-5 right-5 focus:outline-none" onclick="toggleMenu()">
+      <button id="close-menu" class="absolute top-5 right-5 focus:outline-none">
         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"
-             xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg">
           <path d="M6 18L18 6M6 6l12 12" stroke="currentColor"
                 stroke-width="2" class="text-pink-500"/>
         </svg>
       </button>
-      
-      <!-- Enlaces del menú móvil -->
-      <a href="#about" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Sobre Mí</a>
-      <a href="#skills" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Habilidades</a>
-      <a href="#projects" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Proyectos</a>
-      <a href="#contact" class="text-white hover:text-pink-500 transition-colors duration-300" onclick="toggleMenu()">Contacto</a>
+            
+      <!-- Enlaces del menú móvil (sin onclick) -->
+      <a href="#about" class="text-white hover:text-pink-500 transition-colors duration-300">Sobre Mí</a>
+      <a href="#skills" class="text-white hover:text-pink-500 transition-colors duration-300">Habilidades</a>
+      <a href="#projects" class="text-white hover:text-pink-500 transition-colors duration-300">Proyectos</a>
+      <a href="#contact" class="text-white hover:text-pink-500 transition-colors duration-300">Contacto</a>
+
     </div>
   </header>
 
@@ -400,14 +401,24 @@
   
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // ✅ Toggle para navbar móvil
-    window.toggleMenu = function() {
-      const menu = document.getElementById('mobile-menu');
-      if (menu) menu.classList.toggle('hidden');
-    };
+    // La función toggleMenu
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu?.classList.toggle('hidden');
+  }
 
-    const toggleBtn = document.getElementById('nav-toggle');
-    toggleBtn?.addEventListener('click', toggleMenu);
+  // Botón hamburguesa
+  const toggleBtn = document.getElementById('nav-toggle');
+  toggleBtn?.addEventListener('click', toggleMenu);
+
+  // Botón de cerrar
+  const closeBtn = document.getElementById('close-menu');
+  closeBtn?.addEventListener('click', toggleMenu);
+
+  // Cerrar menú al hacer clic en cualquier enlace
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', toggleMenu);
+  });
 
 
     // ✅ Dots animados
