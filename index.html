@@ -358,30 +358,28 @@
     </p>
 
     <!-- ANIMACIÓN DE DESCARGA -->
-    <div id="downloadEffect" class="hidden flex flex-col items-center gap-8 animate-fade-in mt-12">
+<div id="downloadEffect" class="hidden flex flex-col items-center gap-6 mt-16 animate-fade-in">
 
-      <!-- Texto superior -->
-      <p id="downloadCompleteText" class="text-white text-xl font-bold tracking-wide -mt-10 mb-4">
-        Descarga completada
-      </p>
+  <!-- Texto arriba -->
+  <p class="text-white text-xl font-bold tracking-wide mb-2">Descarga completada</p>
 
-      <!-- Sobre -->
-      <div id="envelopeContainer"
-           class="relative w-28 h-20 bg-gradient-to-br from-purple-700 to-fuchsia-600 
-                  rounded-b-xl shadow-lg flex items-end justify-center overflow-hidden 
-                  transition-all duration-500">
-        <!-- Lengüeta -->
-        <div class="absolute -top-3 left-6 w-16 h-4 bg-purple-500 rounded-t-md shadow-md"></div>
+  <!-- Contenedor del sobre -->
+  <div class="relative w-28 h-20 bg-gradient-to-br from-purple-700 to-fuchsia-600 
+              rounded-b-xl shadow-lg flex items-end justify-center overflow-hidden">
 
-        <!-- Papel -->
-        <div id="fileBlock"
-             class="absolute -top-32 w-10 h-14 bg-white rounded-md shadow-md z-10">
-        </div>
-      </div>
+    <!-- Lengüeta superior del sobre -->
+    <div class="absolute -top-3 left-6 w-16 h-4 bg-purple-500 rounded-t-md shadow-md"></div>
 
-      <!-- Mensaje final -->
-      <p class="text-white font-semibold text-base">¡Archivo descargado!</p>
+    <!-- Papel que cae y se esconde dentro -->
+    <div id="fileBlock"
+         class="absolute w-10 h-14 bg-white rounded-md shadow-md z-10 animate-slide-into-envelope">
     </div>
+  </div>
+
+  <!-- Texto final -->
+  <p class="text-white font-semibold text-base">¡Archivo descargado!</p>
+</div>
+
   </div>
 </div>
 
@@ -390,39 +388,54 @@
 
 
 <style>
-  @keyframes slide-in-fade-out {
+  @keyframes slide-into-envelope {
     0% {
       transform: translateY(-200px);
       opacity: 0;
     }
-    60% {
-      transform: translateY(15px);
+    50% {
+      transform: translateY(-60px);
+      opacity: 1;
+    }
+    80% {
+      transform: translateY(0px);
       opacity: 1;
     }
     100% {
-      transform: translateY(0);
+      transform: translateY(0px);
       opacity: 0;
     }
   }
 
-  .animate-slide-in-fade-out {
-    animation: slide-in-fade-out 1.2s ease-out forwards;
+  .animate-slide-into-envelope {
+    animation: slide-into-envelope 1.2s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
   }
 </style>
 
 
-  
-  
-  
 
+  
+  
+  
 <script>
-  // Toggle para mobile navbar
+  // ✅ Toggle para navbar móvil
   function toggleMenu() {
     const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
+    if (menu) menu.classList.toggle('hidden');
   }
-  document.getElementById('nav-toggle').onclick = toggleMenu;
+  const toggleBtn = document.getElementById('nav-toggle');
+  if (toggleBtn) toggleBtn.onclick = toggleMenu;
 
+  // ✅ Dots animados
   let intervalId;
 
   function animateDots() {
@@ -449,30 +462,36 @@
     });
   }
 
+  // ✅ Mostrar animación de descarga
   function showDownloadAnimationProgress(url, fileName) {
     const modal = document.getElementById('downloadModal');
     const dotsContainer = document.getElementById('dotsContainer');
     const statusText = document.getElementById('downloadStatusText');
     const downloadEffect = document.getElementById('downloadEffect');
     const fileBlock = document.getElementById('fileBlock');
-    const envelope = document.getElementById('envelopeContainer');
-    const downloadCompleteText = document.getElementById('downloadCompleteText');
 
-    // Reset visual
+    if (!modal || !dotsContainer || !statusText || !downloadEffect || !fileBlock) {
+      console.error("Faltan elementos en el DOM para animación");
+      return;
+    }
+
+    // 🔄 Reset visual inicial
     modal.classList.remove('hidden');
     dotsContainer.classList.remove('hidden');
     downloadEffect.classList.add('hidden');
     statusText.textContent = 'Preparando descarga...';
 
-    // Reiniciar animación
-    fileBlock.classList.remove('animate-slide-in-down');
+    // 🔄 Reiniciar animación del papel
+    fileBlock.classList.remove('animate-slide-into-envelope');
     void fileBlock.offsetWidth;
 
     animateDots();
 
+    // ⏱ Simular carga y descargar el archivo
     setTimeout(() => {
       fetchWithProgress(url, () => {})
         .then((blob) => {
+          // Crear link y descargar
           const blobUrl = URL.createObjectURL(blob);
           const link = document.createElement('a');
           link.href = blobUrl;
@@ -482,21 +501,17 @@
           link.remove();
           URL.revokeObjectURL(blobUrl);
 
-          // Mostrar animación
+          // ✅ Mostrar animación final
           stopDotsAnimation();
           dotsContainer.classList.add('hidden');
           statusText.textContent = '';
           downloadEffect.classList.remove('hidden');
 
+          // 📄 Activar animación del papel
           void fileBlock.offsetWidth;
-          fileBlock.classList.add('animate-slide-in-fade-out');
+          fileBlock.classList.add('animate-slide-into-envelope');
 
-          // Glow al sobre
-          envelope.classList.add('ring-4', 'ring-pink-500');
-          setTimeout(() => {
-            envelope.classList.remove('ring-4', 'ring-pink-500');
-          }, 1200);
-
+          // ⏳ Ocultar modal luego de animación
           setTimeout(() => {
             modal.classList.add('hidden');
           }, 3000);
@@ -509,6 +524,7 @@
     }, 1200);
   }
 
+  // ✅ Descargar archivo vía XHR
   function fetchWithProgress(url, onProgress) {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
