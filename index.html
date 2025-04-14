@@ -450,30 +450,26 @@ class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity
      * 1) Menú Responsive
      ****************************************/
 
-    // La función que abre/cierra el menú
-  function toggleMenu() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
-  }
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu?.classList.toggle('hidden');
+    }
 
-  // Botón hamburguesa
-  const toggleBtn = document.getElementById('nav-toggle');
-  toggleBtn?.addEventListener('click', toggleMenu);
+    const toggleBtn = document.getElementById('nav-toggle');
+    toggleBtn?.addEventListener('click', toggleMenu);
 
-  // Botón de cerrar
-  const closeBtn = document.getElementById('close-menu');
-  closeBtn?.addEventListener('click', toggleMenu);
+    const closeBtn = document.getElementById('close-menu');
+    closeBtn?.addEventListener('click', toggleMenu);
 
-  // Cerrar el menú al hacer clic en sus enlaces
-  document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', toggleMenu);
-  });
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', toggleMenu);
+    });
 
 
     /****************************************
      * 2) Función de animación de descarga
      ****************************************/
-    window.showDownloadAnimationProgress = function (url, fileName) {
+     window.showDownloadAnimationProgress = function (url, fileName) {
       const modal = document.getElementById('downloadModal');
       const fileBlock = document.getElementById('fileBlock');
       const envelopeFlap = document.getElementById('envelopeFlap');
@@ -481,25 +477,21 @@ class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity
 
       if (!modal || !fileBlock) return;
 
-      // 1) Mostrar el modal
       modal.classList.remove('hidden');
 
-      // 2) Reset de la tapa y texto de éxito
       envelopeFlap?.classList.remove('animate-flap-close');
       envelopeFlap?.style.transform = 'rotateX(0)';
       successText.classList.add('opacity-0');
 
-      // 3) Reiniciar animación del papel (forzar reflow)
       fileBlock.classList.remove('animate-slide-into-envelope');
       fileBlock.style.opacity = '0';
-      fileBlock.style.transform = 'translateY(-150px)'; 
+      fileBlock.style.transform = 'translateY(-150px)';
       void fileBlock.offsetWidth; // reflow
 
-      // 4) Activar animaciones
       fileBlock.classList.add('animate-slide-into-envelope');
       envelopeFlap?.classList.add('animate-flap-close');
 
-      // 5) Descargar archivo
+      // Descargar el archivo
       fetch(url)
         .then(res => {
           if (!res.ok) throw new Error('Descarga fallida');
@@ -520,13 +512,13 @@ class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity
           alert("Error al descargar el archivo.");
         });
 
-      // 6) Tras 2s, aparece texto de “Descarga completada”
+      // Texto "Descarga completada" luego de 2s
       setTimeout(() => {
         successText.classList.remove('opacity-0');
         successText.classList.add('opacity-100');
       }, 2000);
 
-      // 7) Cerrar modal a los 3.5s
+      // Ocultamos el modal a los 3.5s
       setTimeout(() => {
         modal.classList.add('hidden');
       }, 3500);
