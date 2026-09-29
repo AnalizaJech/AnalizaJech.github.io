@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
+import { motion, useReducedMotion } from "motion/react";
 import {
   ArrowUpRight,
   ChevronLeft,
@@ -15,129 +17,152 @@ export default function ProjectGallery({
   project: Project;
   onClose: () => void;
 }) {
-  const ref = useRef<HTMLDialogElement>(null);
+  const opener = useRef(document.activeElement as HTMLElement | null);
   const [index, setIndex] = useState(0);
-  const [motion, setMotion] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const reduced = useReducedMotion();
   const current = project.images[index];
   const animated = current.src.endsWith(".gif");
   function move(delta: number) {
-    setMotion(false);
+    setPlaying(false);
     setIndex(
       (value) =>
         (value + delta + project.images.length) % project.images.length,
     );
   }
   useEffect(() => {
-    const dialog = ref.current!;
-    const previous = document.activeElement as HTMLElement;
-    dialog.showModal();
-    document.body.classList.add("modal-open");
+    const scroll = window.scrollY;
     return () => {
-      dialog.close();
-      document.body.classList.remove("modal-open");
-      previous?.focus();
+      requestAnimationFrame(() =>
+        window.scrollTo({ top: scroll, behavior: "instant" }),
+      );
     };
   }, []);
   return (
-    <dialog
-      ref={ref}
-      className="project-dialog"
-      aria-labelledby="gallery-title"
-      onCancel={onClose}
-      onClick={(event) => {
-        if (event.target === ref.current) {
-          const r = ref.current!.getBoundingClientRect();
-          if (
-            event.clientX < r.left ||
-            event.clientX > r.right ||
-            event.clientY < r.top ||
-            event.clientY > r.bottom
-          )
-            onClose();
-        }
-      }}
-      onKeyDown={(event) => {
-        if (event.key === "ArrowRight") move(1);
-        if (event.key === "ArrowLeft") move(-1);
+    <Dialog.Root
+      open
+      onOpenChange={(open) => {
+        if (!open) onClose();
       }}
     >
-      <header className="gallery-header">
-        <div>
-          <p className="kicker">
-            <Images size={13} /> EXPLORAR PROYECTO
-          </p>
-          <h2 id="gallery-title">{project.title}</h2>
-        </div>
-        <button
-          className="icon-button"
-          onClick={onClose}
-          aria-label="Cerrar galería"
+      <Dialog.Portal>
+        <Dialog.Overlay className="gallery-overlay" />
+        <Dialog.Content
+          className="gallery-lightbox"
+          aria-describedby="gallery-description"
+          onCloseAutoFocus={(event) => {
+            event.preventDefault();
+            opener.current?.focus({ preventScroll: true });
+          }}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowRight") {
+              event.preventDefault();
+              move(1);
+            }
+            if (event.key === "ArrowLeft") {
+              event.preventDefault();
+              move(-1);
+            }
+          }}
         >
-          <X />
-        </button>
-      </header>
-      <div className="gallery-stage">
-        {animated && !motion ? (
-          <div className="motion-placeholder">
-            <img src={project.images[0].src} alt={project.images[0].alt} />
-            <button
-              className="button button-blue"
-              onClick={() => setMotion(true)}
-            >
-              Reproducir recorrido
-            </button>
-          </div>
-        ) : (
-          <img src={current.src} alt={current.alt} />
-        )}
-      </div>
-      <div className="gallery-controls">
-        <p>{current.alt}</p>
-        <div>
-          <button
-            className="icon-button"
-            onClick={() => move(-1)}
-            aria-label="Imagen anterior"
-            disabled={project.images.length === 1}
+          <motion.div
+            className="lightbox-inner"
+            initial={reduced ? false : { opacity: 0, y: 16, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <ChevronLeft />
-          </button>
-          <span>
-            {index + 1} / {project.images.length}
-          </span>
-          <button
-            className="icon-button"
-            onClick={() => move(1)}
-            aria-label="Imagen siguiente"
-            disabled={project.images.length === 1}
-          >
-            <ChevronRight />
-          </button>
-        </div>
-      </div>
-      <div className="gallery-footer">
-        <p>{project.description}</p>
-        <div>
-          <a
-            className="button button-blue"
-            href={project.url}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Abrir demo <ArrowUpRight size={18} />
-          </a>
-          {project.repo && (
-            <a
-              className="button button-outline"
-              href={project.repo}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Github size={16} /> Código
-            </a>
-          )}
-        </div>
-      </div>
-    </dialog>
+            <header className="gallery-header">
+              <div>
+                <p className="kicker">
+                  <Images size={13} /> EXPLORAR PROYECTO
+                </p>
+                <Dialog.Title asChild>
+                  <h2 id="gallery-title">{project.title}</h2>
+                </Dialog.Title>
+              </div>
+              <Dialog.Close asChild>
+                <button className="icon-button" aria-label="Cerrar galería">
+                  <X />
+                </button>
+              </Dialog.Close>
+            </header>
+            <div className="gallery-stage">
+              {animated && !playing ? (
+                <div className="motion-placeholder">
+                  <img
+                    src={project.images[0].src}
+                    alt={project.images[0].alt}
+                  />
+                  <button
+                    className="button button-blue"
+                    onClick={() => setPlaying(true)}
+                  >
+                    Reproducir recorrido
+                  </button>
+                </div>
+              ) : (
+                <motion.img
+                  key={current.src}
+                  initial={reduced ? false : { opacity: 0.5 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.25 }}
+                  src={current.src}
+                  alt={current.alt}
+                />
+              )}
+            </div>
+            <div className="gallery-controls">
+              <p aria-live="polite">{current.alt}</p>
+              <div>
+                <button
+                  className="icon-button"
+                  aria-label="Imagen anterior"
+                  disabled={project.images.length === 1}
+                  onClick={() => move(-1)}
+                >
+                  <ChevronLeft />
+                </button>
+                <span>
+                  {index + 1} / {project.images.length}
+                </span>
+                <button
+                  className="icon-button"
+                  aria-label="Imagen siguiente"
+                  disabled={project.images.length === 1}
+                  onClick={() => move(1)}
+                >
+                  <ChevronRight />
+                </button>
+              </div>
+            </div>
+            <div className="gallery-footer">
+              <Dialog.Description asChild>
+                <p id="gallery-description">{project.description}</p>
+              </Dialog.Description>
+              <div>
+                <a
+                  className="button button-blue"
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Abrir demo <ArrowUpRight size={18} />
+                </a>
+                {project.repo && (
+                  <a
+                    className="button button-outline"
+                    href={project.repo}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Github size={16} /> Código
+                  </a>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }

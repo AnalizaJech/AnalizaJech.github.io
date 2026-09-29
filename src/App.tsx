@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { motion, useScroll, useSpring } from "motion/react";
+import Reveal from "./components/Reveal";
+import useSectionNavigation from "./components/useSectionNavigation";
 import {
   ArrowUpRight,
   ArrowDown,
@@ -29,7 +32,11 @@ export default function App() {
   const [active, setActive] = useState(0);
   const [filter, setFilter] = useState("Todos");
   const [gallery, setGallery] = useState<Project | null>(null);
-  const [portrait, setPortrait] = useState(0);
+  const [section, setSection] = useState("home");
+  const closeMenu = useCallback(() => setMenu(false), []);
+  useSectionNavigation(closeMenu, setSection);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 32 });
   const selected = featured[active];
   useEffect(() => {
     const escape = (event: KeyboardEvent) => {
@@ -43,6 +50,11 @@ export default function App() {
       <a className="skip-link" href="#main">
         Saltar al contenido
       </a>
+      <motion.div
+        className="scroll-progress"
+        style={{ scaleX: progress }}
+        aria-hidden="true"
+      />
       <header className="site-header">
         <a href="#home" className="brand" aria-label="Analiza Jech, inicio">
           <span className="brand-mark">
@@ -64,11 +76,21 @@ export default function App() {
             ["#about", "Sobre mí"],
             ["#content", "Contenido"],
           ].map(([href, label]) => (
-            <a key={href} href={href} onClick={() => setMenu(false)}>
+            <a
+              key={href}
+              href={href}
+              aria-current={section === href.slice(1) ? "location" : undefined}
+              onClick={() => setMenu(false)}
+            >
               {label}
             </a>
           ))}
-          <a className="nav-cta" href="#contact" onClick={() => setMenu(false)}>
+          <a
+            className="nav-cta"
+            href="#contact"
+            aria-current={section === "contact" ? "location" : undefined}
+            onClick={() => setMenu(false)}
+          >
             Hablemos <ArrowUpRight size={16} />
           </a>
         </nav>
@@ -128,19 +150,11 @@ export default function App() {
             <div className="portrait-number">01 — IDENTIDAD CREATIVA</div>
             <div className="portrait-window">
               <img
-                key={portrait}
-                className={portrait === 1 ? "original-portrait" : ""}
-                src={
-                  portrait === 0
-                    ? "/media/jorge-editorial.webp"
-                    : "/media/jorge-original.png"
-                }
-                alt={
-                  portrait === 0
-                    ? "Retrato creativo de Jorge Cáceres, generado a partir de sus fotos"
-                    : "Foto original de Jorge Cáceres"
-                }
+                src="/media/jorge-editorial-v2.webp"
+                alt="Retrato de Jorge Cáceres restaurado a partir de su foto"
                 fetchPriority="high"
+                width={1120}
+                height={1400}
               />
               <div className="portrait-overlay">
                 <span>
@@ -150,36 +164,6 @@ export default function App() {
                 </span>
                 <ArrowUpRight size={30} />
               </div>
-            </div>
-            <div className="portrait-switch">
-              <span>
-                {portrait === 0 ? "RETRATO CREATIVO" : "FOTO ORIGINAL"}
-              </span>
-              <div>
-                <button
-                  className={portrait === 0 ? "active" : ""}
-                  onClick={() => setPortrait(0)}
-                  aria-label="Ver retrato creativo"
-                  aria-pressed={portrait === 0}
-                >
-                  01
-                </button>
-                <button
-                  className={portrait === 1 ? "active" : ""}
-                  onClick={() => setPortrait(1)}
-                  aria-label="Ver foto original"
-                  aria-pressed={portrait === 1}
-                >
-                  02
-                </button>
-              </div>
-            </div>
-            <div className="portrait-stamp">
-              <Code2 size={23} />
-              <span>
-                De la idea
-                <br />a la interacción.
-              </span>
             </div>
           </div>
           <div className="hero-foot">
@@ -198,21 +182,23 @@ export default function App() {
         </div>
         <section className="section work-section" id="projects">
           <div className="container">
-            <div className="section-heading">
-              <div>
-                <p className="kicker">01 / IDEAS EN FUNCIONAMIENTO</p>
-                <h2>
-                  El trabajo habla.
+            <Reveal>
+              <div className="section-heading">
+                <div>
+                  <p className="kicker">01 / IDEAS EN FUNCIONAMIENTO</p>
+                  <h2>
+                    El trabajo habla.
+                    <br />
+                    <span>Explóralo tú mismo.</span>
+                  </h2>
+                </div>
+                <p>
+                  Productos para escribir, diseñar y practicar.
                   <br />
-                  <span>Explóralo tú mismo.</span>
-                </h2>
+                  Experiencias reales, listas para probar.
+                </p>
               </div>
-              <p>
-                Productos para escribir, diseñar y practicar.
-                <br />
-                Experiencias reales, listas para probar.
-              </p>
-            </div>
+            </Reveal>
             <div
               className="project-tabs"
               role="tablist"
@@ -417,50 +403,52 @@ export default function App() {
         </section>
         <section className="about-section section" id="about">
           <div className="container">
-            <div className="about-grid">
-              <div className="about-art">
-                <img
-                  src="/media/jorge-creative.webp"
-                  alt="Retrato creativo de Jorge inspirado en sus fotos"
-                  loading="lazy"
-                />
-                <span className="about-art-label">
-                  <Sparkles size={16} /> EL LADO CREATIVO DE JECH
-                </span>
-                <span className="about-art-word" aria-hidden="true">
-                  curioso
-                  <br />
-                  por naturaleza.
-                </span>
+            <Reveal>
+              <div className="about-grid">
+                <div className="about-art">
+                  <img
+                    src="/media/jorge-creative-v2.webp"
+                    alt="Retrato creativo de Jorge inspirado en sus fotos"
+                    loading="lazy"
+                  />
+                  <span className="about-art-label">
+                    <Sparkles size={16} /> EL LADO CREATIVO DE JECH
+                  </span>
+                  <span className="about-art-word" aria-hidden="true">
+                    curioso
+                    <br />
+                    por naturaleza.
+                  </span>
+                </div>
+                <div className="about-copy">
+                  <p className="kicker">02 / DETRÁS DE CADA PIXEL</p>
+                  <h2>
+                    No solo construyo.
+                    <br />
+                    <em>Exploro el porqué.</em>
+                  </h2>
+                  <p>
+                    Soy Jorge Enrique Cáceres Hernández. Me interesa cómo una
+                    idea se convierte en algo que una persona puede entender,
+                    disfrutar y usar.
+                  </p>
+                  <p>
+                    Mi trabajo cruza desarrollo frontend y diseño UX/UI. Mi
+                    curiosidad también me lleva a la música, la edición de video
+                    y la creación de contenido. Distintas formas de hacer lo
+                    mismo: <strong>dar vida a una idea.</strong>
+                  </p>
+                  <a
+                    className="inline-link"
+                    href="https://www.linkedin.com/in/analizajech/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Conoce mi recorrido <ArrowUpRight size={18} />
+                  </a>
+                </div>
               </div>
-              <div className="about-copy">
-                <p className="kicker">02 / DETRÁS DE CADA PIXEL</p>
-                <h2>
-                  No solo construyo.
-                  <br />
-                  <em>Exploro el porqué.</em>
-                </h2>
-                <p>
-                  Soy Jorge Enrique Cáceres Hernández. Me interesa cómo una idea
-                  se convierte en algo que una persona puede entender, disfrutar
-                  y usar.
-                </p>
-                <p>
-                  Mi trabajo cruza desarrollo frontend y diseño UX/UI. Mi
-                  curiosidad también me lleva a la música, la edición de video y
-                  la creación de contenido. Distintas formas de hacer lo mismo:{" "}
-                  <strong>dar vida a una idea.</strong>
-                </p>
-                <a
-                  className="inline-link"
-                  href="https://www.linkedin.com/in/analizajech/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Conoce mi recorrido <ArrowUpRight size={18} />
-                </a>
-              </div>
-            </div>
+            </Reveal>
             <div className="capabilities">
               {[
                 {
@@ -492,24 +480,26 @@ export default function App() {
           </div>
         </section>
         <section id="content" className="section content-section container">
-          <div className="section-heading">
-            <div>
-              <p className="kicker">03 / APRENDER EN VOZ ALTA</p>
-              <h2>
-                Lo que descubro,
-                <br />
-                <span>lo comparto.</span>
-              </h2>
+          <Reveal>
+            <div className="section-heading">
+              <div>
+                <p className="kicker">03 / APRENDER EN VOZ ALTA</p>
+                <h2>
+                  Lo que descubro,
+                  <br />
+                  <span>lo comparto.</span>
+                </h2>
+              </div>
+              <a
+                className="button button-outline"
+                href="https://www.youtube.com/@analizajech"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Visita mi canal <ArrowUpRight size={18} />
+              </a>
             </div>
-            <a
-              className="button button-outline"
-              href="https://www.youtube.com/@analizajech"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Visita mi canal <ArrowUpRight size={18} />
-            </a>
-          </div>
+          </Reveal>
           <div className="video-grid">
             {videos.map((video) => (
               <a
@@ -520,7 +510,18 @@ export default function App() {
               >
                 <div className="video-cover">
                   <img
-                    src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+                    src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                    onError={(event) => {
+                      event.currentTarget.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                    }}
+                    onLoad={(event) => {
+                      const img = event.currentTarget;
+                      if (
+                        img.naturalWidth < 480 &&
+                        img.src.includes("maxresdefault")
+                      )
+                        img.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                    }}
                     alt={`Video de Analiza Jech: ${video.title}`}
                     loading="lazy"
                   />

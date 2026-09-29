@@ -36,7 +36,7 @@ Agrega un objeto a `projects` en `src/data/projects.ts` y coloca las capturas en
 
 ## Imágenes
 
-Las capturas muestran aplicaciones reales. Los retratos editoriales se generaron con la herramienta integrada Image Gen a partir de las fotos suministradas; la portada permite alternar con la foto original. La segunda foto original se usó solo como referencia, no se publica su leyenda de meme. Las imágenes de proyectos y retratos se optimizaron a WebP. Los prompts utilizados están en `docs/image-prompts.md`.
+Las capturas muestran aplicaciones reales. Los retratos editoriales se generaron con la herramienta integrada Image Gen a partir de las fotos suministradas; la portada usa un nuevo retrato generado con la foto frontal como referencia principal. La segunda foto original se usó solo como referencia, no se publica su leyenda de meme. Las imágenes de proyectos y retratos se optimizaron a WebP. Los prompts utilizados están en `docs/image-prompts.md`.
 
 ## Contacto
 
@@ -45,3 +45,7 @@ Se usa la clave pública de Web3Forms suministrada por el propietario. La clave 
 ## Validación
 
 Build y tipos; revisión visual en Chromium; anchos 320, 390, 768, 820, 1024 y 1440; tabs, filtros, galería con teclado/Escape, cambio de retrato y formulario con respuestas simuladas. No se envían correos de prueba desde las verificaciones automáticas.
+
+## Navegación y controles
+
+Navbar persistente con posición sticky, indicador de sección activa y offset medido según su altura. El scroll de rueda y táctil conserva el comportamiento del navegador; solo las anclas usan desplazamiento suave y respetan movimiento reducido. Motion anima entradas y transiciones. Radix gestiona la galería y el selector con teclado, foco y Escape. El mensaje tiene altura fija y scroll interno. La galería se ajusta al viewport sin un contenedor exterior con borde ni una barra de scroll adicional.

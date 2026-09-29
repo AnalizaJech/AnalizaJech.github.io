@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Mail, CheckCircle2 } from "lucide-react";
+import ProjectTypeSelect from "./ProjectTypeSelect";
 export default function Contact() {
   const [state, setState] = useState<"idle" | "sending" | "success" | "error">(
     "idle",
@@ -138,15 +139,7 @@ export default function Contact() {
               />
             </label>
           </div>
-          <label>
-            ¿Qué tienes en mente?
-            <select name="project_type">
-              <option>Un proyecto web</option>
-              <option>Diseño UX/UI</option>
-              <option>Una colaboración</option>
-              <option>Otra idea</option>
-            </select>
-          </label>
+          <ProjectTypeSelect />
           <label>
             Cuéntame tu idea
             <textarea
