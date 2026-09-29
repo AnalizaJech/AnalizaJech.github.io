@@ -21,6 +21,7 @@ import {
 import { projects, type Project } from "./data/projects";
 import ProjectGallery from "./components/ProjectGallery";
 import Contact from "./components/Contact";
+import PortraitRotator from "./components/PortraitRotator";
 const featured = projects.filter((project) => project.featured);
 const videos = [
   { id: "ZtC5TGLyKJs", title: "Programación y desarrollo web" },
@@ -125,45 +126,31 @@ export default function App() {
             <p className="hero-description">
               Conecto creatividad, diseño y tecnología para construir
               experiencias que dan ganas de usar.
-              <br />
-              <strong>Esto es Analiza Jech.</strong>
             </p>
             <div className="hero-actions">
               <a className="button button-blue" href="#projects">
                 Explora mi trabajo <ArrowUpRight size={19} />
               </a>
               <a
-                className="cv-link"
+                className="button button-outline"
                 href="/documents/jorge-caceres-cv-ats.pdf"
                 download
               >
                 Descargar CV <ArrowDown size={16} />
               </a>
             </div>
-            <div className="hero-disciplines">
-              <span>DESARROLLO FRONTEND</span>
-              <span>DISEÑO UX/UI</span>
-              <span>CREACIÓN DIGITAL</span>
-            </div>
           </div>
           <div className="hero-visual">
             <div className="portrait-number">01 — IDENTIDAD CREATIVA</div>
             <div className="portrait-window">
-              <img
-                src="/media/jorge-editorial-v5.webp"
-                alt="Retrato creativo de Jorge Cáceres con expresión cálida y segura"
-                fetchPriority="high"
-                width={1120}
-                height={1400}
+              <PortraitRotator
+                images={[
+                  "/media/jorge-editorial-v5.webp",
+                  "/media/jorge-editorial-pose-2.webp",
+                ]}
+                label="Retratos de Jorge Cáceres"
+                priority
               />
-              <div className="portrait-overlay">
-                <span>
-                  Jorge Enrique
-                  <br />
-                  Cáceres Hernández
-                </span>
-                <ArrowUpRight size={30} />
-              </div>
             </div>
           </div>
           <div className="hero-foot">
@@ -406,10 +393,12 @@ export default function App() {
             <Reveal>
               <div className="about-grid">
                 <div className="about-art">
-                  <img
-                    src="/media/jorge-creative-v5.webp"
-                    alt="Retrato creativo de Jorge inspirado en sus fotos"
-                    loading="lazy"
+                  <PortraitRotator
+                    images={[
+                      "/media/jorge-creative-v5.webp",
+                      "/media/jorge-creative-pose-2.webp",
+                    ]}
+                    label="Jorge en su lado creativo"
                   />
                   <span className="about-art-label">
                     <Sparkles size={16} /> EL LADO CREATIVO DE JECH
@@ -428,9 +417,8 @@ export default function App() {
                     <em>Exploro el porqué.</em>
                   </h2>
                   <p>
-                    Soy Jorge Enrique Cáceres Hernández. Me interesa cómo una
-                    idea se convierte en algo que una persona puede entender,
-                    disfrutar y usar.
+                    Me interesa cómo una idea se convierte en algo que una
+                    persona puede entender, disfrutar y usar.
                   </p>
                   <p>
                     Mi trabajo cruza desarrollo frontend y diseño UX/UI. Mi

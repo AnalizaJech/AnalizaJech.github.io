@@ -31,3 +31,6 @@ Image Gen integrada. Editar los últimos retratos proporcionados por Jorge como 
 - `public/media/jorge-editorial-v5.webp`: retrato vertical con cabeza más erguida, hombros ligeramente girados y mirada segura con sonrisa sutil.
 - `public/media/jorge-creative-v5.webp`: retrato horizontal, persona a la derecha, espacio a la izquierda; una mano en el bolsillo y otra sujetando naturalmente la solapa del saco, misma identidad y peinado.
 
+
+## Rotación de poses
+Image Gen integrada. Referencias: retratos versión 5. Preservar rostro, peinado estructurado y traje/camisa negros sin corbata. Retrato vertical con brazos cruzados y sonrisa sutil; horizontal sentado en banco carbón, manos descansando naturalmente y persona a la derecha. Fotografía nítida de estudio, sin texto ni marcas. Archivos: public/media/jorge-editorial-pose-2.webp y public/media/jorge-creative-pose-2.webp.
