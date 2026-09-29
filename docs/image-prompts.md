@@ -23,3 +23,11 @@ Herramienta: Image Gen integrada. Ambas referencias son de la misma persona: ret
 
 - `public/media/jorge-editorial-v4.webp`: retrato vertical editorial, hombros en tres cuartos, mirada cálida y segura, sonrisa sutil natural. Cabello de largo medio peinado lateralmente con volumen controlado. Terno completamente negro y camisa negra de cuello abierto, SIN CORBATA. Fondo carbón, luz suave, piel natural y detalle nítido. Sin prendas azules, texto ni marcas.
 - `public/media/jorge-creative-v4.webp`: retrato horizontal coherente con el anterior y ambas referencias. Persona a la derecha y espacio negativo a la izquierda. Misma identidad, cabello y vestuario totalmente negro sin corbata. Pose relajada con una mano en el bolsillo y otra junto al saco; sonrisa sutil y mirada de confianza. Fondo arquitectónico carbón, luz de contorno discreta. Sin texto ni marcas.
+
+## Peinado estructurado y poses · versión 5
+
+Image Gen integrada. Editar los últimos retratos proporcionados por Jorge como base de identidad y fotografía. Las ilustraciones son exclusivamente referencias de peinado y postura, sin sustituir el rostro ni convertir la imagen en dibujo. Cabello negro de largo medio con raya lateral, onda definida hacia arriba y atrás, mechones ordenados, laterales controlados y frente despejada. Volumen moderado, sin flequillo pesado ni rapado. Mantener rostro, piel natural, terno y camisa negros de cuello abierto sin corbata, fondo carbón y nitidez fotográfica.
+
+- `public/media/jorge-editorial-v5.webp`: retrato vertical con cabeza más erguida, hombros ligeramente girados y mirada segura con sonrisa sutil.
+- `public/media/jorge-creative-v5.webp`: retrato horizontal, persona a la derecha, espacio a la izquierda; una mano en el bolsillo y otra sujetando naturalmente la solapa del saco, misma identidad y peinado.
+
