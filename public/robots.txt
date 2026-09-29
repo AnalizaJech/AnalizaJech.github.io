@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://analizajech.github.io/sitemap.xml
