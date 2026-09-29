@@ -134,7 +134,7 @@ export default function App() {
               </a>
               <a
                 className="cv-link"
-                href="/documents/jorge-caceres-cv-2025.pdf"
+                href="/documents/jorge-caceres-cv-ats.pdf"
                 download
               >
                 Descargar CV <ArrowDown size={16} />
