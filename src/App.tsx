@@ -5,6 +5,7 @@ import useSectionNavigation from "./components/useSectionNavigation";
 import {
   ArrowUpRight,
   ArrowDown,
+  Download,
   ArrowUp,
   ChevronLeft,
   ChevronRight,
@@ -46,6 +47,44 @@ export default function App() {
     document.addEventListener("keydown", escape);
     return () => document.removeEventListener("keydown", escape);
   }, []);
+  useEffect(() => {
+    if (!menu) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const content = document.querySelector("main");
+    const footer = document.querySelector("footer");
+    content?.setAttribute("inert", "");
+    footer?.setAttribute("inert", "");
+    const header = document.querySelector<HTMLElement>(".site-header");
+    const trap = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") return;
+      const nodes = [
+        ...(header?.querySelectorAll<HTMLElement>("a, button") ?? []),
+      ];
+      const first = nodes[0],
+        last = nodes[nodes.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      }
+      if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+    const resize = () => {
+      if (window.innerWidth > 800) setMenu(false);
+    };
+    document.addEventListener("keydown", trap);
+    window.addEventListener("resize", resize);
+    return () => {
+      document.body.style.overflow = previous;
+      content?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+      document.removeEventListener("keydown", trap);
+      window.removeEventListener("resize", resize);
+    };
+  }, [menu]);
   return (
     <>
       <a className="skip-link" href="#main">
@@ -56,7 +95,7 @@ export default function App() {
         style={{ scaleX: progress }}
         aria-hidden="true"
       />
-      <header className="site-header">
+      <header className={`site-header${menu ? " menu-is-open" : ""}`}>
         <a href="#home" className="brand" aria-label="Analiza Jech, inicio">
           <span className="brand-mark">
             aj<span>✳</span>
@@ -136,7 +175,7 @@ export default function App() {
                 href="/documents/jorge-caceres-cv-ats.pdf"
                 download
               >
-                Descargar CV <ArrowDown size={16} />
+                Descargar CV <Download size={18} />
               </a>
             </div>
           </div>
@@ -147,6 +186,7 @@ export default function App() {
                 images={[
                   "/media/jorge-editorial-v5.webp",
                   "/media/jorge-editorial-pose-2.webp",
+                  "/media/jorge-editorial-pose-3.webp",
                 ]}
                 label="Retratos de Jorge Cáceres"
                 priority
@@ -397,6 +437,7 @@ export default function App() {
                     images={[
                       "/media/jorge-creative-v5.webp",
                       "/media/jorge-creative-pose-2.webp",
+                      "/media/jorge-creative-pose-3.webp",
                     ]}
                     label="Jorge en su lado creativo"
                   />

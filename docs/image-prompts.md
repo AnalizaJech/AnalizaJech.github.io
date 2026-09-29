@@ -34,3 +34,6 @@ Image Gen integrada. Editar los últimos retratos proporcionados por Jorge como 
 
 ## Rotación de poses
 Image Gen integrada. Referencias: retratos versión 5. Preservar rostro, peinado estructurado y traje/camisa negros sin corbata. Retrato vertical con brazos cruzados y sonrisa sutil; horizontal sentado en banco carbón, manos descansando naturalmente y persona a la derecha. Fotografía nítida de estudio, sin texto ni marcas. Archivos: public/media/jorge-editorial-pose-2.webp y public/media/jorge-creative-pose-2.webp.
+
+## Terceras poses
+Image Gen integrada con retratos versión 5 como identidad. Misma persona, peinado estructurado y traje/camisa negros sin corbata. Vertical con una mano ajustando la solapa y sonrisa cálida; horizontal con brazos cruzados y persona a la derecha. Fondo carbón, fotografía realista, sin texto ni marcas. Archivos: public/media/jorge-editorial-pose-3.webp y public/media/jorge-creative-pose-3.webp.

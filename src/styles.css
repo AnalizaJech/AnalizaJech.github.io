@@ -4,7 +4,7 @@
   color: #e9edf7;
   background: #0a0c12;
   font-synthesis: none;
-  --blue: #3468ff;
+  --blue: #5485ff;
   --muted: #979eaf;
   --line: #252a37;
   --surface: #11151f;
@@ -1866,37 +1866,6 @@ html {
 .portrait-rotator img.is-active {
   opacity: 1;
 }
-.portrait-controls {
-  position: absolute;
-  z-index: 3;
-  bottom: 14px;
-  right: 14px;
-  display: flex;
-  align-items: center;
-  padding: 3px;
-  border-radius: 999px;
-  background: #090d17c9;
-}
-.portrait-controls button {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border: 0;
-  border-radius: 50%;
-  color: white;
-  background: transparent;
-  cursor: pointer;
-}
-.portrait-controls button span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #8490a6;
-}
-.portrait-controls button[aria-pressed="true"] span {
-  background: #fff;
-}
 .about-art-label,
 .about-art-word {
   pointer-events: none;
@@ -1937,4 +1906,77 @@ html {
 .portrait-window .portrait-rotator img,
 .about-art .portrait-rotator img {
   animation: none;
+}
+
+/* Brand blue, uniform portrait frames and an opaque mobile navigation. */
+.button-blue {
+  background: var(--blue);
+  color: #081225;
+}
+.button-blue:hover {
+  background: #78a0ff;
+}
+.portrait-window,
+.about-art {
+  border-radius: 24px;
+  border: 1px solid #28344a;
+}
+.portrait-rotator img {
+  transition: opacity 550ms ease;
+}
+.select-trigger,
+.select-trigger[data-state="open"],
+.select-content,
+.select-item,
+.select-item * {
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .site-header {
+    background: #0a0c12;
+    backdrop-filter: none;
+  }
+  .site-header.menu-is-open .brand,
+  .site-header.menu-is-open .menu-button {
+    position: relative;
+    z-index: 2;
+  }
+  .site-header nav.open {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    background: #0a0c12;
+    backdrop-filter: none;
+    padding: 120px 28px max(36px, env(safe-area-inset-bottom));
+    border: 0;
+    gap: 26px;
+    justify-content: center;
+    z-index: 1;
+    overflow-y: auto;
+  }
+  .site-header nav.open a {
+    font-size: clamp(28px, 6vw, 46px);
+    line-height: 1.3;
+    padding-block: 8px;
+  }
+  .site-header nav.open .nav-cta {
+    margin-top: 15px;
+    border-radius: 999px;
+    padding: 18px 24px;
+    font-size: 24px;
+  }
+  .site-header nav.open .nav-cta svg {
+    width: 24px;
+    height: 24px;
+  }
+  .portrait-window,
+  .about-art {
+    border-radius: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait-rotator img {
+    transition: none;
+  }
 }
