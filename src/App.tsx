@@ -150,8 +150,8 @@ export default function App() {
             <div className="portrait-number">01 — IDENTIDAD CREATIVA</div>
             <div className="portrait-window">
               <img
-                src="/media/jorge-editorial-v2.webp"
-                alt="Retrato de Jorge Cáceres restaurado a partir de su foto"
+                src="/media/jorge-editorial-v3.webp"
+                alt="Retrato creativo de Jorge Cáceres con expresión cálida y segura"
                 fetchPriority="high"
                 width={1120}
                 height={1400}
@@ -407,7 +407,7 @@ export default function App() {
               <div className="about-grid">
                 <div className="about-art">
                   <img
-                    src="/media/jorge-creative-v2.webp"
+                    src="/media/jorge-creative-v3.webp"
                     alt="Retrato creativo de Jorge inspirado en sus fotos"
                     loading="lazy"
                   />
@@ -560,3 +560,4 @@ export default function App() {
     </>
   );
 }
+

@@ -16,3 +16,10 @@ Las imágenes anteriores se retiraron del sitio porque la fotografía de 200 px 
 
 - `public/media/jorge-editorial-v2.webp`: restauración editorial frontal, misma geometría facial, ojos, nariz, labios y cabello de la foto original; traje azul marino, camisa negra y corbata gris azulada. Iluminación de estudio sobre fondo carbón/cobalto. Piel natural, detalle nítido, sin texto ni embellecimiento hacia un rostro diferente.
 - `public/media/jorge-creative-v2.webp`: retrato horizontal de la misma persona del retrato restaurado, confirmado con la foto original. Persona a la derecha, espacio negativo a la izquierda, vestuario coherente y fondo arquitectónico carbón/cobalto. Preservar identidad y detalle fotográfico, sin texto ni marcas.
+
+## Retratos con personalidad · versión actual
+
+Herramienta: Image Gen integrada. Referencias principales: las tres fotos actuales suministradas por Jorge; la foto más cercana al rostro tiene prioridad. Ya no se usa el retrato formal antiguo como identidad principal.
+
+- `public/media/jorge-editorial-v3.webp`: retrato vertical de la misma persona de las fotos actuales; preservar rostro joven y delgado, ojos almendrados, nariz, labios y mandíbula. Expresión cálida con sonrisa sutil y mirada segura. Cabello oscuro de largo medio con barrido lateral y volumen controlado. Pose en tres cuartos mirando a cámara, hombros relajados, mano ajustando suavemente la solapa. Saco azul marino y camisa cobalto de cuello abierto, sin corbata. Fondo carbón/cobalto, detalle fotográfico nítido, sin texto ni marcas.
+- `public/media/jorge-creative-v3.webp`: imagen horizontal coherente con el nuevo retrato y las fotos actuales. Persona a la derecha y espacio negativo a la izquierda. Misma identidad y vestuario, cabello medio bien peinado sin cubrir los ojos. Pose natural y abierta, una mano en el bolsillo y otra haciendo un gesto de presentación; sonrisa cálida un poco más visible y mirada de confianza. Fondo arquitectónico carbón/cobalto. Preservar juventud e identidad, sin convertir el rostro en otro modelo.
