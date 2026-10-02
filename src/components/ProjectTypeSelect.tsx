@@ -1,18 +1,25 @@
 import { useState, useRef, useEffect } from "react";
 import * as Select from "@radix-ui/react-select";
 import { Check, ChevronDown } from "lucide-react";
-export default function ProjectTypeSelect() {
-  const [value, setValue] = useState("Un proyecto web");
+import { copy, type Language } from "../i18n";
+const values = ["web", "ux", "collaboration", "other"];
+export default function ProjectTypeSelect({
+  language,
+}: {
+  language: Language;
+}) {
+  const t = copy[language];
+  const [value, setValue] = useState("web");
   const trigger = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     const form = trigger.current?.closest("form");
-    const reset = () => setValue("Un proyecto web");
+    const reset = () => setValue("web");
     form?.addEventListener("reset", reset);
     return () => form?.removeEventListener("reset", reset);
   }, []);
   return (
     <div className="select-field">
-      <span id="project-type-label">¿Qué tienes en mente?</span>
+      <span id="project-type-label">{t.ideaType}</span>
       <Select.Root name="project_type" value={value} onValueChange={setValue}>
         <Select.Trigger
           ref={trigger}
@@ -32,14 +39,13 @@ export default function ProjectTypeSelect() {
             collisionPadding={16}
           >
             <Select.Viewport>
-              {[
-                "Un proyecto web",
-                "Diseño UX/UI",
-                "Una colaboración",
-                "Otra idea",
-              ].map((value) => (
-                <Select.Item className="select-item" value={value} key={value}>
-                  <Select.ItemText>{value}</Select.ItemText>
+              {values.map((option, index) => (
+                <Select.Item
+                  className="select-item"
+                  value={option}
+                  key={option}
+                >
+                  <Select.ItemText>{t.projectTypes[index]}</Select.ItemText>
                   <Select.ItemIndicator>
                     <Check size={15} />
                   </Select.ItemIndicator>

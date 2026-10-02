@@ -37,6 +37,7 @@ El build comprueba los tipos y genera `dist/`. Esta carpeta y `node_modules/` es
 
 - `src/App.tsx`: composición del portafolio y navegación.
 - `src/data/projects.ts`: catálogo, enlaces, categorías, tecnologías e imágenes.
+- `src/i18n.ts`: textos en español e inglés, traducciones de proyectos y categorías.
 - `src/components/ProjectGallery.tsx`: galería accesible con imágenes, teclado y recorridos animados bajo demanda.
 - `src/components/Contact.tsx`: formulario Web3Forms, validación, envío y recuperación ante errores.
 - `src/styles.css`: identidad visual, adaptación móvil y movimiento reducido.
@@ -64,3 +65,5 @@ Build y tipos; revisión visual en Chromium; anchos 320, 390, 768, 820, 1024 y 1
 ## Navegación y controles
 
 Navbar persistente con posición sticky, indicador de sección activa y offset medido según su altura. El scroll de rueda y táctil conserva el comportamiento del navegador; solo las anclas usan desplazamiento suave y respetan movimiento reducido. Motion anima entradas y transiciones. Radix gestiona la galería y el selector con teclado, foco y Escape. El mensaje tiene altura fija y scroll interno. La galería se ajusta al viewport sin un contenedor exterior con borde ni una barra de scroll adicional.
+
+El control ES/EN cambia el idioma del contenido, proyectos, galerías y formulario sin recargar la página. La preferencia se guarda en `localStorage`, actualiza `html[lang]`, el título y la descripción de la página, y se restaura al regresar. El acento cian de la interfaz se define en `--blue` y `--blue-light` en `src/styles.css`.

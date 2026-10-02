@@ -19,27 +19,38 @@ import {
   Images,
   Sparkles,
 } from "lucide-react";
-import { projects, type Project } from "./data/projects";
+import { categoryLabel, copy, localizedProjects, type Language } from "./i18n";
 import ProjectGallery from "./components/ProjectGallery";
 import Contact from "./components/Contact";
 import PortraitRotator from "./components/PortraitRotator";
-const featured = projects.filter((project) => project.featured);
-const videos = [
-  { id: "ZtC5TGLyKJs", title: "Programación y desarrollo web" },
-  { id: "nyHikqNBsbQ", title: "Explora mis tutoriales" },
-  { id: "iPPCYmTR9kE", title: "Creatividad y tecnología" },
-];
+const videoIds = ["ZtC5TGLyKJs", "nyHikqNBsbQ", "iPPCYmTR9kE"];
 export default function App() {
+  const [language, setLanguage] = useState<Language>(() =>
+    localStorage.getItem("analiza-jech-language") === "en" ? "en" : "es",
+  );
+  const t = copy[language];
+  const projects = localizedProjects(language);
+  const featured = projects.filter((project) => project.featured);
+  const videos = videoIds.map((id, index) => ({ id, title: t.videos[index] }));
   const [menu, setMenu] = useState(false);
   const [active, setActive] = useState(0);
-  const [filter, setFilter] = useState("Todos");
-  const [gallery, setGallery] = useState<Project | null>(null);
+  const [filter, setFilter] = useState("all");
+  const [galleryId, setGalleryId] = useState<string | null>(null);
   const [section, setSection] = useState("home");
   const closeMenu = useCallback(() => setMenu(false), []);
   useSectionNavigation(closeMenu, setSection);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 32 });
   const selected = featured[active];
+  useEffect(() => {
+    localStorage.setItem("analiza-jech-language", language);
+    document.documentElement.lang = language;
+    document.title = t.pageTitle;
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", t.metaDescription);
+  }, [language, t]);
+  const gallery = projects.find((project) => project.id === galleryId) ?? null;
   useEffect(() => {
     const escape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setMenu(false);
@@ -88,7 +99,7 @@ export default function App() {
   return (
     <>
       <a className="skip-link" href="#main">
-        Saltar al contenido
+        {t.skip}
       </a>
       <motion.div
         className="scroll-progress"
@@ -96,7 +107,7 @@ export default function App() {
         aria-hidden="true"
       />
       <header className={`site-header${menu ? " menu-is-open" : ""}`}>
-        <a href="#home" className="brand" aria-label="Analiza Jech, inicio">
+        <a href="#home" className="brand" aria-label={t.homeLabel}>
           <span className="brand-mark">
             aj<span>✳</span>
           </span>
@@ -109,12 +120,12 @@ export default function App() {
         <nav
           className={menu ? "open" : ""}
           id="navigation"
-          aria-label="Principal"
+          aria-label={t.navLabel}
         >
           {[
-            ["#projects", "Proyectos"],
-            ["#about", "Sobre mí"],
-            ["#content", "Contenido"],
+            ["#projects", t.nav[0]],
+            ["#about", t.nav[1]],
+            ["#content", t.nav[2]],
           ].map(([href, label]) => (
             <a
               key={href}
@@ -125,18 +136,28 @@ export default function App() {
               {label}
             </a>
           ))}
+          <button
+            className="language-switch"
+            type="button"
+            aria-label={t.languageLabel}
+            onClick={() => setLanguage(language === "es" ? "en" : "es")}
+          >
+            <span aria-hidden="true">{language === "es" ? "ES" : "EN"}</span>
+            <span className="language-switch-divider" aria-hidden="true" />
+            <span aria-hidden="true">{language === "es" ? "EN" : "ES"}</span>
+          </button>
           <a
             className="nav-cta"
             href="#contact"
             aria-current={section === "contact" ? "location" : undefined}
             onClick={() => setMenu(false)}
           >
-            Hablemos <ArrowUpRight size={16} />
+            {t.contactNav} <ArrowUpRight size={16} />
           </a>
         </nav>
         <button
           className="menu-button"
-          aria-label={menu ? "Cerrar menú" : "Abrir menú"}
+          aria-label={menu ? t.menuClose : t.menuOpen}
           aria-controls="navigation"
           aria-expanded={menu}
           onClick={() => setMenu(!menu)}
@@ -148,39 +169,36 @@ export default function App() {
         <section className="hero container" id="home">
           <div className="hero-copy">
             <p className="kicker">
-              <span className="signal" /> JORGE CÁCERES / FRONTEND & UX/UI
+              <span className="signal" /> {t.heroKicker}
             </p>
             <h1>
-              Diseño que
+              {t.hero1}
               <br />
-              se siente.
+              {t.hero2}
               <br />
               <span className="hero-last">
-                Código que <em>vive.</em>
+                {t.hero3} <em>{t.hero4}</em>
                 <span className="hero-asterisk" aria-hidden="true">
                   ✳
                 </span>
               </span>
             </h1>
-            <p className="hero-description">
-              Conecto creatividad, diseño y tecnología para construir
-              experiencias que dan ganas de usar.
-            </p>
+            <p className="hero-description">{t.heroDescription}</p>
             <div className="hero-actions">
               <a className="button button-blue" href="#projects">
-                Explora mi trabajo <ArrowUpRight size={19} />
+                {t.exploreWork} <ArrowUpRight size={19} />
               </a>
               <a
                 className="button button-outline"
                 href="/documents/jorge-caceres-cv-ats.pdf"
                 download
               >
-                Descargar CV <Download size={18} />
+                {t.downloadCv} <Download size={18} />
               </a>
             </div>
           </div>
           <div className="hero-visual">
-            <div className="portrait-number">01 — IDENTIDAD CREATIVA</div>
+            <div className="portrait-number">{t.portraitNumber}</div>
             <div className="portrait-window">
               <PortraitRotator
                 images={[
@@ -188,48 +206,48 @@ export default function App() {
                   "/media/jorge-editorial-pose-2.webp",
                   "/media/jorge-editorial-pose-3.webp",
                 ]}
-                label="Retratos de Jorge Cáceres"
+                label={t.portraitLabel}
                 priority
               />
             </div>
           </div>
           <div className="hero-foot">
-            <span>LA CURIOSIDAD ES MI PUNTO DE PARTIDA.</span>
+            <span>{t.heroFoot}</span>
             <a href="#projects">
-              SCROLL PARA EXPLORAR <ArrowDown size={16} />
+              {t.scroll} <ArrowDown size={16} />
             </a>
           </div>
         </section>
         <div className="manifesto-band" aria-hidden="true">
-          <span>DISEÑO CON INTENCIÓN</span>
+          <span>{t.manifesto[0]}</span>
           <span>✳</span>
-          <span>CÓDIGO CON CURIOSIDAD</span>
+          <span>{t.manifesto[1]}</span>
           <span>✳</span>
-          <span>EXPERIENCIAS CON PERSONALIDAD</span>
+          <span>{t.manifesto[2]}</span>
         </div>
         <section className="section work-section" id="projects">
           <div className="container">
             <Reveal>
               <div className="section-heading">
                 <div>
-                  <p className="kicker">01 / IDEAS EN FUNCIONAMIENTO</p>
+                  <p className="kicker">{t.workKicker}</p>
                   <h2>
-                    El trabajo habla.
+                    {t.workTitle1}
                     <br />
-                    <span>Explóralo tú mismo.</span>
+                    <span>{t.workTitle2}</span>
                   </h2>
                 </div>
                 <p>
-                  Productos para escribir, diseñar y practicar.
+                  {t.workDescription1}
                   <br />
-                  Experiencias reales, listas para probar.
+                  {t.workDescription2}
                 </p>
               </div>
             </Reveal>
             <div
               className="project-tabs"
               role="tablist"
-              aria-label="Proyectos destacados"
+              aria-label={t.featuredLabel}
             >
               {featured.map((project, index) => (
                 <button
@@ -276,8 +294,8 @@ export default function App() {
             >
               <button
                 className={`featured-image project-${selected.id}`}
-                onClick={() => setGallery(selected)}
-                aria-label={`Explorar imágenes de ${selected.title}`}
+                onClick={() => setGalleryId(selected.id)}
+                aria-label={`${t.exploreImages} ${selected.title}`}
                 style={{ backgroundColor: selected.accent }}
               >
                 <div className="project-art-title">
@@ -300,13 +318,15 @@ export default function App() {
                   />
                 </div>
                 <div className="preview-pill">
-                  <Images size={16} /> {selected.images.length} vistas ·
-                  Explorar <ArrowUpRight size={16} />
+                  <Images size={16} /> {selected.images.length}{" "}
+                  {selected.images.length === 1 ? t.view : t.views} ·{t.explore}{" "}
+                  <ArrowUpRight size={16} />
                 </div>
               </button>
               <div className="featured-copy">
                 <p className="kicker">
-                  {selected.category.toUpperCase()} / PROYECTO DESTACADO
+                  {categoryLabel(selected.category, language).toUpperCase()} /{" "}
+                  {t.featured}
                 </p>
                 <h3>{selected.title}</h3>
                 <p className="project-eyebrow">{selected.eyebrow}</p>
@@ -323,7 +343,7 @@ export default function App() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Abrir demo <ArrowUpRight size={17} />
+                    {t.openDemo} <ArrowUpRight size={17} />
                   </a>
                   <a
                     className="button button-outline code-link"
@@ -331,7 +351,7 @@ export default function App() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Github size={17} /> Ver código
+                    <Github size={17} /> {t.viewCode}
                   </a>
                 </div>
                 <div className="project-pagination">
@@ -342,7 +362,7 @@ export default function App() {
                   <div>
                     <button
                       className="icon-button"
-                      aria-label="Proyecto anterior"
+                      aria-label={t.previousProject}
                       onClick={() =>
                         setActive(
                           (active + featured.length - 1) % featured.length,
@@ -353,7 +373,7 @@ export default function App() {
                     </button>
                     <button
                       className="icon-button"
-                      aria-label="Proyecto siguiente"
+                      aria-label={t.nextProject}
                       onClick={() => setActive((active + 1) % featured.length)}
                     >
                       <ChevronRight />
@@ -363,21 +383,17 @@ export default function App() {
               </div>
             </article>
             <div className="catalogue-heading">
-              <h3>Más ideas. Más posibilidades.</h3>
-              <div
-                className="filters"
-                role="group"
-                aria-label="Filtrar proyectos"
-              >
-                {["Todos", "Herramientas", "Interactivos", "Web"].map(
-                  (value) => (
+              <h3>{t.moreIdeas}</h3>
+              <div className="filters" role="group" aria-label={t.filterLabel}>
+                {["all", "Herramientas", "Interactivos", "Web"].map(
+                  (value, index) => (
                     <button
                       className={filter === value ? "active" : ""}
                       key={value}
                       aria-pressed={filter === value}
                       onClick={() => setFilter(value)}
                     >
-                      {value}
+                      {t.filters[index]}
                     </button>
                   ),
                 )}
@@ -386,16 +402,15 @@ export default function App() {
             <div className="project-grid">
               {projects
                 .filter(
-                  (project) =>
-                    filter === "Todos" || project.category === filter,
+                  (project) => filter === "all" || project.category === filter,
                 )
                 .map((project) => (
                   <article className="project-card" key={project.id}>
                     <button
                       className="card-preview"
                       style={{ backgroundColor: project.accent }}
-                      onClick={() => setGallery(project)}
-                      aria-label={`Vista previa de ${project.title}`}
+                      onClick={() => setGalleryId(project.id)}
+                      aria-label={`${t.preview} ${project.title}`}
                     >
                       <img
                         src={project.images[0].src}
@@ -403,14 +418,14 @@ export default function App() {
                         loading="lazy"
                       />
                       <span>
-                        <Images size={15} /> Explorar
+                        <Images size={15} /> {t.explore}
                       </span>
                     </button>
                     <div className="card-meta">
-                      <span>{project.category}</span>
+                      <span>{categoryLabel(project.category, language)}</span>
                       <span>
                         {project.images.length}{" "}
-                        {project.images.length === 1 ? "vista" : "vistas"}
+                        {project.images.length === 1 ? t.view : t.views}
                       </span>
                     </div>
                     <a
@@ -429,9 +444,9 @@ export default function App() {
                         href={project.repo}
                         target="_blank"
                         rel="noreferrer"
-                        aria-label={`Ver código de ${project.title} en GitHub`}
+                        aria-label={`${t.viewCode}: ${project.title} — GitHub`}
                       >
-                        <Github size={16} /> Ver código{" "}
+                        <Github size={16} /> {t.viewCode}{" "}
                         <ArrowUpRight size={15} />
                       </a>
                     )}
@@ -451,33 +466,27 @@ export default function App() {
                       "/media/jorge-creative-pose-2.webp",
                       "/media/jorge-creative-pose-3.webp",
                     ]}
-                    label="Jorge en su lado creativo"
+                    label={t.aboutPortrait}
                   />
                   <span className="about-art-label">
-                    <Sparkles size={16} /> EL LADO CREATIVO DE JECH
+                    <Sparkles size={16} /> {t.creativeSide}
                   </span>
                   <span className="about-art-word" aria-hidden="true">
-                    curioso
+                    {t.curious1}
                     <br />
-                    por naturaleza.
+                    {t.curious2}
                   </span>
                 </div>
                 <div className="about-copy">
-                  <p className="kicker">02 / DETRÁS DE CADA PIXEL</p>
+                  <p className="kicker">{t.aboutKicker}</p>
                   <h2>
-                    No solo construyo.
+                    {t.aboutTitle1}
                     <br />
-                    <em>Exploro el porqué.</em>
+                    <em>{t.aboutTitle2}</em>
                   </h2>
+                  <p>{t.aboutP1}</p>
                   <p>
-                    Me interesa cómo una idea se convierte en algo que una
-                    persona puede entender, disfrutar y usar.
-                  </p>
-                  <p>
-                    Mi trabajo cruza desarrollo frontend y diseño UX/UI. Mi
-                    curiosidad también me lleva a la música, la edición de video
-                    y la creación de contenido. Distintas formas de hacer lo
-                    mismo: <strong>dar vida a una idea.</strong>
+                    {t.aboutP2} <strong>{t.aboutBold}</strong>
                   </p>
                   <a
                     className="inline-link"
@@ -485,7 +494,7 @@ export default function App() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Conoce mi recorrido <ArrowUpRight size={18} />
+                    {t.aboutLink} <ArrowUpRight size={18} />
                   </a>
                 </div>
               </div>
@@ -494,18 +503,18 @@ export default function App() {
               {[
                 {
                   icon: PenTool,
-                  title: "Pensar en personas",
-                  text: "Figma · Prototipado · Usabilidad · Diseño responsive",
+                  title: t.capabilities[0].title,
+                  text: t.capabilities[0].text,
                 },
                 {
                   icon: Code2,
-                  title: "Construir experiencias",
-                  text: "React · Angular · TypeScript · JavaScript · HTML & CSS",
+                  title: t.capabilities[1].title,
+                  text: t.capabilities[1].text,
                 },
                 {
                   icon: Layers,
-                  title: "Conectar las piezas",
-                  text: "Laravel · Node.js · NestJS · SQL · Git · GitHub",
+                  title: t.capabilities[2].title,
+                  text: t.capabilities[2].text,
                 },
               ].map(({ icon: Icon, title, text }, index) => (
                 <div key={title}>
@@ -524,11 +533,11 @@ export default function App() {
           <Reveal>
             <div className="section-heading">
               <div>
-                <p className="kicker">03 / APRENDER EN VOZ ALTA</p>
+                <p className="kicker">{t.contentKicker}</p>
                 <h2>
-                  Lo que descubro,
+                  {t.contentTitle1}
                   <br />
-                  <span>lo comparto.</span>
+                  <span>{t.contentTitle2}</span>
                 </h2>
               </div>
               <a
@@ -537,7 +546,7 @@ export default function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Visita mi canal <ArrowUpRight size={18} />
+                {t.channel} <ArrowUpRight size={18} />
               </a>
             </div>
           </Reveal>
@@ -563,7 +572,7 @@ export default function App() {
                       )
                         img.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
                     }}
-                    alt={`Video de Analiza Jech: ${video.title}`}
+                    alt={`${t.videoAlt} ${video.title}`}
                     loading="lazy"
                   />
                   <span>
@@ -579,7 +588,7 @@ export default function App() {
             ))}
           </div>
         </section>
-        <Contact />
+        <Contact language={language} />
       </main>
       <footer className="container footer">
         <a href="#home" className="brand">
@@ -589,14 +598,18 @@ export default function App() {
           <span>ANALIZA JECH</span>
         </a>
         <p>
-          © {new Date().getFullYear()} Jorge Cáceres · Diseño con intención.
+          © {new Date().getFullYear()} Jorge Cáceres · {t.footer}
         </p>
         <a href="#home">
-          Volver arriba <ArrowUp size={15} />
+          {t.backTop} <ArrowUp size={15} />
         </a>
       </footer>
       {gallery && (
-        <ProjectGallery project={gallery} onClose={() => setGallery(null)} />
+        <ProjectGallery
+          project={gallery}
+          language={language}
+          onClose={() => setGalleryId(null)}
+        />
       )}
     </>
   );

@@ -2,7 +2,9 @@ import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Mail, CheckCircle2, Linkedin } from "lucide-react";
 import { SiGithub, SiInstagram, SiTiktok } from "react-icons/si";
 import ProjectTypeSelect from "./ProjectTypeSelect";
-export default function Contact() {
+import { copy, type Language } from "../i18n";
+export default function Contact({ language }: { language: Language }) {
+  const t = copy[language];
   const [state, setState] = useState<"idle" | "sending" | "success" | "error">(
     "idle",
   );
@@ -36,21 +38,18 @@ export default function Contact() {
     <section id="contact" className="contact-section section">
       <div className="container contact-grid">
         <div>
-          <p className="kicker">04 / CONSTRUYAMOS ALGO JUNTOS</p>
+          <p className="kicker">{t.contactKicker}</p>
           <h2>
-            Una buena idea
+            {t.contactTitle1}
             <br />
-            merece una{" "}
+            {t.contactTitle2}{" "}
             <em>
-              gran
+              {t.contactTitle3}
               <br />
-              experiencia.
+              {t.contactTitle4}
             </em>
           </h2>
-          <p className="contact-description">
-            ¿Un proyecto, una colaboración o algo que todavía no tiene nombre?
-            Me gustaría escucharlo.
-          </p>
+          <p className="contact-description">{t.contactDescription}</p>
           <a className="email-link" href="mailto:jc3568248@gmail.com">
             <Mail size={18} /> jc3568248@gmail.com <ArrowUpRight size={20} />
           </a>
@@ -119,17 +118,17 @@ export default function Contact() {
           />
           <div className="form-row">
             <label>
-              Tu nombre
+              {t.name}
               <input
                 name="name"
-                placeholder="¿Cómo te llamas?"
+                placeholder={t.namePlaceholder}
                 autoComplete="name"
                 required
                 maxLength={100}
               />
             </label>
             <label>
-              Tu email
+              {t.email}
               <input
                 name="email"
                 type="email"
@@ -140,27 +139,25 @@ export default function Contact() {
               />
             </label>
           </div>
-          <ProjectTypeSelect />
+          <ProjectTypeSelect language={language} />
           <label>
-            Cuéntame tu idea
+            {t.idea}
             <textarea
               name="message"
-              placeholder="El punto de partida, el reto, lo que te gustaría crear…"
+              placeholder={t.ideaPlaceholder}
               rows={4}
               required
               minLength={10}
               maxLength={5000}
             />
           </label>
-          <p className="form-note">
-            Tu mensaje llega a mi correo mediante Web3Forms.
-          </p>
+          <p className="form-note">{t.formNote}</p>
           <button
             className="button button-blue"
             type="submit"
             disabled={state === "sending"}
           >
-            {state === "sending" ? "Enviando…" : "Enviar mensaje"}
+            {state === "sending" ? t.sending : t.send}
             <ArrowUpRight size={20} />
           </button>
           <div
@@ -170,11 +167,10 @@ export default function Contact() {
           >
             {state === "success" ? (
               <>
-                <CheckCircle2 size={18} /> ¡Gracias! Tu mensaje se envió
-                correctamente.
+                <CheckCircle2 size={18} /> {t.sent}
               </>
             ) : state === "error" ? (
-              "No se pudo enviar. Tu mensaje se conserva; inténtalo otra vez o escríbeme por correo."
+              t.sendError
             ) : (
               ""
             )}

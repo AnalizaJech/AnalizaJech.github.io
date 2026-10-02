@@ -10,13 +10,17 @@ import {
   Images,
 } from "lucide-react";
 import type { Project } from "../data/projects";
+import { copy, type Language } from "../i18n";
 export default function ProjectGallery({
   project,
+  language,
   onClose,
 }: {
   project: Project;
+  language: Language;
   onClose: () => void;
 }) {
+  const t = copy[language];
   const opener = useRef(document.activeElement as HTMLElement | null);
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -74,14 +78,14 @@ export default function ProjectGallery({
             <header className="gallery-header">
               <div>
                 <p className="kicker">
-                  <Images size={13} /> EXPLORAR PROYECTO
+                  <Images size={13} /> {t.galleryKicker}
                 </p>
                 <Dialog.Title asChild>
                   <h2 id="gallery-title">{project.title}</h2>
                 </Dialog.Title>
               </div>
               <Dialog.Close asChild>
-                <button className="icon-button" aria-label="Cerrar galería">
+                <button className="icon-button" aria-label={t.closeGallery}>
                   <X />
                 </button>
               </Dialog.Close>
@@ -97,7 +101,7 @@ export default function ProjectGallery({
                     className="button button-blue"
                     onClick={() => setPlaying(true)}
                   >
-                    Reproducir recorrido
+                    {t.playTour}
                   </button>
                 </div>
               ) : (
@@ -116,7 +120,7 @@ export default function ProjectGallery({
               <div>
                 <button
                   className="icon-button"
-                  aria-label="Imagen anterior"
+                  aria-label={t.previousImage}
                   disabled={project.images.length === 1}
                   onClick={() => move(-1)}
                 >
@@ -127,7 +131,7 @@ export default function ProjectGallery({
                 </span>
                 <button
                   className="icon-button"
-                  aria-label="Imagen siguiente"
+                  aria-label={t.nextImage}
                   disabled={project.images.length === 1}
                   onClick={() => move(1)}
                 >
@@ -146,7 +150,7 @@ export default function ProjectGallery({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Abrir demo <ArrowUpRight size={18} />
+                  {t.openDemo} <ArrowUpRight size={18} />
                 </a>
                 {project.repo && (
                   <a
@@ -155,7 +159,7 @@ export default function ProjectGallery({
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Github size={16} /> Código
+                    <Github size={16} /> {t.code}
                   </a>
                 )}
               </div>
