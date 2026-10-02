@@ -423,6 +423,18 @@ export default function App() {
                       <ArrowUpRight size={20} />
                     </a>
                     <p>{project.description}</p>
+                    {project.repo && (
+                      <a
+                        className="card-repo"
+                        href={project.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Ver código de ${project.title} en GitHub`}
+                      >
+                        <Github size={16} /> Ver código{" "}
+                        <ArrowUpRight size={15} />
+                      </a>
+                    )}
                   </article>
                 ))}
             </div>

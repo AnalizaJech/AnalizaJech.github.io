@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Mail, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Mail, CheckCircle2, Linkedin } from "lucide-react";
+import { SiGithub, SiInstagram, SiTiktok } from "react-icons/si";
 import ProjectTypeSelect from "./ProjectTypeSelect";
 export default function Contact() {
   const [state, setState] = useState<"idle" | "sending" | "success" | "error">(
@@ -59,28 +60,28 @@ export default function Contact() {
               target="_blank"
               rel="noreferrer"
             >
-              GitHub ↗
+              <SiGithub aria-hidden="true" /> GitHub
             </a>
             <a
               href="https://www.linkedin.com/in/analizajech/"
               target="_blank"
               rel="noreferrer"
             >
-              LinkedIn ↗
+              <Linkedin aria-hidden="true" /> LinkedIn
             </a>
             <a
               href="https://www.instagram.com/analizajech/"
               target="_blank"
               rel="noreferrer"
             >
-              Instagram ↗
+              <SiInstagram aria-hidden="true" /> Instagram
             </a>
             <a
               href="https://www.tiktok.com/@analizajech"
               target="_blank"
               rel="noreferrer"
             >
-              TikTok ↗
+              <SiTiktok aria-hidden="true" /> TikTok
             </a>
           </div>
         </div>

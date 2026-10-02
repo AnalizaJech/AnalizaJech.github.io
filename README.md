@@ -2,6 +2,21 @@
 
 Portafolio de Jorge Enrique Cáceres Hernández, construido con React, TypeScript y Vite. Publicación automática en GitHub Pages desde `master` mediante GitHub Actions.
 
+**Sitio:** https://analizajech.github.io/
+
+## Proyectos
+
+| Proyecto               | Demo o presentación                                                             | Código                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Markdown Studio Pro    | [Abrir demo](https://analizajech.github.io/markdown-studio-pro/)                | [Repositorio](https://github.com/AnalizaJech/markdown-studio-pro)         |
+| Cloud Architect Studio | [Abrir demo](https://analizajech.github.io/cloud-architect-studio/)             | [Repositorio](https://github.com/AnalizaJech/cloud-architect-studio)      |
+| TwistyLab              | [Abrir demo](https://analizajech.github.io/twistylab/)                          | [Repositorio](https://github.com/AnalizaJech/twistylab)                   |
+| Banco Crecer           | [Abrir demo](https://analizajech.github.io/Banco-Crecer/)                       | [Repositorio](https://github.com/AnalizaJech/Banco-Crecer)                |
+| TechScan               | [Abrir demo](https://analizajech.github.io/Tech-Scan/)                          | [Repositorio](https://github.com/AnalizaJech/Tech-Scan)                   |
+| InnovaSoft             | [Abrir demo](https://analizajech.github.io/InnovaSoft/)                         | [Repositorio](https://github.com/AnalizaJech/InnovaSoft)                  |
+| JechCommerce           | [Ver presentación](https://www.loom.com/share/4a1e0fb5c3f74c4d9f7b5e071d6a9b66) | [Repositorio frontend](https://github.com/AnalizaJech/JechCommerce-front) |
+| Librería               | [Ver video](https://www.youtube.com/watch?v=nGi3DS0QSzE)                        | [Repositorio](https://github.com/AnalizaJech/Libreria)                    |
+
 ## Desarrollo
 
 ```sh
@@ -32,7 +47,7 @@ El build comprueba los tipos y genera `dist/`. Esta carpeta y `node_modules/` es
 
 ## Agregar proyectos
 
-Agrega un objeto a `projects` en `src/data/projects.ts` y coloca las capturas en `public/projects`. Usa `featured: true` para incluirlo en el showcase; actualmente hay tres proyectos destacados. Los filtros y las galerías se generan desde estos datos. Cada imagen tiene texto alternativo. Los GIF no se reproducen hasta pulsar Reproducir recorrido.
+Agrega un objeto a `projects` en `src/data/projects.ts` y coloca las capturas en `public/projects`. Incluye `url` para la demo o presentación y `repo` para el enlace de código. Usa `featured: true` para incluirlo en el showcase; actualmente hay tres proyectos destacados. Los filtros y las galerías se generan desde estos datos. Cada imagen tiene texto alternativo. Los GIF no se reproducen hasta pulsar Reproducir recorrido.
 
 ## Imágenes
 

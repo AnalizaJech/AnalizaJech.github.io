@@ -32,7 +32,7 @@ export const projects: Project[] = [
     ],
     url: "https://analizajech.github.io/markdown-studio-pro/",
     repo: "https://github.com/AnalizaJech/markdown-studio-pro",
-    accent: "#bdd4c7",
+    accent: "#b8caed",
     featured: true,
   },
   {
@@ -100,6 +100,7 @@ export const projects: Project[] = [
       { src: "/projects/banco-crecer.webp", alt: "Página de Banco Crecer" },
     ],
     url: "https://analizajech.github.io/Banco-Crecer/",
+    repo: "https://github.com/AnalizaJech/Banco-Crecer",
     accent: "#adc7db",
   },
   {
@@ -117,6 +118,7 @@ export const projects: Project[] = [
       },
     ],
     url: "https://analizajech.github.io/Tech-Scan/",
+    repo: "https://github.com/AnalizaJech/Tech-Scan",
     accent: "#d8c4ad",
   },
   {
@@ -134,6 +136,7 @@ export const projects: Project[] = [
       },
     ],
     url: "https://analizajech.github.io/InnovaSoft/",
+    repo: "https://github.com/AnalizaJech/InnovaSoft",
     accent: "#c4b9da",
   },
   {
@@ -151,6 +154,7 @@ export const projects: Project[] = [
       },
     ],
     url: "https://www.loom.com/share/4a1e0fb5c3f74c4d9f7b5e071d6a9b66",
+    repo: "https://github.com/AnalizaJech/JechCommerce-front",
     accent: "#dbc5b6",
   },
   {
@@ -167,6 +171,7 @@ export const projects: Project[] = [
       },
     ],
     url: "https://www.youtube.com/watch?v=nGi3DS0QSzE",
+    repo: "https://github.com/AnalizaJech/Libreria",
     accent: "#b8cad9",
   },
 ];
