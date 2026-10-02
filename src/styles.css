@@ -48,10 +48,6 @@ svg {
 button {
   color: inherit;
 }
-::selection {
-  background: #14677a;
-  color: white;
-}
 :focus-visible {
   outline: 3px solid var(--blue);
   outline-offset: 5px;
@@ -272,6 +268,21 @@ em {
 }
 .button-outline:hover {
   background: #171d2b;
+}
+.channel-button {
+  gap: 12px;
+  border-color: #53627b;
+}
+.channel-button svg:first-child {
+  color: #ff3153;
+  width: 17px;
+  height: 17px;
+}
+.channel-button:hover,
+.channel-button:focus-visible {
+  border-color: var(--blue);
+  background: #103342;
+  color: #e6fbff;
 }
 .cv-link {
   display: flex;
@@ -824,11 +835,6 @@ em {
 .video-grid a:hover img {
   filter: saturate(1);
   transform: scale(1.04);
-}
-.video-grid .kicker {
-  font-size: 8px;
-  margin-bottom: 10px;
-  color: #8190aa;
 }
 .video-grid h3 {
   display: flex;
@@ -1648,6 +1654,14 @@ form textarea,
     background 0.22s,
     box-shadow 0.22s;
 }
+form input:-webkit-autofill,
+form input:-webkit-autofill:hover,
+form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #e8effb;
+  -webkit-box-shadow: 0 0 0 1000px #111e35 inset;
+  box-shadow: 0 0 0 1000px #111e35 inset;
+  caret-color: #e8effb;
+}
 form input:focus-visible,
 form textarea:focus-visible,
 .select-trigger:focus-visible {
@@ -1690,8 +1704,8 @@ form textarea {
   min-width: var(--radix-select-trigger-width);
   max-height: var(--radix-select-content-available-height);
   border: 1px solid #415a82;
-  border-radius: 9px;
-  padding: 5px;
+  border-radius: 26px;
+  padding: 8px;
   background: #14223b;
   box-shadow: 0 15px 45px #0006;
   animation: portrait-enter 0.15s;
@@ -1704,7 +1718,7 @@ form textarea {
   color: #d8e5fd;
   font-size: 12px;
   padding: 11px 12px;
-  border-radius: 5px;
+  border-radius: 999px;
   cursor: pointer;
   outline: 0;
 }

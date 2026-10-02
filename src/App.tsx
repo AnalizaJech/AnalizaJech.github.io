@@ -23,6 +23,7 @@ import { categoryLabel, copy, localizedProjects, type Language } from "./i18n";
 import ProjectGallery from "./components/ProjectGallery";
 import Contact from "./components/Contact";
 import PortraitRotator from "./components/PortraitRotator";
+import { SiYoutube } from "react-icons/si";
 const videoIds = ["ZtC5TGLyKJs", "nyHikqNBsbQ", "iPPCYmTR9kE"];
 export default function App() {
   const [language, setLanguage] = useState<Language>(() =>
@@ -541,12 +542,13 @@ export default function App() {
                 </h2>
               </div>
               <a
-                className="button button-outline"
+                className="button button-outline channel-button"
                 href="https://www.youtube.com/@analizajech"
                 target="_blank"
                 rel="noreferrer"
               >
-                {t.channel} <ArrowUpRight size={18} />
+                <SiYoutube aria-hidden="true" /> {t.channel}{" "}
+                <ArrowUpRight size={18} />
               </a>
             </div>
           </Reveal>
@@ -579,7 +581,6 @@ export default function App() {
                     <Play size={20} fill="currentColor" />
                   </span>
                 </div>
-                <p className="kicker">ANALIZA JECH / YOUTUBE</p>
                 <h3>
                   {video.title}
                   <ArrowUpRight size={18} />
