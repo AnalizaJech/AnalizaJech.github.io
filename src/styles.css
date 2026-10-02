@@ -4,7 +4,8 @@
   color: #e9edf7;
   background: #0a0c12;
   font-synthesis: none;
-  --blue: #5485ff;
+  --blue: #7199ca;
+  --blue-light: #94b9e2;
   --muted: #979eaf;
   --line: #252a37;
   --surface: #11151f;
@@ -85,7 +86,7 @@ h2 > span {
 }
 em {
   font-style: normal;
-  color: #79a4ff;
+  color: var(--blue-light);
 }
 .kicker {
   display: flex;
@@ -127,7 +128,7 @@ em {
   line-height: 1;
 }
 .brand-mark > span {
-  color: #5485ff;
+  color: var(--blue);
   font-size: 25px;
   letter-spacing: 0;
   margin-left: 5px;
@@ -141,7 +142,7 @@ em {
 .site-header nav a:hover,
 .inline-link:hover,
 .cv-link:hover {
-  color: #8daeff;
+  color: var(--blue-light);
 }
 .nav-cta {
   display: flex;
@@ -190,7 +191,7 @@ em {
 }
 .hero-asterisk {
   font-size: 42px;
-  color: #6994ff;
+  color: var(--blue-light);
   margin-left: 14px;
   vertical-align: middle;
 }
@@ -233,7 +234,7 @@ em {
   color: white;
 }
 .button-blue:hover {
-  background: #4679ff;
+  background: var(--blue-light);
 }
 .button-outline {
   border-color: #485164;
@@ -261,7 +262,7 @@ em {
 .hero-disciplines span + span:before {
   content: "âœ¦";
   margin-right: 18px;
-  color: #6390ff;
+  color: var(--blue);
 }
 .hero-visual {
   position: relative;
@@ -333,7 +334,7 @@ em {
   color: #c4d3f5;
 }
 .manifesto-band > span:nth-child(even) {
-  color: #6e9bff;
+  color: var(--blue-light);
   font-size: 20px;
 }
 .section-heading {
@@ -375,10 +376,10 @@ em {
 }
 .project-tabs button.active {
   color: #f1f5ff;
-  border-color: #5d8fff;
+  border-color: var(--blue);
 }
 .project-tabs button.active > span {
-  color: #7da8ff;
+  color: var(--blue-light);
 }
 .featured-project {
   display: grid;
@@ -489,7 +490,7 @@ em {
 .stack span {
   font-size: 9px;
   border: 1px solid #394155;
-  border-radius: 3px;
+  border-radius: 999px;
   color: #aab5cb;
   padding: 4px 8px;
 }
@@ -501,10 +502,10 @@ em {
 }
 .code-link {
   font-size: 11px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
   color: #bac4d6;
+  border-color: #53627b;
+  min-height: 49px;
+  padding-inline: 18px;
 }
 .project-pagination {
   display: flex;
@@ -639,7 +640,7 @@ em {
   font-size: 19px;
 }
 .card-title svg {
-  color: #86adff;
+  color: var(--blue-light);
 }
 .project-card > p {
   font-size: 11px;
@@ -652,7 +653,10 @@ em {
   align-items: center;
   gap: 7px;
   margin-top: 13px;
-  color: #9cbbff;
+  padding: 8px 12px;
+  border: 1px solid #53627b;
+  border-radius: 999px;
+  color: var(--blue-light);
   font-size: 11px;
   transition: color 0.2s;
 }
@@ -660,7 +664,7 @@ em {
 .card-repo:focus-visible,
 .card-title:hover,
 .card-title:focus-visible {
-  color: #6f9eff;
+  color: var(--blue-light);
 }
 .about-section {
   background: #111724;
@@ -807,7 +811,7 @@ em {
 }
 .video-grid a:hover h3,
 .video-grid a:focus-visible h3 {
-  color: #79a4ff;
+  color: var(--blue-light);
 }
 .contact-section {
   background: #151f36;
@@ -860,7 +864,7 @@ em {
 }
 .socials a:hover {
   color: #dbe7ff;
-  border-color: #79a4ff;
+  border-color: var(--blue-light);
   background: #21345a;
 }
 .form-row {
@@ -1514,7 +1518,7 @@ body {
   transition: color 0.22s;
 }
 .site-header nav a[aria-current="location"] {
-  color: #a1bfff;
+  color: var(--blue-light);
 }
 .site-header nav a[aria-current="location"]::after {
   content: "";
@@ -1523,7 +1527,7 @@ body {
   left: 0;
   width: 18px;
   height: 2px;
-  background: #729fff;
+  background: var(--blue);
   border-radius: 3px;
 }
 .site-header nav .nav-cta[aria-current="location"]::after {
@@ -1536,7 +1540,7 @@ body {
   right: 0;
   top: 0;
   height: 2px;
-  background: #7aa6ff;
+  background: var(--blue);
   transform-origin: left;
   pointer-events: none;
 }
@@ -1567,7 +1571,7 @@ body {
 .card-title:hover,
 .inline-link:hover,
 .code-link:hover {
-  color: #8eb3ff;
+  color: var(--blue-light);
 }
 .button svg,
 .card-title svg {
@@ -1605,7 +1609,7 @@ form input:not([type="hidden"]),
 form textarea,
 .select-trigger {
   border: 1px solid #435779;
-  border-radius: 7px;
+  border-radius: 999px;
   background: #0d16294f;
   padding: 14px 15px;
   margin-top: 10px;
@@ -1618,11 +1622,12 @@ form input:focus-visible,
 form textarea:focus-visible,
 .select-trigger:focus-visible {
   outline: 0;
-  border-color: #739fff;
-  box-shadow: 0 0 0 3px #719eff16;
+  border-color: var(--blue-light);
+  box-shadow: 0 0 0 3px #94b9e222;
   background: #111e35;
 }
 form textarea {
+  border-radius: 26px;
   height: 136px;
   min-height: 136px;
   max-height: 136px;
@@ -1642,7 +1647,7 @@ form textarea {
   text-align: left;
 }
 .select-trigger[data-state="open"] {
-  border-color: #739fff;
+  border-color: var(--blue-light);
 }
 .select-trigger svg {
   transition: transform 0.2s;
@@ -1952,7 +1957,7 @@ html {
   color: #081225;
 }
 .button-blue:hover {
-  background: #78a0ff;
+  background: var(--blue-light);
 }
 .portrait-window,
 .about-art {

@@ -32,7 +32,7 @@ export const projects: Project[] = [
     ],
     url: "https://analizajech.github.io/markdown-studio-pro/",
     repo: "https://github.com/AnalizaJech/markdown-studio-pro",
-    accent: "#b8caed",
+    accent: "#afc6dd",
     featured: true,
   },
   {

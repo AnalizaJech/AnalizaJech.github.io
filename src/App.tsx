@@ -326,7 +326,7 @@ export default function App() {
                     Abrir demo <ArrowUpRight size={17} />
                   </a>
                   <a
-                    className="code-link"
+                    className="button button-outline code-link"
                     href={selected.repo}
                     target="_blank"
                     rel="noreferrer"
