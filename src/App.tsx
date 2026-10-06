@@ -25,6 +25,11 @@ import Contact from "./components/Contact";
 import PortraitRotator from "./components/PortraitRotator";
 import { SiYoutube } from "react-icons/si";
 const videoIds = ["ZtC5TGLyKJs", "nyHikqNBsbQ", "iPPCYmTR9kE"];
+const studioPortraits = Array.from(
+  { length: 10 },
+  (_, index) =>
+    `/media/jorge-studio-${String(index + 1).padStart(2, "0")}.webp`,
+);
 export default function App() {
   const [language, setLanguage] = useState<Language>(() =>
     localStorage.getItem("analiza-jech-language") === "en" ? "en" : "es",
@@ -199,14 +204,9 @@ export default function App() {
             </div>
           </div>
           <div className="hero-visual">
-            <div className="portrait-number">{t.portraitNumber}</div>
             <div className="portrait-window">
               <PortraitRotator
-                images={[
-                  "/media/jorge-editorial-v6.webp",
-                  "/media/jorge-editorial-pose-2-v6.webp",
-                  "/media/jorge-editorial-pose-3-v6.webp",
-                ]}
+                images={studioPortraits}
                 label={t.portraitLabel}
                 priority
               />
@@ -471,12 +471,9 @@ export default function App() {
               <div className="about-grid">
                 <div className="about-art">
                   <PortraitRotator
-                    images={[
-                      "/media/jorge-creative-v6.webp",
-                      "/media/jorge-creative-pose-2-v6.webp",
-                      "/media/jorge-creative-pose-3-v6.webp",
-                    ]}
+                    images={studioPortraits}
                     label={t.aboutPortrait}
+                    initialIndex={5}
                   />
                   <span className="about-art-label">
                     <Sparkles size={16} /> {t.creativeSide}

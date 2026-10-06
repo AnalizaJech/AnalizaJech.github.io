@@ -5,13 +5,15 @@ export default function PortraitRotator({
   images,
   label,
   priority = false,
+  initialIndex = 0,
 }: {
   images: string[];
   label: string;
   priority?: boolean;
+  initialIndex?: number;
 }) {
   const root = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(initialIndex);
   const [visible, setVisible] = useState(false);
   const reduced = useReducedMotion();
   useEffect(() => {

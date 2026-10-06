@@ -1612,14 +1612,14 @@ body {
 .code-link,
 .gallery-footer .button-outline,
 .card-repo {
-  background: #1b273a;
-  border-color: #627793;
-  color: #e7f5ff;
+  background: transparent;
+  border-color: #67738b;
+  color: #e9edf7;
 }
 .code-link:hover,
 .gallery-footer .button-outline:hover,
 .card-repo:hover {
-  background: #273b54;
+  background: #171d2b;
   border-color: var(--blue-light);
   color: #fff;
 }
@@ -2054,6 +2054,12 @@ html {
 }
 .portrait-rotator img {
   transition: opacity 550ms ease;
+}
+.portrait-window .portrait-rotator img {
+  object-position: center top;
+}
+.about-art .portrait-rotator img {
+  object-position: center top;
 }
 .select-trigger,
 .select-trigger[data-state="open"],
