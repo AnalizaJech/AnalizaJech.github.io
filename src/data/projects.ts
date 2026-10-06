@@ -18,16 +18,24 @@ export const projects: Project[] = [
     category: "Herramientas",
     eyebrow: "Un escritorio para tus ideas",
     description:
-      "Escribe, visualiza y comparte. Markdown, diagramas y ecuaciones en un espacio que se adapta a tu forma de pensar.",
-    stack: ["TypeScript", "Mermaid", "Offline"],
+      "Editor Markdown con vista previa en vivo, diagramas Mermaid y PlantUML, ecuaciones y modo Zen. Guarda tus documentos localmente y exporta tu trabajo.",
+    stack: ["TypeScript", "Mermaid", "KaTeX", "Offline"],
     images: [
       {
-        src: "/projects/markdown-studio.webp",
+        src: "/projects/markdown-oct6-editor.webp",
         alt: "Editor Markdown Studio Pro con escritura y vista previa",
       },
       {
-        src: "/projects/markdown-tour.gif",
-        alt: "Recorrido real por las herramientas de Markdown Studio Pro",
+        src: "/projects/markdown-oct6-preview.webp",
+        alt: "Vista previa de documentos en Markdown Studio Pro",
+      },
+      {
+        src: "/projects/markdown-oct6-zen.webp",
+        alt: "Modo Zen de Markdown Studio Pro",
+      },
+      {
+        src: "/projects/markdown-oct6-tour.gif",
+        alt: "Recorrido por editor, vista previa y modo Zen",
       },
     ],
     url: "https://analizajech.github.io/markdown-studio-pro/",
@@ -117,16 +125,24 @@ export const projects: Project[] = [
     category: "Herramientas",
     eyebrow: "Diagnóstico interactivo",
     description:
-      "Diagnóstico técnico local a partir de síntomas, con causas probables y pasos de acción.",
+      "Analiza síntomas de hardware, sistema y conectividad en tu navegador. Genera informes con causas posibles, pasos de revisión y fuentes, con historial y base de conocimiento.",
     stack: ["JavaScript", "Tailwind"],
     images: [
       {
-        src: "/projects/tech-2026.webp",
-        alt: "Nueva interfaz de diagnóstico de TechScan",
+        src: "/projects/tech-oct6-report.webp",
+        alt: "Informe de TechScan con causas posibles y pasos de revisión",
       },
       {
-        src: "/projects/tech-tour.gif",
-        alt: "Recorrido por el formulario de síntomas de TechScan",
+        src: "/projects/tech-oct6-form.webp",
+        alt: "Configuración de equipo y selección de síntomas en TechScan",
+      },
+      {
+        src: "/projects/tech-oct6-knowledge.webp",
+        alt: "Base de conocimiento de TechScan",
+      },
+      {
+        src: "/projects/tech-oct6-tour.gif",
+        alt: "Recorrido por síntomas, informe y base de conocimiento de TechScan",
       },
     ],
     url: "https://analizajech.github.io/Tech-Scan/",

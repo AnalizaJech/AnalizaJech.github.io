@@ -253,10 +253,12 @@ const englishProjects: Record<
   markdown: {
     eyebrow: "A workspace for your ideas",
     description:
-      "Write, preview, and share. Markdown, diagrams, and equations in a space that adapts to the way you think.",
+      "A Markdown editor with live preview, Mermaid and PlantUML diagrams, equations, and Zen mode. Save documents locally and export your work.",
     images: [
       "Markdown Studio Pro editor with writing and live preview",
-      "Tour of Markdown Studio Pro tools",
+      "Document preview in Markdown Studio Pro",
+      "Markdown Studio Pro Zen mode",
+      "Tour of the editor, preview, and Zen mode",
     ],
   },
   cloud: {
@@ -291,10 +293,12 @@ const englishProjects: Record<
   tech: {
     eyebrow: "Interactive diagnosis",
     description:
-      "Local technical diagnosis based on symptoms, with likely causes and action steps.",
+      "Analyze hardware, system, and connectivity symptoms in your browser. Generate reports with possible causes, review steps, and sources, with history and a knowledge base.",
     images: [
-      "New TechScan diagnosis interface",
-      "Tour of TechScan symptom form",
+      "TechScan report with possible causes and review steps",
+      "TechScan device setup and symptom selection",
+      "TechScan knowledge base",
+      "Tour of TechScan symptoms, report, and knowledge base",
     ],
   },
   innova: {

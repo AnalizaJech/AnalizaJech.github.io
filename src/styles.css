@@ -898,8 +898,9 @@ em {
   width: 13px;
   height: 13px;
 }
-.socials a:hover {
-  color: #dbe7ff;
+.socials a:hover,
+.socials a:focus-visible {
+  color: var(--blue-light);
   border-color: var(--blue-light);
   background: #21345a;
 }
@@ -1617,11 +1618,14 @@ body {
   color: #e9edf7;
 }
 .code-link:hover,
+.code-link:focus-visible,
 .gallery-footer .button-outline:hover,
-.card-repo:hover {
+.gallery-footer .button-outline:focus-visible,
+.card-repo:hover,
+.card-repo:focus-visible {
   background: #171d2b;
   border-color: var(--blue-light);
-  color: #fff;
+  color: var(--blue-light);
 }
 .card-actions {
   display: flex;
