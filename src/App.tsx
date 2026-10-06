@@ -203,9 +203,9 @@ export default function App() {
             <div className="portrait-window">
               <PortraitRotator
                 images={[
-                  "/media/jorge-editorial-v5.webp",
-                  "/media/jorge-editorial-pose-2.webp",
-                  "/media/jorge-editorial-pose-3.webp",
+                  "/media/jorge-editorial-v6.webp",
+                  "/media/jorge-editorial-pose-2-v6.webp",
+                  "/media/jorge-editorial-pose-3-v6.webp",
                 ]}
                 label={t.portraitLabel}
                 priority
@@ -439,18 +439,27 @@ export default function App() {
                       <ArrowUpRight size={20} />
                     </a>
                     <p>{project.description}</p>
-                    {project.repo && (
+                    <div className="card-actions">
                       <a
-                        className="card-repo"
-                        href={project.repo}
+                        className="button button-blue card-demo"
+                        href={project.url}
                         target="_blank"
                         rel="noreferrer"
-                        aria-label={`${t.viewCode}: ${project.title} — GitHub`}
                       >
-                        <Github size={16} /> {t.viewCode}{" "}
-                        <ArrowUpRight size={15} />
+                        {t.openDemo} <ArrowUpRight size={16} />
                       </a>
-                    )}
+                      {project.repo && (
+                        <a
+                          className="card-repo"
+                          href={project.repo}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${t.viewCode}: ${project.title} — GitHub`}
+                        >
+                          <Github size={16} /> {t.viewCode}
+                        </a>
+                      )}
+                    </div>
                   </article>
                 ))}
             </div>
@@ -463,9 +472,9 @@ export default function App() {
                 <div className="about-art">
                   <PortraitRotator
                     images={[
-                      "/media/jorge-creative-v5.webp",
-                      "/media/jorge-creative-pose-2.webp",
-                      "/media/jorge-creative-pose-3.webp",
+                      "/media/jorge-creative-v6.webp",
+                      "/media/jorge-creative-pose-2-v6.webp",
+                      "/media/jorge-creative-pose-3-v6.webp",
                     ]}
                     label={t.aboutPortrait}
                   />

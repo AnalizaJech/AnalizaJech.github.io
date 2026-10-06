@@ -15,6 +15,12 @@ export default function Contact({ language }: { language: Language }) {
     if (!form.reportValidity()) return;
     const data = Object.fromEntries(new FormData(form));
     delete data.redirect;
+    const sender = String(data.name ?? "").trim();
+    const project = String(data.project_type ?? "").trim();
+    data.subject = `Nuevo proyecto · ${project || "Contacto"} · ${sender}`;
+    data.from_name = `Analiza Jech · ${sender}`;
+    data["Tipo de proyecto"] = project;
+    delete data.project_type;
     setState("sending");
     try {
       const response = await fetch("https://api.web3forms.com/submit", {

@@ -45,16 +45,16 @@ export const projects: Project[] = [
     stack: ["JavaScript", "SVG", "PWA"],
     images: [
       {
-        src: "/projects/cloud-architect.webp",
-        alt: "Diagrama cloud real con biblioteca y conexiones",
+        src: "/projects/cloud-2026.webp",
+        alt: "Cloud Architect Studio v2 con arquitectura de ejemplo y conexiones",
+      },
+      {
+        src: "/projects/cloud-tour.gif",
+        alt: "Recorrido por el editor y el ejemplo de Cloud Architect Studio v2",
       },
       {
         src: "/projects/cloud-customization.webp",
-        alt: "Inspector de Cloud Architect Studio con personalización de nodos",
-      },
-      {
-        src: "/projects/cloud-mobile.webp",
-        alt: "Cloud Architect Studio funcionando en una pantalla móvil",
+        alt: "Inspector y personalización de componentes cloud",
       },
     ],
     url: "https://analizajech.github.io/cloud-architect-studio/",
@@ -94,10 +94,18 @@ export const projects: Project[] = [
     title: "Banco Crecer",
     category: "Web",
     eyebrow: "Experiencia web",
-    description: "Una experiencia bancaria adaptable construida con Bootstrap.",
+    description:
+      "Sitio bancario editorial con productos, herramientas y simulación de crédito.",
     stack: ["HTML", "CSS", "Bootstrap"],
     images: [
-      { src: "/projects/banco-crecer.webp", alt: "Página de Banco Crecer" },
+      {
+        src: "/projects/banco-2026.webp",
+        alt: "Nueva portada de Banco Crecer",
+      },
+      {
+        src: "/projects/banco-tour.gif",
+        alt: "Recorrido por productos y secciones de Banco Crecer",
+      },
     ],
     url: "https://analizajech.github.io/Banco-Crecer/",
     repo: "https://github.com/AnalizaJech/Banco-Crecer",
@@ -109,12 +117,16 @@ export const projects: Project[] = [
     category: "Herramientas",
     eyebrow: "Diagnóstico interactivo",
     description:
-      "Identifica posibles problemas de hardware a partir de los síntomas de tu equipo.",
+      "Diagnóstico técnico local a partir de síntomas, con causas probables y pasos de acción.",
     stack: ["JavaScript", "Tailwind"],
     images: [
       {
-        src: "/projects/techscan.webp",
-        alt: "Interfaz de diagnóstico de hardware TechScan",
+        src: "/projects/tech-2026.webp",
+        alt: "Nueva interfaz de diagnóstico de TechScan",
+      },
+      {
+        src: "/projects/tech-tour.gif",
+        alt: "Recorrido por el formulario de síntomas de TechScan",
       },
     ],
     url: "https://analizajech.github.io/Tech-Scan/",
@@ -127,12 +139,16 @@ export const projects: Project[] = [
     category: "Web",
     eyebrow: "Aprendizaje aplicado",
     description:
-      "Módulos interactivos para explorar normas ISO y gestión de proyectos.",
+      "Biblioteca de aprendizaje con módulos de software, calidad, gestión y accesibilidad.",
     stack: ["JavaScript", "HTML", "Tailwind"],
     images: [
       {
-        src: "/projects/innovasoft.webp",
-        alt: "Plataforma educativa InnovaSoft",
+        src: "/projects/innova-2026.webp",
+        alt: "Nueva biblioteca de cursos InnovaSoft",
+      },
+      {
+        src: "/projects/innova-tour.gif",
+        alt: "Recorrido por los módulos de InnovaSoft",
       },
     ],
     url: "https://analizajech.github.io/InnovaSoft/",

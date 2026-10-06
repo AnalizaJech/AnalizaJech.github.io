@@ -8,6 +8,7 @@ import {
   X,
   Github,
   Images,
+  Play,
 } from "lucide-react";
 import type { Project } from "../data/projects";
 import { copy, type Language } from "../i18n";
@@ -98,10 +99,12 @@ export default function ProjectGallery({
                     alt={project.images[0].alt}
                   />
                   <button
-                    className="button button-blue"
+                    className="button button-blue tour-play"
+                    aria-label={t.playTour}
+                    title={t.playTour}
                     onClick={() => setPlaying(true)}
                   >
-                    {t.playTour}
+                    <Play size={24} fill="currentColor" aria-hidden="true" />
                   </button>
                 </div>
               ) : (

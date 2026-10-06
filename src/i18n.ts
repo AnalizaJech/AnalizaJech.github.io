@@ -264,9 +264,9 @@ const englishProjects: Record<
     description:
       "Design cloud architectures on a visual canvas. Connect components, organize systems, and export diagrams.",
     images: [
-      "Cloud architecture diagram with component library",
-      "Cloud Architect Studio node customization panel",
-      "Cloud Architect Studio on a mobile screen",
+      "Cloud Architect Studio v2 sample architecture and connections",
+      "Tour of the Cloud Architect Studio v2 editor and sample",
+      "Cloud component inspector and customization",
     ],
   },
   twisty: {
@@ -281,20 +281,27 @@ const englishProjects: Record<
   },
   banco: {
     eyebrow: "Web experience",
-    description: "A responsive banking experience built with Bootstrap.",
-    images: ["Banco Crecer website"],
+    description:
+      "An editorial banking website with products, tools, and a loan simulator.",
+    images: [
+      "New Banco Crecer homepage",
+      "Tour of Banco Crecer products and sections",
+    ],
   },
   tech: {
     eyebrow: "Interactive diagnosis",
     description:
-      "Find possible hardware issues based on your computer's symptoms.",
-    images: ["TechScan hardware diagnosis interface"],
+      "Local technical diagnosis based on symptoms, with likely causes and action steps.",
+    images: [
+      "New TechScan diagnosis interface",
+      "Tour of TechScan symptom form",
+    ],
   },
   innova: {
     eyebrow: "Applied learning",
     description:
-      "Interactive modules to explore ISO standards and project management.",
-    images: ["InnovaSoft educational platform"],
+      "A learning library with modules on software, quality, management, and accessibility.",
+    images: ["New InnovaSoft course library", "Tour of InnovaSoft modules"],
   },
   commerce: {
     eyebrow: "Digital commerce",
