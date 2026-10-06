@@ -53,6 +53,8 @@ Agrega un objeto a `projects` en `src/data/projects.ts` y coloca las capturas en
 
 ## Imágenes
 
+Markdown Studio Pro, Cloud Architect Studio, TwistyLab, Banco Crecer, TechScan e InnovaSoft tienen cuatro vistas: tres capturas estáticas y un GIF reproducible bajo demanda. JechCommerce y Librería conservan sus vistas actuales hasta su próxima actualización. TechScan muestra la portada y el estudio guiado del despliegue corregido.
+
 Las capturas muestran aplicaciones reales. Las vistas y recorridos de Cloud Architect Studio, TechScan, Banco Crecer e InnovaSoft se actualizaron desde sus versiones públicas en octubre de 2026. Los carruseles del hero y «Sobre mí» usan diez retratos con poses abiertas, traje negro y fondo cinematográfico azul oscuro; rostro, cabello y contextura toman como referencia las fotos proporcionadas por el propietario. El segundo carrusel comienza en una pose distinta. Las capturas y retratos estáticos se optimizaron a WebP. Los prompts iniciales están en `docs/image-prompts.md`.
 
 ## Contacto

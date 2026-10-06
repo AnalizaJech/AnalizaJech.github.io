@@ -267,8 +267,9 @@ const englishProjects: Record<
       "Design cloud architectures on a visual canvas. Connect components, organize systems, and export diagrams.",
     images: [
       "Cloud Architect Studio v2 sample architecture and connections",
-      "Tour of the Cloud Architect Studio v2 editor and sample",
       "Cloud component inspector and customization",
+      "Cloud Architect Studio export options",
+      "Tour of the diagram, inspector, and export options",
     ],
   },
   twisty: {
@@ -278,7 +279,8 @@ const englishProjects: Record<
     images: [
       "TwistyLab timer and interactive 3D cube",
       "3D playground and cube moves in TwistyLab",
-      "Tour of TwistyLab timer and statistics",
+      "TwistyLab statistics panel",
+      "Tour of the timer, playground, and statistics",
     ],
   },
   banco: {
@@ -287,25 +289,32 @@ const englishProjects: Record<
       "An editorial banking website with products, tools, and a loan simulator.",
     images: [
       "New Banco Crecer homepage",
-      "Tour of Banco Crecer products and sections",
+      "Banco Crecer product catalog",
+      "Banco Crecer loan simulator",
+      "Tour of the homepage, products, and simulator",
     ],
   },
   tech: {
     eyebrow: "Interactive diagnosis",
     description:
-      "Analyze hardware, system, and connectivity symptoms in your browser. Generate reports with possible causes, review steps, and sources, with history and a knowledge base.",
+      "A guided studio for connecting symptoms and error codes. Generate local reports with possible causes, checks, and official guides, and keep your history in the browser.",
     images: [
+      "New TechScan homepage and diagnosis studio access",
+      "Symptom selection in the guided TechScan studio",
       "TechScan report with possible causes and review steps",
-      "TechScan device setup and symptom selection",
-      "TechScan knowledge base",
-      "Tour of TechScan symptoms, report, and knowledge base",
+      "Tour of the TechScan homepage, symptoms, and report",
     ],
   },
   innova: {
     eyebrow: "Applied learning",
     description:
       "A learning library with modules on software, quality, management, and accessibility.",
-    images: ["New InnovaSoft course library", "Tour of InnovaSoft modules"],
+    images: [
+      "New InnovaSoft course library",
+      "InnovaSoft quality, management, and collaboration modules",
+      "Development, security, and accessibility modules",
+      "Tour of the InnovaSoft library and modules",
+    ],
   },
   commerce: {
     eyebrow: "Digital commerce",

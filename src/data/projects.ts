@@ -53,16 +53,20 @@ export const projects: Project[] = [
     stack: ["JavaScript", "SVG", "PWA"],
     images: [
       {
-        src: "/projects/cloud-2026.webp",
+        src: "/projects/cloud-four-1.webp",
         alt: "Cloud Architect Studio v2 con arquitectura de ejemplo y conexiones",
       },
       {
-        src: "/projects/cloud-tour.gif",
-        alt: "Recorrido por el editor y el ejemplo de Cloud Architect Studio v2",
+        src: "/projects/cloud-four-2.webp",
+        alt: "Inspector y personalización de componentes cloud",
       },
       {
-        src: "/projects/cloud-customization.webp",
-        alt: "Inspector y personalización de componentes cloud",
+        src: "/projects/cloud-four-3.webp",
+        alt: "Opciones de exportación de Cloud Architect Studio",
+      },
+      {
+        src: "/projects/cloud-four-tour.gif",
+        alt: "Recorrido por diagrama, inspector y exportación",
       },
     ],
     url: "https://analizajech.github.io/cloud-architect-studio/",
@@ -80,16 +84,20 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "cubing.js"],
     images: [
       {
-        src: "/projects/twistylab.webp",
+        src: "/projects/twisty-four-1.webp",
         alt: "TwistyLab con cronómetro y cubo interactivo 3D",
       },
       {
-        src: "/projects/twisty-playground.webp",
+        src: "/projects/twisty-four-2.webp",
         alt: "Laboratorio 3D y movimientos en TwistyLab",
       },
       {
-        src: "/projects/twisty-tour.gif",
-        alt: "Recorrido real por cronómetro y estadísticas de TwistyLab",
+        src: "/projects/twisty-four-3.webp",
+        alt: "Panel de estadísticas de TwistyLab",
+      },
+      {
+        src: "/projects/twisty-four-tour.gif",
+        alt: "Recorrido por cronómetro, laboratorio y estadísticas",
       },
     ],
     url: "https://analizajech.github.io/twistylab/",
@@ -107,12 +115,20 @@ export const projects: Project[] = [
     stack: ["HTML", "CSS", "Bootstrap"],
     images: [
       {
-        src: "/projects/banco-2026.webp",
+        src: "/projects/banco-four-1.webp",
         alt: "Nueva portada de Banco Crecer",
       },
       {
-        src: "/projects/banco-tour.gif",
-        alt: "Recorrido por productos y secciones de Banco Crecer",
+        src: "/projects/banco-four-2.webp",
+        alt: "Catálogo de productos de Banco Crecer",
+      },
+      {
+        src: "/projects/banco-four-3.webp",
+        alt: "Simulador de crédito de Banco Crecer",
+      },
+      {
+        src: "/projects/banco-four-tour.gif",
+        alt: "Recorrido por portada, productos y simulador",
       },
     ],
     url: "https://analizajech.github.io/Banco-Crecer/",
@@ -125,24 +141,24 @@ export const projects: Project[] = [
     category: "Herramientas",
     eyebrow: "Diagnóstico interactivo",
     description:
-      "Analiza síntomas de hardware, sistema y conectividad en tu navegador. Genera informes con causas posibles, pasos de revisión y fuentes, con historial y base de conocimiento.",
-    stack: ["JavaScript", "Tailwind"],
+      "Un estudio guiado para conectar síntomas y códigos de error. Genera informes locales con causas posibles, comprobaciones y guías oficiales, y conserva tu historial en el navegador.",
+    stack: ["React", "TypeScript", "Análisis local"],
     images: [
       {
-        src: "/projects/tech-oct6-report.webp",
+        src: "/projects/tech-four-1.webp",
+        alt: "Nueva portada de TechScan y acceso al estudio de diagnóstico",
+      },
+      {
+        src: "/projects/tech-four-2.webp",
+        alt: "Selección de síntomas en el estudio guiado de TechScan",
+      },
+      {
+        src: "/projects/tech-four-3.webp",
         alt: "Informe de TechScan con causas posibles y pasos de revisión",
       },
       {
-        src: "/projects/tech-oct6-form.webp",
-        alt: "Configuración de equipo y selección de síntomas en TechScan",
-      },
-      {
-        src: "/projects/tech-oct6-knowledge.webp",
-        alt: "Base de conocimiento de TechScan",
-      },
-      {
-        src: "/projects/tech-oct6-tour.gif",
-        alt: "Recorrido por síntomas, informe y base de conocimiento de TechScan",
+        src: "/projects/tech-four-tour.gif",
+        alt: "Recorrido por portada, síntomas e informe de TechScan",
       },
     ],
     url: "https://analizajech.github.io/Tech-Scan/",
@@ -159,12 +175,20 @@ export const projects: Project[] = [
     stack: ["JavaScript", "HTML", "Tailwind"],
     images: [
       {
-        src: "/projects/innova-2026.webp",
+        src: "/projects/innova-four-1.webp",
         alt: "Nueva biblioteca de cursos InnovaSoft",
       },
       {
-        src: "/projects/innova-tour.gif",
-        alt: "Recorrido por los módulos de InnovaSoft",
+        src: "/projects/innova-four-2.webp",
+        alt: "Módulos de calidad, gestión y colaboración en InnovaSoft",
+      },
+      {
+        src: "/projects/innova-four-3.webp",
+        alt: "Módulos de desarrollo, seguridad y accesibilidad",
+      },
+      {
+        src: "/projects/innova-four-tour.gif",
+        alt: "Recorrido por la biblioteca y módulos de InnovaSoft",
       },
     ],
     url: "https://analizajech.github.io/InnovaSoft/",
