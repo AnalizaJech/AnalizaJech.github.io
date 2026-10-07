@@ -2135,3 +2135,45 @@ html {
     transition: none;
   }
 }
+/* Stable catalogue rhythm: complete descriptions and aligned actions. */
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+.project-card .card-preview {
+  flex-shrink: 0;
+}
+.project-card .card-title {
+  min-height: 2.6em;
+}
+.project-card > p {
+  min-height: 5.4em;
+  margin-bottom: 16px;
+}
+.project-card .card-actions {
+  margin-top: auto;
+}
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-visual {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    justify-self: stretch;
+  }
+  .portrait-window .portrait-rotator img {
+    height: clamp(600px, 90vw, 880px);
+  }
+}
+@media (max-width: 600px) {
+  .portrait-window .portrait-rotator img {
+    height: max(520px, calc((100vw - 50px) * 1.5));
+  }
+}
+@media (max-width: 360px) {
+  .portrait-window .portrait-rotator img {
+    height: max(480px, calc((100vw - 36px) * 1.5));
+  }
+}

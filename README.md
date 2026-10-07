@@ -6,16 +6,16 @@ Portafolio bilingüe de Jorge Enrique Cáceres Hernández, construido con React,
 
 ## Proyectos
 
-| Proyecto               | Demo o presentación                                                             | Código                                                                    |
-| ---------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| Markdown Studio Pro    | [Abrir demo](https://analizajech.github.io/markdown-studio-pro/)                | [Repositorio](https://github.com/AnalizaJech/markdown-studio-pro)         |
-| Cloud Architect Studio | [Abrir demo](https://analizajech.github.io/cloud-architect-studio/)             | [Repositorio](https://github.com/AnalizaJech/cloud-architect-studio)      |
-| TwistyLab              | [Abrir demo](https://analizajech.github.io/twistylab/)                          | [Repositorio](https://github.com/AnalizaJech/twistylab)                   |
-| Banco Crecer           | [Abrir demo](https://analizajech.github.io/Banco-Crecer/)                       | [Repositorio](https://github.com/AnalizaJech/Banco-Crecer)                |
-| TechScan               | [Abrir demo](https://analizajech.github.io/Tech-Scan/)                          | [Repositorio](https://github.com/AnalizaJech/Tech-Scan)                   |
-| InnovaSoft             | [Abrir demo](https://analizajech.github.io/InnovaSoft/)                         | [Repositorio](https://github.com/AnalizaJech/InnovaSoft)                  |
-| JechCommerce           | [Ver presentación](https://www.loom.com/share/4a1e0fb5c3f74c4d9f7b5e071d6a9b66) | [Repositorio frontend](https://github.com/AnalizaJech/JechCommerce-front) |
-| Librería               | [Ver video](https://www.youtube.com/watch?v=nGi3DS0QSzE)                        | [Repositorio](https://github.com/AnalizaJech/Libreria)                    |
+| Proyecto               | Demo o presentación                                                 | Código                                                               |
+| ---------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Markdown Studio Pro    | [Abrir demo](https://analizajech.github.io/markdown-studio-pro/)    | [Repositorio](https://github.com/AnalizaJech/markdown-studio-pro)    |
+| Cloud Architect Studio | [Abrir demo](https://analizajech.github.io/cloud-architect-studio/) | [Repositorio](https://github.com/AnalizaJech/cloud-architect-studio) |
+| TwistyLab              | [Abrir demo](https://analizajech.github.io/twistylab/)              | [Repositorio](https://github.com/AnalizaJech/twistylab)              |
+| Banco Crecer           | [Abrir demo](https://analizajech.github.io/Banco-Crecer/)           | [Repositorio](https://github.com/AnalizaJech/Banco-Crecer)           |
+| TechScan               | [Abrir demo](https://analizajech.github.io/Tech-Scan/)              | [Repositorio](https://github.com/AnalizaJech/Tech-Scan)              |
+| InnovaSoft             | [Abrir demo](https://analizajech.github.io/InnovaSoft/)             | [Repositorio](https://github.com/AnalizaJech/InnovaSoft)             |
+| BRAVA                  | [Abrir demo](https://analizajech.github.io/Brava/)                  | [Repositorio](https://github.com/AnalizaJech/Brava)                  |
+| Margen                 | [Abrir demo](https://analizajech.github.io/Margen/)                 | [Repositorio](https://github.com/AnalizaJech/Margen)                 |
 
 ## Desarrollo
 
@@ -53,7 +53,7 @@ Agrega un objeto a `projects` en `src/data/projects.ts` y coloca las capturas en
 
 ## Imágenes
 
-Markdown Studio Pro, Cloud Architect Studio, TwistyLab, Banco Crecer, TechScan e InnovaSoft tienen cuatro vistas: tres capturas estáticas y un GIF reproducible bajo demanda. JechCommerce y Librería conservan sus vistas actuales hasta su próxima actualización. TechScan muestra la portada y el estudio guiado del despliegue corregido.
+Los ocho proyectos tienen cuatro vistas: tres capturas estáticas y un GIF reproducible bajo demanda. BRAVA y Margen incluyen demostraciones reales de compra y lectura. Las tarjetas mantienen los botones alineados y el hero aprovecha el ancho del contenido en móvil y tablet.
 
 Las capturas muestran aplicaciones reales. Las vistas y recorridos de Cloud Architect Studio, TechScan, Banco Crecer e InnovaSoft se actualizaron desde sus versiones públicas en octubre de 2026. Los carruseles del hero y «Sobre mí» usan diez retratos con poses abiertas, traje negro y fondo cinematográfico azul oscuro; rostro, cabello y contextura toman como referencia las fotos proporcionadas por el propietario. El segundo carrusel comienza en una pose distinta. Las capturas y retratos estáticos se optimizaron a WebP. Los prompts iniciales están en `docs/image-prompts.md`.
 

@@ -18,7 +18,7 @@ export const projects: Project[] = [
     category: "Herramientas",
     eyebrow: "Un escritorio para tus ideas",
     description:
-      "Editor Markdown con vista previa en vivo, diagramas Mermaid y PlantUML, ecuaciones y modo Zen. Guarda tus documentos localmente y exporta tu trabajo.",
+      "Editor Markdown con vista previa, diagramas, ecuaciones y modo Zen. Guarda documentos localmente y exporta tu trabajo.",
     stack: ["TypeScript", "Mermaid", "KaTeX", "Offline"],
     images: [
       {
@@ -141,7 +141,7 @@ export const projects: Project[] = [
     category: "Herramientas",
     eyebrow: "Diagnóstico interactivo",
     description:
-      "Un estudio guiado para conectar síntomas y códigos de error. Genera informes locales con causas posibles, comprobaciones y guías oficiales, y conserva tu historial en el navegador.",
+      "Diagnóstico guiado por síntomas y códigos de error, con informes locales, comprobaciones y guías oficiales.",
     stack: ["React", "TypeScript", "Análisis local"],
     images: [
       {
@@ -197,37 +197,62 @@ export const projects: Project[] = [
   },
   {
     id: "commerce",
-    title: "JechCommerce",
+    title: "BRAVA",
     category: "Web",
-    eyebrow: "Comercio digital",
+    eyebrow: "Carácter que se lleva",
     description:
-      "Demostración de una plataforma ecommerce con productos, usuarios y autenticación.",
-    stack: ["Ecommerce", "UX/UI"],
+      "Tienda editorial de cuero con catálogo, variantes, zoom y bolsa persistente para solicitar una compra por WhatsApp.",
+    stack: ["Angular", "TypeScript", "Signals"],
     images: [
       {
-        src: "/projects/jechcommerce.webp",
-        alt: "Vista de la plataforma JechCommerce",
+        src: "/projects/brava-1.webp",
+        alt: "Portada editorial de BRAVA y selección de piezas de cuero",
+      },
+      {
+        src: "/projects/brava-2.webp",
+        alt: "Catálogo de BRAVA con categorías y productos",
+      },
+      {
+        src: "/projects/brava-3.webp",
+        alt: "Ficha de producto de BRAVA con galería, colores y tallas",
+      },
+      {
+        src: "/projects/brava-tour.gif",
+        alt: "Demostración de variantes, zoom y bolsa de compra en BRAVA",
       },
     ],
-    url: "https://www.loom.com/share/4a1e0fb5c3f74c4d9f7b5e071d6a9b66",
-    repo: "https://github.com/AnalizaJech/JechCommerce-front",
+    url: "https://analizajech.github.io/Brava/",
+    repo: "https://github.com/AnalizaJech/Brava",
     accent: "#dbc5b6",
   },
   {
     id: "library",
-    title: "Librería",
+    title: "Margen",
     category: "Web",
-    eyebrow: "Gestión de contenido",
-    description: "Aplicación Laravel para gestionar usuarios y contenido.",
-    stack: ["Laravel", "PHP", "MySQL"],
+    eyebrow: "Historias que se quedan contigo",
+    description:
+      "Biblioteca digital de obras completas con lectura interactiva, ediciones PDF, notas y progreso guardado en tu navegador.",
+    stack: ["React", "Vite", "StPageFlip"],
     images: [
       {
-        src: "https://img.youtube.com/vi/nGi3DS0QSzE/hqdefault.jpg",
-        alt: "Demostración en video de la aplicación Librería",
+        src: "/projects/margen-1.webp",
+        alt: "Portada de Margen con identidad editorial y selección de libros",
+      },
+      {
+        src: "/projects/margen-2.webp",
+        alt: "Catálogo de Margen con portadas, búsqueda y filtros",
+      },
+      {
+        src: "/projects/margen-3.webp",
+        alt: "Lector de Margen con libro abierto e índice de capítulos",
+      },
+      {
+        src: "/projects/margen-tour.gif",
+        alt: "Demostración del giro de páginas en el lector de Margen",
       },
     ],
-    url: "https://www.youtube.com/watch?v=nGi3DS0QSzE",
-    repo: "https://github.com/AnalizaJech/Libreria",
-    accent: "#b8cad9",
+    url: "https://analizajech.github.io/Margen/",
+    repo: "https://github.com/AnalizaJech/Margen",
+    accent: "#c9cfbb",
   },
 ];

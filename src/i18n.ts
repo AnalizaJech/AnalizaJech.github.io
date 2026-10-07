@@ -253,7 +253,7 @@ const englishProjects: Record<
   markdown: {
     eyebrow: "A workspace for your ideas",
     description:
-      "A Markdown editor with live preview, Mermaid and PlantUML diagrams, equations, and Zen mode. Save documents locally and export your work.",
+      "A Markdown editor with live preview, diagrams, equations, and Zen mode. Save documents locally and export your work.",
     images: [
       "Markdown Studio Pro editor with writing and live preview",
       "Document preview in Markdown Studio Pro",
@@ -297,7 +297,7 @@ const englishProjects: Record<
   tech: {
     eyebrow: "Interactive diagnosis",
     description:
-      "A guided studio for connecting symptoms and error codes. Generate local reports with possible causes, checks, and official guides, and keep your history in the browser.",
+      "Guided diagnosis using symptoms and error codes, with local reports, checks, and official guides.",
     images: [
       "New TechScan homepage and diagnosis studio access",
       "Symptom selection in the guided TechScan studio",
@@ -317,15 +317,26 @@ const englishProjects: Record<
     ],
   },
   commerce: {
-    eyebrow: "Digital commerce",
+    eyebrow: "Character you can wear",
     description:
-      "An ecommerce platform demo with products, users, and authentication.",
-    images: ["JechCommerce platform preview"],
+      "An editorial leather store with a catalog, variants, zoom, and a persistent shopping bag for purchase requests via WhatsApp.",
+    images: [
+      "BRAVA editorial homepage and leather collection",
+      "BRAVA catalog with categories and products",
+      "BRAVA product details with gallery, colors, and sizes",
+      "BRAVA demonstration of variants, zoom, and shopping bag",
+    ],
   },
   library: {
-    eyebrow: "Content management",
-    description: "A Laravel application for managing users and content.",
-    images: ["Video demo of the Librería application"],
+    eyebrow: "Stories that stay with you",
+    description:
+      "A digital library of complete books with interactive reading, PDF editions, notes, and progress saved in your browser.",
+    images: [
+      "Margen editorial homepage and book selection",
+      "Margen catalog with covers, search, and filters",
+      "Margen reader with an open book and chapter index",
+      "Page turning demonstration in the Margen reader",
+    ],
   },
 };
 
